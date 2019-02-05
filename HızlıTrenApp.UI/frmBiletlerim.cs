@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HızlıTrenApp.DAL.Repository.Concrete;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,32 @@ namespace HızlıTrenApp.UI
 		public frmBiletlerim()
 		{
 			InitializeComponent();
+		}
+
+		private void frmBiletlerim_Load(object sender, EventArgs e)
+		{
+			dgvSeyehatBilgileri.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+		}
+		private BiletConcrete _biletConcrete;
+		object gelenBilet;
+		private void btnSorgula_Click(object sender, EventArgs e)
+		{
+			BiletleriListele();
+		}
+
+		private void BiletleriListele()
+		{
+			_biletConcrete = new BiletConcrete();
+
+			if (_biletConcrete.GelenBilet(txtPnrNo.Text, txtSoyad.Text) != null)
+			{
+				gelenBilet = _biletConcrete.GelenBilet(txtPnrNo.Text, txtSoyad.Text);
+				List<object> liste = new List<object>();
+				liste.Add(gelenBilet);
+				dgvSeyehatBilgileri.DataSource = liste;
+			}
+			else
+				MessageBox.Show("Lütfen PNR No ve Soyad alanlarını doğru girdiğinizden emin olunuz!", "DİKKAT", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 		}
 	}
 }
