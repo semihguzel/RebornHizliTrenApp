@@ -98,15 +98,8 @@ namespace HızlıTrenApp.UI
 
                                 frmSeferler frmSeferler = new frmSeferler(this);
                                 Hide();
-                                GroupBox kutu = (GroupBox)this.Parent;
-                                Form anaForm = (Form)kutu.Parent.Parent;
-                                frmSeferler.Width = kutu.Width;
-                                frmSeferler.Height = kutu.Height;
-                                frmSeferler.MdiParent = anaForm;
-                                kutu.Controls.Remove(this);
-                                kutu.Controls.Add(frmSeferler);
-                                frmSeferler.Show();
-                                frmSeferler.Location = Point.Empty;
+                                frmAnaSayfa anasayfa = (frmAnaSayfa)ParentForm;
+                                anasayfa.FormKontrolluGetir(frmSeferler);
                             }
                             else if (dtpDonusTarihi.Enabled == true && dtpDonusTarihi.Value > dtpGidisTarihi.Value)
                             {

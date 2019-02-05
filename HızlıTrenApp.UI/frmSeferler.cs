@@ -294,15 +294,9 @@ namespace HızlıTrenApp.UI
 
             frmKoltukSecimi gelenForm2 = new frmKoltukSecimi(this, id1, tiklananSaat);
             Hide();
-            GroupBox kutu = (GroupBox)this.Parent;
-            Form anaForm = (Form)kutu.Parent.Parent;
-            kutu.Width = gelenForm2.Width;
-            kutu.Height = gelenForm2.Height;
-            gelenForm2.MdiParent = anaForm;
-            kutu.Controls.Remove(this);
-            kutu.Controls.Add(gelenForm2);
-            gelenForm2.Show();
-            gelenForm2.Location = Point.Empty;
+            frmAnaSayfa anasayfa = (frmAnaSayfa)ParentForm;
+            anasayfa.FormKontrolluGetir(gelenForm2);
+            
         }
     }
 }

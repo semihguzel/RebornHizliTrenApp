@@ -30,7 +30,7 @@ namespace HızlıTrenApp.UI
             mlIstasyonTren.UseStyleColors = true;
             mlBilet.Style = MetroColorStyle.Blue;
             mlIstasyonTren.Style = MetroColorStyle.Black;
-            
+
         }
 
         public void FormGetir(MetroForm gelenForm)
@@ -69,8 +69,14 @@ namespace HızlıTrenApp.UI
 
             kutu.Location = new Point((this.Width - gelenForm.Width) / 2, (this.Height - gelenForm.Height) / 2);
             kutu.Text = "";
-            kutu.Width = gelenForm.Width;
-            kutu.Height = gelenForm.Height;
+            kutu.Width = gelenForm.Size.Width;
+            kutu.Height = gelenForm.Size.Height;
+            if (grpAnaKutu.Height < kutu.Height)
+            {
+                grpAnaKutu.Height = kutu.Size.Height + 100;
+                if (this.Height < grpAnaKutu.Height)
+                    this.Height = grpAnaKutu.Size.Height + 160;
+            }
             grpAnaKutu.Controls.Add(kutu);
             kutu.Location = new Point(0, (mlBilet.Height + (mlBilet.Top * 2)));
             kutu.Left = (grpAnaKutu.Right - kutu.Right) / 2;
@@ -78,6 +84,7 @@ namespace HızlıTrenApp.UI
             kutu.Controls.Add(gelenForm);
             gelenForm.Show();
             gelenForm.Location = Point.Empty;
+            this.Location = new Point(Location.X, Location.Y - 50);
         }
 
         private void mlBilet_Click(object sender, EventArgs e)
