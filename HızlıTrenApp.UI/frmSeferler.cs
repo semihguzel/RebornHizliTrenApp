@@ -136,22 +136,24 @@ namespace HızlıTrenApp.UI
         //Bu metodda gidiş ve dönüş seferleri olan ana veriler toplanıp, daha sonra dinamik bir metod olan SeferleriDoldur2() methoduna gönderdik.
         private void SeferleriDoldur()
         {
-
             List<BiletBilgi> biletler = new List<BiletBilgi>();
-            biletler = _biletBilgiDal.GetByDate(gelenForm.gidisTarihi.Date);
             int[] biletSaat = new int[] { 0, 0, 0, 0, 0 };
-            biletSaat = BiletSayilariniHesapla(biletler, biletSaat);
 
+            biletler = _biletBilgiDal.GetByDate(gelenForm.gidisTarihi.Date);
+            biletSaat = BiletSayilariniHesapla(biletler, biletSaat);
             SeferleriDoldur2(ref lstSeferlerGidis, biletSaat, gelenForm.gidisTarihi, gelenForm.nereden, gelenForm.nereye);
+
+            for (int i = 0; i < biletSaat.Length; i++)
+            {
+                biletSaat[i] = 0;
+            }
 
             if (gelenForm.ciftMi)
             {
-                List<BiletBilgi> biletler2 = new List<BiletBilgi>();
-                biletler2 = _biletBilgiDal.GetByDate(gelenForm.donusTarihi.Date);
-                int[] biletSaat2 = new int[] { 0, 0, 0, 0, 0 };
-                biletSaat2 = BiletSayilariniHesapla(biletler2, biletSaat2);
-
-                SeferleriDoldur2(ref lstSeferlerDonus, biletSaat2, gelenForm.donusTarihi, gelenForm.nereye, gelenForm.nereden);
+                biletler.Clear();
+                biletler = _biletBilgiDal.GetByDate(gelenForm.donusTarihi.Date);
+                biletSaat = BiletSayilariniHesapla(biletler, biletSaat);
+                SeferleriDoldur2(ref lstSeferlerDonus, biletSaat, gelenForm.donusTarihi, gelenForm.nereye, gelenForm.nereden);
             }
         }
 
