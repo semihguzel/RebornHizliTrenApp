@@ -101,12 +101,13 @@ namespace HızlıTrenApp.UI
         public static string PNRNoYap(BiletBilgi biletBilgi)
         {
             string koltukNo = biletBilgi.KoltukNo;
-            string tarih = string.Format($"{biletBilgi.BiletTarihi,0:MM/dd/yy}");
+            string tarih = string.Format($"{biletBilgi.SeferTarihi,0:MM/dd/yy}");
+            string seferSeferSaatId = biletBilgi.SeferSeferSaatID.ToString();
 
             string t1 = tarih.Substring(0, 2);
             string t2 = tarih.Substring(3, 2);
             string t3 = tarih.Substring(6, 2);
-            string sonuc = t1 + t2 + t3 + koltukNo;
+            string sonuc = t1 + t2 + t3 + seferSeferSaatId + koltukNo;
 
             return sonuc;
         }

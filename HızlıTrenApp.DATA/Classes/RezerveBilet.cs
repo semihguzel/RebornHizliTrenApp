@@ -11,6 +11,8 @@ namespace HızlıTrenApp.DATA
         public int RezerveID { get; set; }
         public DateTime RezerveTarihi { get; set; }
         public bool IsBought { get; set; }
+        public bool IsDeleted { get; set; }
+
 
         public int BiletID { get; set; }
         public virtual Bilet RezerveAlinanBilet { get; set; }

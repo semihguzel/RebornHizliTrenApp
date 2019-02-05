@@ -23,18 +23,23 @@ namespace HızlıTrenApp.UI
             _seferlerDal = new SeferlerDal();
             _seferSaatleriDal = new SeferSaatleriDal();
             _biletBilgiDal = new BiletBilgiDal();
+            _seferlerSeferSaatleriDal = new SeferlerSeferSaatleriDal();
         }
-
+        private SeferlerSeferSaatleriDal _seferlerSeferSaatleriDal;
         private SeferlerDal _seferlerDal;
         private SeferSaatleriDal _seferSaatleriDal;
         private BiletBilgiDal _biletBilgiDal;
         Sefer gdsSefer;
+        Sefer dnsSefer;
+        List<SeferSeferSaat> gdsSeferIdler;
+        List<SeferSeferSaat> dnsSeferIdler;
         List<SeferSaat> seferSaatleri;
 
         //Gidiş ve dönüş seferleri listviewdeki sıraya göre listeye doldurulmuştur.
         public List<string> secilenGidisSeferi;
         public List<string> secilenDonusSeferi;
         int id1 = 0;
+        int id2 = 0;
         private void frmSeferler_Load(object sender, EventArgs e)
         {
             secilenGidisSeferi = new List<string>();
@@ -47,6 +52,21 @@ namespace HızlıTrenApp.UI
             gdsSefer = new Sefer();
             gdsSefer = _seferlerDal.GetSeferIDByFilter(gelenForm.nereden, gelenForm.nereye);
             id1 = gdsSefer.SeferID;
+
+            dnsSefer = new Sefer();
+            dnsSefer = _seferlerDal.GetSeferIDByFilter(gelenForm.nereye, gelenForm.nereden);
+            id2 = dnsSefer.SeferID;
+
+            //sefer id leri ile bize lazım olan seferleri filtrelemek için sefersaat id lerini listeliyoruz. 
+            gdsSeferIdler = new List<SeferSeferSaat>();
+            dnsSeferIdler = new List<SeferSeferSaat>();
+            gdsSeferIdler.AddRange(_seferlerSeferSaatleriDal.GetBySeferID(id1));
+            dnsSeferIdler.AddRange(_seferlerSeferSaatleriDal.GetBySeferID(id2));
+
+
+            lblOncekiGun.Text = gelenForm.gidisTarihi.AddDays(-1).ToShortDateString();
+            lblSonrakiGun.Text = gelenForm.gidisTarihi.AddDays(1).ToShortDateString();
+
 
             seferSaatleri = new List<SeferSaat>();
             seferSaatleri = _seferSaatleriDal.GetAll();
@@ -97,6 +117,8 @@ namespace HızlıTrenApp.UI
                 gelenForm.gidisTarihi = gelenForm.gidisTarihi.Date.AddDays(1);
                 SeferleriDoldur();
                 btnGeri.Enabled = true;
+                lblOncekiGun.Text = Convert.ToDateTime(lblOncekiGun.Text).AddDays(1).ToShortDateString();
+                lblSonrakiGun.Text = Convert.ToDateTime(lblSonrakiGun.Text).AddDays(1).ToShortDateString();
             }
 
         }
@@ -108,6 +130,8 @@ namespace HızlıTrenApp.UI
                 gelenForm.gidisTarihi = gelenForm.gidisTarihi.Date.AddDays(-1);
                 SeferleriDoldur();
                 btnIleri.Enabled = true;
+                lblOncekiGun.Text = Convert.ToDateTime(lblOncekiGun.Text).AddDays(-1).ToShortDateString();
+                lblSonrakiGun.Text = Convert.ToDateTime(lblSonrakiGun.Text).AddDays(-1).ToShortDateString();
             }
             else
             {
@@ -140,7 +164,7 @@ namespace HızlıTrenApp.UI
             int[] biletSaat = new int[] { 0, 0, 0, 0, 0 };
 
             biletler = _biletBilgiDal.GetByDate(gelenForm.gidisTarihi.Date);
-            biletSaat = BiletSayilariniHesapla(biletler, biletSaat);
+            biletSaat = BiletSayilariniHesapla(biletler, biletSaat,gdsSeferIdler);
             SeferleriDoldur2(ref lstSeferlerGidis, biletSaat, gelenForm.gidisTarihi, gelenForm.nereden, gelenForm.nereye);
 
             for (int i = 0; i < biletSaat.Length; i++)
@@ -152,7 +176,7 @@ namespace HızlıTrenApp.UI
             {
                 biletler.Clear();
                 biletler = _biletBilgiDal.GetByDate(gelenForm.donusTarihi.Date);
-                biletSaat = BiletSayilariniHesapla(biletler, biletSaat);
+                biletSaat = BiletSayilariniHesapla(biletler, biletSaat,dnsSeferIdler);
                 SeferleriDoldur2(ref lstSeferlerDonus, biletSaat, gelenForm.donusTarihi, gelenForm.nereye, gelenForm.nereden);
             }
         }
@@ -206,31 +230,42 @@ namespace HızlıTrenApp.UI
         }
 
         //Bu metod sayesinde gidiş ve dönüş biletlerini saatlerini göre gruplandırarak sayısını hesapladık.
-        public int[] BiletSayilariniHesapla(List<BiletBilgi> biletler, int[] biletSaat)
+        public int[] BiletSayilariniHesapla(List<BiletBilgi> biletler, int[] biletSaat,List<SeferSeferSaat> filtre)
         {
             foreach (var item in biletler)
             {
-                if (item.BiletTipi == gelenForm.yolcuTipi)
+                int sayac = 0;
+                foreach (var items in filtre)
                 {
-                    if (item.SeferSaati == "09:00")
+                    if (item.SeferSeferSaatID==items.ID)
                     {
-                        biletSaat[0]++;
+                        sayac++;
                     }
-                    else if (item.SeferSaati == "12:00")
+                }
+                if (sayac>0)
+                {
+                    if (item.BiletTipi == gelenForm.yolcuTipi)
                     {
-                        biletSaat[1]++;
-                    }
-                    else if (item.SeferSaati == "15:00")
-                    {
-                        biletSaat[2]++;
-                    }
-                    else if (item.SeferSaati == "18:00")
-                    {
-                        biletSaat[3]++;
-                    }
-                    else if (item.SeferSaati == "21:00")
-                    {
-                        biletSaat[4]++;
+                        if (item.SeferSaati == "09:00")
+                        {
+                            biletSaat[0]++;
+                        }
+                        else if (item.SeferSaati == "12:00")
+                        {
+                            biletSaat[1]++;
+                        }
+                        else if (item.SeferSaati == "15:00")
+                        {
+                            biletSaat[2]++;
+                        }
+                        else if (item.SeferSaati == "18:00")
+                        {
+                            biletSaat[3]++;
+                        }
+                        else if (item.SeferSaati == "21:00")
+                        {
+                            biletSaat[4]++;
+                        }
                     }
                 }
             }
@@ -259,15 +294,9 @@ namespace HızlıTrenApp.UI
 
             frmKoltukSecimi gelenForm2 = new frmKoltukSecimi(this, id1, tiklananSaat);
             Hide();
-            GroupBox kutu = (GroupBox)this.Parent;
-            Form anaForm = (Form)kutu.Parent.Parent;
-            kutu.Width = gelenForm2.Width;
-            kutu.Height = gelenForm2.Height;
-            gelenForm2.MdiParent = anaForm;
-            kutu.Controls.Remove(this);
-            kutu.Controls.Add(gelenForm2);
-            gelenForm2.Show();
-            gelenForm2.Location = Point.Empty;
+            frmAnaSayfa anasayfa = (frmAnaSayfa)ParentForm;
+            anasayfa.FormKontrolluGetir(gelenForm2);
+            
         }
     }
 }
