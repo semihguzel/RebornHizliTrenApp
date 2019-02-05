@@ -26,6 +26,7 @@ namespace HızlıTrenApp.DAL.Repository.Concrete
                 return db.BiletBilgileri.Where(x => x.BiletTarihi == dateTime).ToList();
             }
         }
+        
         SeferlerSeferSaatleriDal sssd = new SeferlerSeferSaatleriDal();
         public List<BiletBilgi> TicketList()
         {

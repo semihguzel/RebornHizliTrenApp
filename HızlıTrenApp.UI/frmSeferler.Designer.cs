@@ -28,8 +28,8 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.lblOncekiGun = new MetroFramework.Controls.MetroLabel();
+            this.lblSonrakiGun = new MetroFramework.Controls.MetroLabel();
             this.btnIleri = new System.Windows.Forms.Button();
             this.btnGeri = new System.Windows.Forms.Button();
             this.btnDevam = new System.Windows.Forms.Button();
@@ -52,23 +52,25 @@
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.SuspendLayout();
             // 
-            // metroLabel1
+            // lblOncekiGun
             // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(72, 65);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(110, 19);
-            this.metroLabel1.TabIndex = 2;
-            this.metroLabel1.Text = "Onceki Gun Tarihi";
+            this.lblOncekiGun.AutoSize = true;
+            this.lblOncekiGun.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.lblOncekiGun.Location = new System.Drawing.Point(73, 60);
+            this.lblOncekiGun.Name = "lblOncekiGun";
+            this.lblOncekiGun.Size = new System.Drawing.Size(110, 19);
+            this.lblOncekiGun.TabIndex = 2;
+            this.lblOncekiGun.Text = "Onceki Gun Tarihi";
             // 
-            // metroLabel2
+            // lblSonrakiGun
             // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(559, 65);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(113, 19);
-            this.metroLabel2.TabIndex = 2;
-            this.metroLabel2.Text = "Sonraki Gun Tarihi";
+            this.lblSonrakiGun.AutoSize = true;
+            this.lblSonrakiGun.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.lblSonrakiGun.Location = new System.Drawing.Point(588, 60);
+            this.lblSonrakiGun.Name = "lblSonrakiGun";
+            this.lblSonrakiGun.Size = new System.Drawing.Size(131, 19);
+            this.lblSonrakiGun.TabIndex = 2;
+            this.lblSonrakiGun.Text = "Sonraki Gun Tarihi";
             // 
             // btnIleri
             // 
@@ -245,8 +247,8 @@
             this.Controls.Add(this.btnAnasayfa);
             this.Controls.Add(this.btnDevam);
             this.Controls.Add(this.btnIleri);
-            this.Controls.Add(this.metroLabel2);
-            this.Controls.Add(this.metroLabel1);
+            this.Controls.Add(this.lblSonrakiGun);
+            this.Controls.Add(this.lblOncekiGun);
             this.Name = "frmSeferler";
             this.ShadowType = MetroFramework.Forms.MetroForm.MetroFormShadowType.None;
             this.Style = MetroFramework.MetroColorStyle.Red;
@@ -260,8 +262,8 @@
 		}
 
 		#endregion
-        private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroLabel lblOncekiGun;
+        private MetroFramework.Controls.MetroLabel lblSonrakiGun;
         private System.Windows.Forms.Button btnIleri;
         private System.Windows.Forms.Button btnGeri;
         private System.Windows.Forms.Button btnDevam;
