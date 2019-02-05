@@ -13,7 +13,7 @@ namespace HızlıTrenApp.DATA
         public string BiletTipi { get; set; }
         public string KoltukNo { get; set; }
         public decimal BiletFiyati { get; set; }
-        public DateTime BiletTarihi { get; set; }
+        public DateTime SeferTarihi { get; set; }
         public string SeferSaati { get; set; }
 
 
