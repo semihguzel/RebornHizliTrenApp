@@ -183,7 +183,7 @@
 			// 
 			// pictureBox1
 			// 
-			this.pictureBox1.Image = global::HızlıTrenApp.UI.Properties.Resources.SGKhizlitren1;
+			this.pictureBox1.Image = global::HızlıTrenApp.UI.Properties.Resources.SGThizlitren;
 			resources.ApplyResources(this.pictureBox1, "pictureBox1");
 			this.pictureBox1.Name = "pictureBox1";
 			this.pictureBox1.TabStop = false;
