@@ -20,8 +20,9 @@ namespace HızlıTrenApp.UI
             InitializeComponent();
             _seferlerSeferSaatleriDal = new SeferlerDal();
             //this.FormBorderStyle = FormBorderStyle.None;
+            _seferlerDal = new SeferlerDal();
         }
-
+        private SeferlerDal _seferlerDal;
         List<Sefer> seferler;
         private SeferlerDal _seferlerSeferSaatleriDal;
         public DateTime gidisTarihi;
@@ -82,60 +83,65 @@ namespace HızlıTrenApp.UI
         private void btnSeferleriListele_Click(object sender, EventArgs e)
         {
             //Verilerin Doğru olup olmadığının kontrol edilmesi.
-            if (Tools.Sorgula(grpBilet))
+            if (_seferlerDal.GetSeferIDByFilter(cmbNereden.SelectedItem.ToString(), cmbNereye.SelectedItem.ToString()) != null)
             {
-                if (cmbNereden.SelectedItem != cmbNereye.SelectedItem)
+
+                if (Tools.Sorgula(grpBilet))
                 {
-                    if (dtpGidisTarihi.Value.Day >= DateTime.Now.Day)
+                    if (cmbNereden.SelectedItem != cmbNereye.SelectedItem)
                     {
-                        if (dtpDonusTarihi.Enabled != true)
+                        if (dtpGidisTarihi.Value.Day >= DateTime.Now.Day)
                         {
-                            ToplananVerileriDoldur();
-                            
-                            frmSeferler frmSeferler = new frmSeferler(this);
-                            Hide();
-                            GroupBox kutu = (GroupBox)this.Parent;
-                            Form anaForm = (Form)kutu.Parent.Parent;
-                            frmSeferler.Width = kutu.Width;
-                            frmSeferler.Height = kutu.Height;
-                            frmSeferler.MdiParent = anaForm;
-                            kutu.Controls.Remove(this);
-                            kutu.Controls.Add(frmSeferler);
-                            frmSeferler.Show();
-                            frmSeferler.Location = Point.Empty;
-                        }
-                        else if (dtpDonusTarihi.Enabled == true && dtpDonusTarihi.Value > dtpGidisTarihi.Value)
-                        {
-                            ToplananVerileriDoldur();
-                            donusTarihi = dtpDonusTarihi.Value;
-                            frmSeferler frmSeferler = new frmSeferler(this);
-                            Hide();
-                            GroupBox kutu = (GroupBox)this.Parent;
-                            Form anaForm = (Form)kutu.Parent.Parent;
-                            frmSeferler.Width = kutu.Width;
-                            frmSeferler.Height = kutu.Height;
-                            frmSeferler.MdiParent = anaForm;
-                            kutu.Controls.Remove(this);
-                            kutu.Controls.Add(frmSeferler);
-                            frmSeferler.Show();
-                            frmSeferler.Location = Point.Empty;
+                            if (dtpDonusTarihi.Enabled != true)
+                            {
+                                ToplananVerileriDoldur();
+
+                                frmSeferler frmSeferler = new frmSeferler(this);
+                                Hide();
+                                GroupBox kutu = (GroupBox)this.Parent;
+                                Form anaForm = (Form)kutu.Parent.Parent;
+                                frmSeferler.Width = kutu.Width;
+                                frmSeferler.Height = kutu.Height;
+                                frmSeferler.MdiParent = anaForm;
+                                kutu.Controls.Remove(this);
+                                kutu.Controls.Add(frmSeferler);
+                                frmSeferler.Show();
+                                frmSeferler.Location = Point.Empty;
+                            }
+                            else if (dtpDonusTarihi.Enabled == true && dtpDonusTarihi.Value > dtpGidisTarihi.Value)
+                            {
+                                ToplananVerileriDoldur();
+                                donusTarihi = dtpDonusTarihi.Value;
+                                frmSeferler frmSeferler = new frmSeferler(this);
+                                Hide();
+                                GroupBox kutu = (GroupBox)this.Parent;
+                                Form anaForm = (Form)kutu.Parent.Parent;
+                                frmSeferler.Width = kutu.Width;
+                                frmSeferler.Height = kutu.Height;
+                                frmSeferler.MdiParent = anaForm;
+                                kutu.Controls.Remove(this);
+                                kutu.Controls.Add(frmSeferler);
+                                frmSeferler.Show();
+                                frmSeferler.Location = Point.Empty;
+                            }
+                            else
+                                MessageBox.Show("Dönüş tarihi gidiş tarihinden önce veya eşit olamaz...");
+
                         }
                         else
-                        {
-                            MessageBox.Show("Dönüş tarihi gidiş tarihinden önce veya eşit olamaz...");
-                        }
+                            MessageBox.Show("Lütfen gidiş tarihinin doğru olduğundan emin olunuz...");
+
                     }
                     else
-                        MessageBox.Show("Lütfen gidiş tarihinin doğru olduğundan emin olunuz...");
+                        MessageBox.Show("Nereden ve nereye şehirleri aynı olamaz...");
 
                 }
                 else
-                {
-                    MessageBox.Show("Nereden ve nereye şehirleri aynı olamaz...");
-                }
+                    MessageBox.Show("Bütün alanların doğru seçildiğinden emin olunuz...");
             }
             else
-                MessageBox.Show("Bütün alanların doğru seçildiğinden emin olunuz...");
+                MessageBox.Show("Böyle bir sefer bulunmamaktadır..");
+
         }
 
         private void ToplananVerileriDoldur()
