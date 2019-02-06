@@ -15,7 +15,6 @@ namespace HızlıTrenApp.DAL
             HasKey(x => x.SeferSaatID);
             Property(x => x.SeferSaatBilgisi).HasMaxLength(10);
 
-            ToTable("SeferSaatleri");
         }
     }
 }

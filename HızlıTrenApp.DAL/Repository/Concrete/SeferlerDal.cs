@@ -29,7 +29,7 @@ namespace HızlıTrenApp.DAL.Repository.Concrete
         {
             using (Context db=new Context())
             {
-                return db.Seferler.FirstOrDefault(x => x.SeferYonu.StartsWith(nrdn) && x.SeferYonu.EndsWith(nry));
+                return db.Sefer.FirstOrDefault(x => x.SeferYonu.StartsWith(nrdn) && x.SeferYonu.EndsWith(nry));
             }
         }
 
@@ -37,7 +37,7 @@ namespace HızlıTrenApp.DAL.Repository.Concrete
         {
             using (Context db=new Context())
             {
-                return db.Seferler.Where(x => x.SeferYonu.StartsWith(nrdn)).ToList();
+                return db.Sefer.Where(x => x.SeferYonu.StartsWith(nrdn)).ToList();
             }
         }
 
@@ -45,7 +45,7 @@ namespace HızlıTrenApp.DAL.Repository.Concrete
         {
             using (Context db = new Context())
             {
-                return db.Seferler.Where(x => x.SeferYonu.EndsWith(nry)).ToList();
+                return db.Sefer.Where(x => x.SeferYonu.EndsWith(nry)).ToList();
             }
         }
     }

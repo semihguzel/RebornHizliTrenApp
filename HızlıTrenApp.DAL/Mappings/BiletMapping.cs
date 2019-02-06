@@ -17,7 +17,7 @@ namespace HızlıTrenApp.DAL
 
             Property(x => x.PNRNo).HasMaxLength(10);
 
-            ToTable("Biletler");
+
         }
     }
 }
