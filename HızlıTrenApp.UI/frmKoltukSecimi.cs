@@ -364,10 +364,11 @@ namespace HızlıTrenApp.UI
             }
         }
         PictureBox eskiTiklanan;
+        PictureBox tiklanan;
         private void EconomyClick(object sender, EventArgs e)
         {
             bool temp = false;
-            PictureBox tiklanan = sender as PictureBox;
+            tiklanan = sender as PictureBox;
             GroupBox grp = (GroupBox)tiklanan.Parent;
             if (!rdbErkek.Checked == !rdbKadin.Checked)
             {
@@ -384,7 +385,7 @@ namespace HızlıTrenApp.UI
                 {
                     if (item is PictureBox)
                     {
-                        if (item.Location.X == tiklanan.Location.X && item.Name.StartsWith("E") && item.Name != tiklanan.Name && !tiklanan.ImageLocation.Contains("available") && ((PictureBox)item).ImageLocation.Contains("woman") != rdbKadin.Checked || ((PictureBox)item).ImageLocation.Contains("_man") == rdbErkek.Checked)
+                        if ((item.Location.X == tiklanan.Location.X && item.Name.StartsWith("E") && item.Name != tiklanan.Name && tiklanan.ImageLocation.Contains("available")) && ((((PictureBox)item).ImageLocation.Contains("woman") && !rdbKadin.Checked) || (((PictureBox)item).ImageLocation.Contains("_man") && !rdbErkek.Checked)))
                         {
                             MessageBox.Show("Seçilen koltuk karşı cinsin yanında olamaz. Lütfen doğru şekilde koltuk seçiniz.");
                             return;
@@ -424,7 +425,14 @@ namespace HızlıTrenApp.UI
 
         private void rdbKadin_CheckedChanged(object sender, EventArgs e)
         {
+            if (tiklanan != null && tiklanan.ImageLocation == secilenKoltuk)
+                tiklanan.ImageLocation = economyBosKoltuk;
+        }
 
+        private void rdbErkek_CheckedChanged(object sender, EventArgs e)
+        {
+            if (tiklanan != null && tiklanan.ImageLocation == secilenKoltuk)
+                tiklanan.ImageLocation = economyBosKoltuk;
         }
     }
 }
