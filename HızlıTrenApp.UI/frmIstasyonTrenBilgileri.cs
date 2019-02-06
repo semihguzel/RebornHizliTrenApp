@@ -28,16 +28,8 @@ namespace HızlıTrenApp.UI
                     tarih = dtpTarih.Value;
                     frmIstasyonAyrinti frmIstasyonAyrinti = new frmIstasyonAyrinti(this);
                     Hide();
-
-                    GroupBox kutu = (GroupBox)this.Parent;
-                    Form anaForm = (Form)kutu.Parent.Parent;
-                    kutu.Width = frmIstasyonAyrinti.Width;
-                    kutu.Height = frmIstasyonAyrinti.Height;
-                    frmIstasyonAyrinti.MdiParent = anaForm;
-                    kutu.Controls.Remove(this);
-                    kutu.Controls.Add(frmIstasyonAyrinti);
-                    frmIstasyonAyrinti.Show();
-                    frmIstasyonAyrinti.Location = Point.Empty;
+					frmAnaSayfa anaForm = (frmAnaSayfa)this.Parent.Parent.Parent;
+					anaForm.FormKontrolluGetir(frmIstasyonAyrinti);
                 }
                 else
                 {

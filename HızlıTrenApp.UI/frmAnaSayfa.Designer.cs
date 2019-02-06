@@ -75,7 +75,7 @@
 			// 
 			// mlIstasyonTren
 			// 
-			this.mlIstasyonTren.Location = new System.Drawing.Point(877, 16);
+			this.mlIstasyonTren.Location = new System.Drawing.Point(866, 16);
 			this.mlIstasyonTren.Margin = new System.Windows.Forms.Padding(2);
 			this.mlIstasyonTren.Name = "mlIstasyonTren";
 			this.mlIstasyonTren.Size = new System.Drawing.Size(132, 29);
@@ -85,7 +85,7 @@
 			// 
 			// mlBilet
 			// 
-			this.mlBilet.Location = new System.Drawing.Point(786, 16);
+			this.mlBilet.Location = new System.Drawing.Point(775, 16);
 			this.mlBilet.Margin = new System.Windows.Forms.Padding(2);
 			this.mlBilet.Name = "mlBilet";
 			this.mlBilet.Size = new System.Drawing.Size(87, 29);
