@@ -27,11 +27,10 @@ namespace HızlıTrenApp.DAL.Repository.Concrete
 		{
 			return _biletRepository.GetAll().Where(x => x.BiletinBilgisi.BilgininBileti.PNRNo == pnrNo && x.BiletinBilgisi.MusterininBileti.Soyad == soyad).Select(x => new
 			{
-				//omer bunu veritabaninda yeni degistirip yolladi ismi farkli :D update database demedik ama zaten bunu c# kisminda entity de degistirdigi icin cekemiyor o yuzden burdan direk patladi simdi calistirsak bu sefer database yi update yap der
 				BiletAlimTarihi = x.BiletinBilgisi.AlimTarihi,
 				Ad = x.BiletinBilgisi.MusterininBileti.Ad,
 				SeferYonu = x.BiletinBilgisi.SeferinBileti.SaatinSeferi.SeferYonu,
-				SeferTarihi = x.BiletinBilgisi.SeferTarihi,
+				SeferTarihi = x.BiletinBilgisi.BiletTarihi,
 				SeferSaati = x.BiletinBilgisi.SeferinBileti.SeferinSaati.SeferSaatBilgisi,
 				KoltukNo = x.BiletinBilgisi.KoltukNo,
 				BiletFiyati = x.BiletinBilgisi.BiletFiyati
