@@ -31,7 +31,7 @@ namespace HızlıTrenApp.DAL.Repository.Concrete
 				RezerveTarihi = x.RezerveTarihi,
 				AdSoyad = x.RezerveAlanMusteri.Ad + " " + x.RezerveAlanMusteri.Soyad,
 				SeferYonu = x.RezerveAlinanBilet.BiletinBilgisi.SeferinBileti.SaatinSeferi.SeferYonu,
-				SeferTarihi = x.RezerveAlinanBilet.BiletinBilgisi.BiletTarihi,
+				SeferTarihi = x.RezerveAlinanBilet.BiletinBilgisi.SeferTarihi,
 				SeferSaati = x.RezerveAlinanBilet.BiletinBilgisi.SeferinBileti.SeferinSaati.SeferSaatBilgisi,
 				KoltukNo = x.RezerveAlinanBilet.BiletinBilgisi.KoltukNo,
 				BiletFiyati = x.RezerveAlinanBilet.BiletinBilgisi.BiletFiyati
