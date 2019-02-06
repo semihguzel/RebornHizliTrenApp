@@ -29,9 +29,11 @@
 		private void InitializeComponent()
 		{
             this.grpYolcuBilgileri = new System.Windows.Forms.GroupBox();
+            this.btnYolcuKaydet = new MetroFramework.Controls.MetroButton();
+            this.lblYolcuSayac = new System.Windows.Forms.Label();
             this.btnOdemeyeGec = new MetroFramework.Controls.MetroButton();
-            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.cmbBiletTipi = new MetroFramework.Controls.MetroComboBox();
+            this.dtpDogumTarihi = new System.Windows.Forms.DateTimePicker();
             this.rdbKadin = new System.Windows.Forms.RadioButton();
             this.rdbErkek = new System.Windows.Forms.RadioButton();
             this.txtTelefon = new MetroFramework.Controls.MetroTextBox();
@@ -60,8 +62,11 @@
             this.pbWc = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.lblYolcuSayac = new System.Windows.Forms.Label();
-            this.btnYolcuKaydet = new MetroFramework.Controls.MetroButton();
+            this.grpEkHizmetler = new System.Windows.Forms.GroupBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.grpYolcuBilgileri.SuspendLayout();
             this.grpKoltuklar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -70,15 +75,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbWc2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbWc)).BeginInit();
+            this.grpEkHizmetler.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpYolcuBilgileri
             // 
+            this.grpYolcuBilgileri.Controls.Add(this.grpEkHizmetler);
             this.grpYolcuBilgileri.Controls.Add(this.btnYolcuKaydet);
             this.grpYolcuBilgileri.Controls.Add(this.lblYolcuSayac);
             this.grpYolcuBilgileri.Controls.Add(this.btnOdemeyeGec);
-            this.grpYolcuBilgileri.Controls.Add(this.metroComboBox1);
-            this.grpYolcuBilgileri.Controls.Add(this.dateTimePicker1);
+            this.grpYolcuBilgileri.Controls.Add(this.cmbBiletTipi);
+            this.grpYolcuBilgileri.Controls.Add(this.dtpDogumTarihi);
             this.grpYolcuBilgileri.Controls.Add(this.rdbKadin);
             this.grpYolcuBilgileri.Controls.Add(this.rdbErkek);
             this.grpYolcuBilgileri.Controls.Add(this.txtTelefon);
@@ -103,6 +110,23 @@
             this.grpYolcuBilgileri.TabStop = false;
             this.grpYolcuBilgileri.Text = "Yolcu Bilgileri";
             // 
+            // btnYolcuKaydet
+            // 
+            this.btnYolcuKaydet.Location = new System.Drawing.Point(520, 133);
+            this.btnYolcuKaydet.Name = "btnYolcuKaydet";
+            this.btnYolcuKaydet.Size = new System.Drawing.Size(105, 31);
+            this.btnYolcuKaydet.TabIndex = 10;
+            this.btnYolcuKaydet.Text = "Yolcu Kaydet";
+            this.btnYolcuKaydet.Click += new System.EventHandler(this.btnYolcuKaydet_Click);
+            // 
+            // lblYolcuSayac
+            // 
+            this.lblYolcuSayac.AutoSize = true;
+            this.lblYolcuSayac.Location = new System.Drawing.Point(591, 24);
+            this.lblYolcuSayac.Name = "lblYolcuSayac";
+            this.lblYolcuSayac.Size = new System.Drawing.Size(0, 17);
+            this.lblYolcuSayac.TabIndex = 9;
+            // 
             // btnOdemeyeGec
             // 
             this.btnOdemeyeGec.Location = new System.Drawing.Point(682, 133);
@@ -111,21 +135,21 @@
             this.btnOdemeyeGec.TabIndex = 8;
             this.btnOdemeyeGec.Text = "Ödemeye Geç";
             // 
-            // metroComboBox1
+            // cmbBiletTipi
             // 
-            this.metroComboBox1.FormattingEnabled = true;
-            this.metroComboBox1.ItemHeight = 23;
-            this.metroComboBox1.Location = new System.Drawing.Point(350, 143);
-            this.metroComboBox1.Name = "metroComboBox1";
-            this.metroComboBox1.Size = new System.Drawing.Size(142, 29);
-            this.metroComboBox1.TabIndex = 7;
+            this.cmbBiletTipi.FormattingEnabled = true;
+            this.cmbBiletTipi.ItemHeight = 23;
+            this.cmbBiletTipi.Location = new System.Drawing.Point(350, 143);
+            this.cmbBiletTipi.Name = "cmbBiletTipi";
+            this.cmbBiletTipi.Size = new System.Drawing.Size(142, 29);
+            this.cmbBiletTipi.TabIndex = 7;
             // 
-            // dateTimePicker1
+            // dtpDogumTarihi
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(350, 17);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
-            this.dateTimePicker1.TabIndex = 4;
+            this.dtpDogumTarihi.Location = new System.Drawing.Point(350, 17);
+            this.dtpDogumTarihi.Name = "dtpDogumTarihi";
+            this.dtpDogumTarihi.Size = new System.Drawing.Size(142, 23);
+            this.dtpDogumTarihi.TabIndex = 4;
             // 
             // rdbKadin
             // 
@@ -276,9 +300,9 @@
             this.grpKoltuklar.Controls.Add(this.label2);
             this.grpKoltuklar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.grpKoltuklar.Location = new System.Drawing.Point(38, 50);
-            this.grpKoltuklar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpKoltuklar.Margin = new System.Windows.Forms.Padding(2);
             this.grpKoltuklar.Name = "grpKoltuklar";
-            this.grpKoltuklar.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpKoltuklar.Padding = new System.Windows.Forms.Padding(2);
             this.grpKoltuklar.Size = new System.Drawing.Size(808, 349);
             this.grpKoltuklar.TabIndex = 3;
             this.grpKoltuklar.TabStop = false;
@@ -321,7 +345,7 @@
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Image = global::HızlıTrenApp.UI.Properties.Resources.kapi;
             this.pictureBox4.Location = new System.Drawing.Point(336, 204);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(48, 61);
             this.pictureBox4.TabIndex = 2;
@@ -332,7 +356,7 @@
             this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox6.Image = global::HızlıTrenApp.UI.Properties.Resources.kapi;
             this.pictureBox6.Location = new System.Drawing.Point(336, 104);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(48, 61);
             this.pictureBox6.TabIndex = 2;
@@ -343,7 +367,7 @@
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = global::HızlıTrenApp.UI.Properties.Resources.canteen;
             this.pictureBox2.Location = new System.Drawing.Point(293, 31);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(46, 69);
             this.pictureBox2.TabIndex = 2;
@@ -354,7 +378,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::HızlıTrenApp.UI.Properties.Resources.canteen;
             this.pictureBox1.Location = new System.Drawing.Point(383, 31);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(46, 69);
             this.pictureBox1.TabIndex = 2;
@@ -365,7 +389,7 @@
             this.pbWc2.BackColor = System.Drawing.Color.Transparent;
             this.pbWc2.Image = global::HızlıTrenApp.UI.Properties.Resources.wc;
             this.pbWc2.Location = new System.Drawing.Point(383, 269);
-            this.pbWc2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbWc2.Margin = new System.Windows.Forms.Padding(2);
             this.pbWc2.Name = "pbWc2";
             this.pbWc2.Size = new System.Drawing.Size(46, 69);
             this.pbWc2.TabIndex = 2;
@@ -376,7 +400,7 @@
             this.pbWc.BackColor = System.Drawing.Color.Transparent;
             this.pbWc.Image = global::HızlıTrenApp.UI.Properties.Resources.wc;
             this.pbWc.Location = new System.Drawing.Point(289, 269);
-            this.pbWc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbWc.Margin = new System.Windows.Forms.Padding(2);
             this.pbWc.Name = "pbWc";
             this.pbWc.Size = new System.Drawing.Size(46, 69);
             this.pbWc.TabIndex = 2;
@@ -406,21 +430,58 @@
             this.label2.Text = "BUSINESS";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblYolcuSayac
+            // grpEkHizmetler
             // 
-            this.lblYolcuSayac.AutoSize = true;
-            this.lblYolcuSayac.Location = new System.Drawing.Point(591, 24);
-            this.lblYolcuSayac.Name = "lblYolcuSayac";
-            this.lblYolcuSayac.Size = new System.Drawing.Size(0, 17);
-            this.lblYolcuSayac.TabIndex = 9;
+            this.grpEkHizmetler.Controls.Add(this.checkBox2);
+            this.grpEkHizmetler.Controls.Add(this.checkBox1);
+            this.grpEkHizmetler.Controls.Add(this.checkBox4);
+            this.grpEkHizmetler.Controls.Add(this.checkBox3);
+            this.grpEkHizmetler.Location = new System.Drawing.Point(520, 18);
+            this.grpEkHizmetler.Name = "grpEkHizmetler";
+            this.grpEkHizmetler.Size = new System.Drawing.Size(282, 109);
+            this.grpEkHizmetler.TabIndex = 13;
+            this.grpEkHizmetler.TabStop = false;
+            this.grpEkHizmetler.Text = "Ek Hizmetler";
             // 
-            // btnYolcuKaydet
+            // checkBox2
             // 
-            this.btnYolcuKaydet.Location = new System.Drawing.Point(550, 133);
-            this.btnYolcuKaydet.Name = "btnYolcuKaydet";
-            this.btnYolcuKaydet.Size = new System.Drawing.Size(105, 31);
-            this.btnYolcuKaydet.TabIndex = 10;
-            this.btnYolcuKaydet.Text = "Yolcu Kaydet";
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(146, 23);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(119, 21);
+            this.checkBox2.TabIndex = 11;
+            this.checkBox2.Text = "Yiyecek(10TL)";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(14, 23);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(126, 21);
+            this.checkBox1.TabIndex = 11;
+            this.checkBox1.Text = "Ek Bagaj(30TL)";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(146, 61);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(95, 21);
+            this.checkBox4.TabIndex = 11;
+            this.checkBox4.Text = "checkBox1";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(14, 61);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(102, 21);
+            this.checkBox3.TabIndex = 11;
+            this.checkBox3.Text = "İçecek(5TL)";
+            this.checkBox3.UseVisualStyleBackColor = true;
             // 
             // frmKoltukSecimi
             // 
@@ -447,6 +508,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbWc2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbWc)).EndInit();
+            this.grpEkHizmetler.ResumeLayout(false);
+            this.grpEkHizmetler.PerformLayout();
             this.ResumeLayout(false);
 
 		}
@@ -461,14 +524,14 @@
 		private MetroFramework.Controls.MetroLabel metroLabel2;
 		private MetroFramework.Controls.MetroTextBox txtAd;
 		private MetroFramework.Controls.MetroLabel metroLabel1;
-		private System.Windows.Forms.DateTimePicker dateTimePicker1;
+		private System.Windows.Forms.DateTimePicker dtpDogumTarihi;
 		private System.Windows.Forms.RadioButton rdbKadin;
 		private MetroFramework.Controls.MetroTextBox txtTelefon;
 		private MetroFramework.Controls.MetroTextBox txtEmail;
 		private MetroFramework.Controls.MetroLabel metroLabel6;
 		private MetroFramework.Controls.MetroLabel metroLabel4;
 		private MetroFramework.Controls.MetroLabel metroLabel5;
-		private MetroFramework.Controls.MetroComboBox metroComboBox1;
+		private MetroFramework.Controls.MetroComboBox cmbBiletTipi;
 		private MetroFramework.Controls.MetroLabel metroLabel7;
 		private MetroFramework.Controls.MetroButton btnOdemeyeGec;
         private System.Windows.Forms.GroupBox grpKoltuklar;
@@ -486,5 +549,10 @@
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label lblYolcuSayac;
         private MetroFramework.Controls.MetroButton btnYolcuKaydet;
+        private System.Windows.Forms.GroupBox grpEkHizmetler;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox checkBox3;
     }
 }

@@ -45,14 +45,19 @@ namespace HızlıTrenApp.UI
         string economyBosKoltuk = @"..\..\Images\Resized_Seats\seat_available_resized_economy.png";
         string economyLuggage = @"..\..\Images\luggage_economy.png";
         string secilenKoltuk = @"..\..\Images\Resized_Seats\seat_reserved_resized_economy.png";
+        int kayitSayaci = 0;
         private void frmKoltukSecimi_Load(object sender, EventArgs e)
         {
             this.ControlBox = false;
             this.Text = "Koltuk Seçimi";
-            if(yolcuSayisi > 1)
-                lblYolcuSayac.Enabled = btnYolcuKaydet.Enabled =  = true;
+            if (yolcuSayisi > 1)
+            {
+                lblYolcuSayac.Enabled = btnYolcuKaydet.Enabled = cmbBiletTipi.Enabled = true;
+                btnYolcuKaydet.Enabled = false;
+                lblYolcuSayac.Text = "Yapılması gereken" + yolcuSayisi + "kadar kayıttan" + kayitSayaci + "kadar kayıt yapıldı.";
+            }
             else
-                lblYolcuSayac.Enabled = btnYolcuKaydet.Enabled = false;
+                lblYolcuSayac.Enabled = btnYolcuKaydet.Enabled = cmbBiletTipi.Enabled = false;
 
             SeferSaatleriDal ssd = new SeferSaatleriDal();
             int saatID = ssd.GetIdByDate(saat);
@@ -439,6 +444,41 @@ namespace HızlıTrenApp.UI
         {
             if (tiklanan != null && tiklanan.ImageLocation == secilenKoltuk)
                 tiklanan.ImageLocation = economyBosKoltuk;
+        }
+
+        private void btnYolcuKaydet_Click(object sender, EventArgs e)
+        {
+            Musteri yolcu = new Musteri();
+            yolcu.Ad = txtAd.Text;
+            yolcu.Soyad = txtSoyad.Text;
+            yolcu.DogumTarihi = dtpDogumTarihi.Value.Date;
+            yolcu.Cinsiyet = rdbErkek.Checked;
+
+            int ucret = 0;
+            if (grpEkHizmetler.Controls.Count > 0)
+            {
+                foreach (Control item in grpEkHizmetler.Controls)
+                {
+                    if (((CheckBox)item).Checked)
+                    {
+                        if (item.Text.Contains("Bagaj"))
+                            ucret += 30;
+                        else if (item.Text.Contains("Yiyecek"))
+                            ucret += 10;
+                        else if (item.Text.Contains("İçecek"))
+                            ucret += 5;
+                    }
+                }
+            }
+            BiletBilgi biletDetay = new BiletBilgi();
+            biletDetay.BiletTipi = cmbBiletTipi.Text;
+            biletDetay.KoltukNo = tiklanan.Name;
+            biletDetay.AlimTarihi = DateTime.Now;
+
+            //biletDetay.BiletFiyati = 
+
+            //Bilet bilet = new Bilet();
+            //bilet.
         }
     }
 }
