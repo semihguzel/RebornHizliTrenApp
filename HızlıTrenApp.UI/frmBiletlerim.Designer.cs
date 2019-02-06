@@ -35,9 +35,6 @@
 			this.btnSorgula = new MetroFramework.Controls.MetroButton();
 			this.grpSeyehatBilgileri = new System.Windows.Forms.GroupBox();
 			this.dgvSeyehatBilgileri = new System.Windows.Forms.DataGridView();
-			this.btnİade = new MetroFramework.Controls.MetroButton();
-			this.btnAcikBilet = new MetroFramework.Controls.MetroButton();
-			this.btnDegistir = new MetroFramework.Controls.MetroButton();
 			this.grpSeyehatBilgileri.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvSeyehatBilgileri)).BeginInit();
 			this.SuspendLayout();
@@ -76,17 +73,19 @@
 			// 
 			// btnSorgula
 			// 
-			this.btnSorgula.Location = new System.Drawing.Point(136, 150);
+			this.btnSorgula.Location = new System.Drawing.Point(98, 139);
 			this.btnSorgula.Name = "btnSorgula";
-			this.btnSorgula.Size = new System.Drawing.Size(75, 23);
+			this.btnSorgula.Size = new System.Drawing.Size(113, 39);
 			this.btnSorgula.TabIndex = 2;
 			this.btnSorgula.Text = "Sorgula";
+			this.btnSorgula.Theme = MetroFramework.MetroThemeStyle.Dark;
+			this.btnSorgula.Click += new System.EventHandler(this.btnSorgula_Click);
 			// 
 			// grpSeyehatBilgileri
 			// 
 			this.grpSeyehatBilgileri.Controls.Add(this.dgvSeyehatBilgileri);
 			this.grpSeyehatBilgileri.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-			this.grpSeyehatBilgileri.Location = new System.Drawing.Point(36, 179);
+			this.grpSeyehatBilgileri.Location = new System.Drawing.Point(21, 179);
 			this.grpSeyehatBilgileri.Name = "grpSeyehatBilgileri";
 			this.grpSeyehatBilgileri.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
 			this.grpSeyehatBilgileri.Size = new System.Drawing.Size(741, 236);
@@ -96,46 +95,24 @@
 			// 
 			// dgvSeyehatBilgileri
 			// 
+			this.dgvSeyehatBilgileri.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+			this.dgvSeyehatBilgileri.BackgroundColor = System.Drawing.Color.GhostWhite;
+			this.dgvSeyehatBilgileri.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.dgvSeyehatBilgileri.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvSeyehatBilgileri.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dgvSeyehatBilgileri.Location = new System.Drawing.Point(3, 19);
 			this.dgvSeyehatBilgileri.Name = "dgvSeyehatBilgileri";
+			this.dgvSeyehatBilgileri.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.dgvSeyehatBilgileri.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dgvSeyehatBilgileri.Size = new System.Drawing.Size(735, 214);
 			this.dgvSeyehatBilgileri.TabIndex = 0;
-			// 
-			// btnİade
-			// 
-			this.btnİade.Location = new System.Drawing.Point(186, 435);
-			this.btnİade.Name = "btnİade";
-			this.btnİade.Size = new System.Drawing.Size(75, 23);
-			this.btnİade.TabIndex = 3;
-			this.btnİade.Text = "İade";
-			// 
-			// btnAcikBilet
-			// 
-			this.btnAcikBilet.Location = new System.Drawing.Point(306, 435);
-			this.btnAcikBilet.Name = "btnAcikBilet";
-			this.btnAcikBilet.Size = new System.Drawing.Size(164, 23);
-			this.btnAcikBilet.TabIndex = 4;
-			this.btnAcikBilet.Text = "Açık Bilet Kuponuna Çevir";
-			// 
-			// btnDegistir
-			// 
-			this.btnDegistir.Location = new System.Drawing.Point(515, 435);
-			this.btnDegistir.Name = "btnDegistir";
-			this.btnDegistir.Size = new System.Drawing.Size(75, 23);
-			this.btnDegistir.TabIndex = 5;
-			this.btnDegistir.Text = "Değistir";
 			// 
 			// frmBiletlerim
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 502);
+			this.ClientSize = new System.Drawing.Size(795, 452);
 			this.Controls.Add(this.grpSeyehatBilgileri);
-			this.Controls.Add(this.btnDegistir);
-			this.Controls.Add(this.btnAcikBilet);
-			this.Controls.Add(this.btnİade);
 			this.Controls.Add(this.btnSorgula);
 			this.Controls.Add(this.txtSoyad);
 			this.Controls.Add(this.metroLabel2);
@@ -162,8 +139,5 @@
 		private MetroFramework.Controls.MetroButton btnSorgula;
 		private System.Windows.Forms.GroupBox grpSeyehatBilgileri;
 		private System.Windows.Forms.DataGridView dgvSeyehatBilgileri;
-		private MetroFramework.Controls.MetroButton btnİade;
-		private MetroFramework.Controls.MetroButton btnAcikBilet;
-		private MetroFramework.Controls.MetroButton btnDegistir;
 	}
 }
