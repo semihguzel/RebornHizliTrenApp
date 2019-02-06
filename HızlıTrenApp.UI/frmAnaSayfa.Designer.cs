@@ -131,7 +131,7 @@
 			this.Margin = new System.Windows.Forms.Padding(2);
 			this.Name = "frmAnaSayfa";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Ana Sayfa";
+			this.Text = "Hızlı Tren Bilet Satış Otomasyonu";
 			this.Load += new System.EventHandler(this.frmAnaSayfa_Load);
 			this.grpAnaKutu.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();

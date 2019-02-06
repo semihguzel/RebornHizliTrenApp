@@ -49,5 +49,11 @@ namespace HızlıTrenApp.UI
                 MessageBox.Show("Lütfen bir istasyon seçiniz.");
             }
         }
-    }
+
+		private void frmIstasyonTrenBilgileri_Load(object sender, EventArgs e)
+		{
+			this.ControlBox = false;
+			this.Text = "İstasyon Tren Bilgileri";
+		}
+	}
 }

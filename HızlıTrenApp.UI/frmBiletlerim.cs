@@ -43,5 +43,11 @@ namespace HızlıTrenApp.UI
 			else
 				MessageBox.Show("Lütfen PNR No ve Soyad alanlarını doğru girdiğinizden emin olunuz!", "DİKKAT", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 		}
+
+		private void frmBiletlerim_Load_1(object sender, EventArgs e)
+		{
+			this.ControlBox = false;
+			this.Text = "Biletlerim";
+		}
 	}
 }

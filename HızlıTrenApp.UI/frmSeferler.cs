@@ -48,9 +48,11 @@ namespace HızlıTrenApp.UI
         bool donusVarMi;
         private void frmSeferler_Load(object sender, EventArgs e)
         {
-           
 
-            secilenGidisSeferi = new List<string>();
+			this.ControlBox = false;
+			this.Text = "Seferler";
+
+			secilenGidisSeferi = new List<string>();
             lstSeferlerDonus.Enabled = false;
             if (gelenForm.ciftMi)
             {

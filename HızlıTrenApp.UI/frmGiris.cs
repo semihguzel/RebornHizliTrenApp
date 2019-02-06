@@ -36,7 +36,7 @@ namespace HızlıTrenApp.UI
         private void frmGiris_Load(object sender, EventArgs e)
         {
             this.ControlBox = false;
-            this.Text = "Ana Sayfa";
+            this.Text = "Hızlı Tren Bileti";
             cmbTip.Items.Add("Economy");
             cmbTip.Items.Add("Business");
             cmbTip.SelectedIndex = 0;

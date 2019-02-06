@@ -118,11 +118,14 @@
 			this.Controls.Add(this.metroLabel2);
 			this.Controls.Add(this.txtPnrNo);
 			this.Controls.Add(this.metroLabel1);
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "frmBiletlerim";
 			this.ShadowType = MetroFramework.Forms.MetroForm.MetroFormShadowType.None;
 			this.Style = MetroFramework.MetroColorStyle.Red;
 			this.Text = "Biletlerim";
 			this.TextAlign = System.Windows.Forms.VisualStyles.HorizontalAlign.Right;
+			this.Load += new System.EventHandler(this.frmBiletlerim_Load_1);
 			this.grpSeyehatBilgileri.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dgvSeyehatBilgileri)).EndInit();
 			this.ResumeLayout(false);

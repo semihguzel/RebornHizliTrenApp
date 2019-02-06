@@ -74,6 +74,12 @@
     <Compile Include="frmGiris.Designer.cs">
       <DependentUpon>frmGiris.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmIslemOzeti.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmIslemOzeti.Designer.cs">
+      <DependentUpon>frmIslemOzeti.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmIstasyonAyrinti.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmGiris.resx">
       <DependentUpon>frmGiris.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmIslemOzeti.resx">
+      <DependentUpon>frmIslemOzeti.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmIstasyonAyrinti.resx">
       <DependentUpon>frmIstasyonAyrinti.cs</DependentUpon>

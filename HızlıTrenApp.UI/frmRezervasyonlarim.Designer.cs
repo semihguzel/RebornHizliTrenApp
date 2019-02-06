@@ -129,6 +129,8 @@
 			this.Controls.Add(this.txtPnrNo);
 			this.Controls.Add(this.metroLabel1);
 			this.Controls.Add(this.btnSatisaCevir);
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "frmRezervasyonlarim";
 			this.ShadowType = MetroFramework.Forms.MetroForm.MetroFormShadowType.None;
 			this.Style = MetroFramework.MetroColorStyle.Red;

@@ -44,7 +44,10 @@ namespace HızlıTrenApp.UI
         string economyLuggage = @"..\..\Images\luggage_economy.png";
         private void frmKoltukSecimi_Load(object sender, EventArgs e)
         {
-            SeferSaatleriDal ssd = new SeferSaatleriDal();
+			this.ControlBox = false;
+			this.Text = "Koltuk Seçimi";
+
+			SeferSaatleriDal ssd = new SeferSaatleriDal();
             int saatID = ssd.GetIdByDate(saat);
             BiletBilgiDal biletBilgiConcrete = new BiletBilgiDal();
 

@@ -103,6 +103,7 @@
 			this.Style = MetroFramework.MetroColorStyle.Red;
 			this.Text = "İstasyon Tren Bilgileri";
 			this.TextAlign = System.Windows.Forms.VisualStyles.HorizontalAlign.Right;
+			this.Load += new System.EventHandler(this.frmIstasyonTrenBilgileri_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

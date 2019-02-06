@@ -27,8 +27,9 @@ namespace HızlıTrenApp.UI
 
         private void frmOdeme_Load(object sender, EventArgs e)
         {
-
-        }
+			this.ControlBox = false;
+			this.Text = "Ödeme";
+		}
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {

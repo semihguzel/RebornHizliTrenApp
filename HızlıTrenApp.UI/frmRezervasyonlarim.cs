@@ -23,6 +23,8 @@ namespace HızlıTrenApp.UI
 		object gelenRezerveBilet;
 		private void frmRezervasyonlarim_Load_1(object sender, EventArgs e)
 		{
+			this.ControlBox = false;
+			this.Text = "Rezervasyonlarım";
 		}
 		private void btnSorgula_Click(object sender, EventArgs e)
 		{

@@ -34,7 +34,10 @@ namespace HızlıTrenApp.UI
 
         private void ListeyiDoldur(int secim, string istasyon)
         {
-            lstIstasyonSeferleri.Items.Clear();
+			this.ControlBox = false;
+			this.Text = "İstasyondaki Seferler";
+
+			lstIstasyonSeferleri.Items.Clear();
             seferSaatleri = new List<SeferSaat>();
             seferSaatleri = _seferSaatleri.GetAll();
             seferler = new List<Sefer>();
