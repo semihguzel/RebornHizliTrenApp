@@ -83,61 +83,51 @@ namespace HızlıTrenApp.UI
         private void btnSeferleriListele_Click(object sender, EventArgs e)
         {
             //Verilerin Doğru olup olmadığının kontrol edilmesi.
-            if (_seferlerDal.GetSeferIDByFilter(cmbNereden.SelectedItem.ToString(), cmbNereye.SelectedItem.ToString()) != null)
+            if (Tools.Sorgula(grpBilet))
             {
-
-                if (Tools.Sorgula(grpBilet))
+                if (_seferlerDal.GetSeferIDByFilter(cmbNereden.SelectedItem.ToString(), cmbNereye.SelectedItem.ToString()) != null)
                 {
-                    if (cmbNereden.SelectedItem != cmbNereye.SelectedItem)
+                    if (dtpGidisTarihi.Value.Day >= DateTime.Now.Day)
                     {
-                        if (dtpGidisTarihi.Value.Day >= DateTime.Now.Day)
+                        if (dtpDonusTarihi.Enabled != true)
                         {
-                            if (dtpDonusTarihi.Enabled != true)
-                            {
-                                ToplananVerileriDoldur();
-                                DateTime tiklananGidis = dtpGidisTarihi.Value;
-                                DateTime tiklananDonus = dtpDonusTarihi.Value;
-                                frmSeferler frmSeferler = new frmSeferler(this,tiklananGidis,tiklananDonus);
-                                Hide();
-                                frmAnaSayfa anasayfa = (frmAnaSayfa)ParentForm;
-                                anasayfa.FormKontrolluGetir(frmSeferler);
-                            }
-                            else if (dtpDonusTarihi.Enabled == true && dtpDonusTarihi.Value > dtpGidisTarihi.Value)
-                            {
-                                ToplananVerileriDoldur();
-                                donusTarihi = dtpDonusTarihi.Value;
-                                DateTime tiklananGidis = dtpGidisTarihi.Value;
-                                DateTime tiklananDonus = dtpDonusTarihi.Value;
-                                frmSeferler frmSeferler = new frmSeferler(this, tiklananGidis, tiklananDonus);
-                                Hide();
-                                GroupBox kutu = (GroupBox)this.Parent;
-                                Form anaForm = (Form)kutu.Parent.Parent;
-                                frmSeferler.Width = kutu.Width;
-                                frmSeferler.Height = kutu.Height;
-                                frmSeferler.MdiParent = anaForm;
-                                kutu.Controls.Remove(this);
-                                kutu.Controls.Add(frmSeferler);
-                                frmSeferler.Show();
-                                frmSeferler.Location = Point.Empty;
-                            }
-                            else
-                                MessageBox.Show("Dönüş tarihi gidiş tarihinden önce veya eşit olamaz...");
-
+                            ToplananVerileriDoldur();
+                            DateTime tiklananGidis = dtpGidisTarihi.Value;
+                            DateTime tiklananDonus = dtpDonusTarihi.Value;
+                            frmSeferler frmSeferler = new frmSeferler(this, tiklananGidis, tiklananDonus);
+                            Hide();
+                            frmAnaSayfa anasayfa = (frmAnaSayfa)ParentForm;
+                            anasayfa.FormKontrolluGetir(frmSeferler);
+                        }
+                        else if (dtpDonusTarihi.Enabled == true && dtpDonusTarihi.Value > dtpGidisTarihi.Value)
+                        {
+                            ToplananVerileriDoldur();
+                            donusTarihi = dtpDonusTarihi.Value;
+                            DateTime tiklananGidis = dtpGidisTarihi.Value;
+                            DateTime tiklananDonus = dtpDonusTarihi.Value;
+                            frmSeferler frmSeferler = new frmSeferler(this, tiklananGidis, tiklananDonus);
+                            Hide();
+                            GroupBox kutu = (GroupBox)this.Parent;
+                            Form anaForm = (Form)kutu.Parent.Parent;
+                            frmSeferler.Width = kutu.Width;
+                            frmSeferler.Height = kutu.Height;
+                            frmSeferler.MdiParent = anaForm;
+                            kutu.Controls.Remove(this);
+                            kutu.Controls.Add(frmSeferler);
+                            frmSeferler.Show();
+                            frmSeferler.Location = Point.Empty;
                         }
                         else
-                            MessageBox.Show("Lütfen gidiş tarihinin doğru olduğundan emin olunuz...");
-
+                            MessageBox.Show("Dönüş tarihi gidiş tarihinden önce veya eşit olamaz...");
                     }
                     else
-                        MessageBox.Show("Nereden ve nereye şehirleri aynı olamaz...");
-
+                        MessageBox.Show("Lütfen gidiş tarihinin doğru olduğundan emin olunuz...");
                 }
                 else
-                    MessageBox.Show("Bütün alanların doğru seçildiğinden emin olunuz...");
+                    MessageBox.Show("Böyle bir sefer bulunmamaktadır..");
             }
             else
-                MessageBox.Show("Böyle bir sefer bulunmamaktadır..");
-
+                MessageBox.Show("Bütün alanların doğru seçildiğinden emin olunuz...");
         }
 
         private void ToplananVerileriDoldur()
