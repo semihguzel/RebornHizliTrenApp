@@ -16,7 +16,9 @@ namespace HızlıTrenApp.UI
     public partial class frmSeferler : MetroFramework.Forms.MetroForm
     {
         frmGiris gelenForm;
-        public frmSeferler(frmGiris frm)
+        DateTime tiklananGidisTarihi;
+        DateTime tiklananDonusTarihi;
+        public frmSeferler(frmGiris frm, DateTime tiklananGidis, DateTime tiklananDonus)
         {
             InitializeComponent();
             gelenForm = frm;
@@ -24,6 +26,8 @@ namespace HızlıTrenApp.UI
             _seferSaatleriDal = new SeferSaatleriDal();
             _biletBilgiDal = new BiletBilgiDal();
             _seferlerSeferSaatleriDal = new SeferlerSeferSaatleriDal();
+            tiklananGidisTarihi = tiklananGidis;
+            tiklananDonusTarihi = tiklananDonus;
         }
         private SeferlerSeferSaatleriDal _seferlerSeferSaatleriDal;
         private SeferlerDal _seferlerDal;
@@ -40,8 +44,12 @@ namespace HızlıTrenApp.UI
         public List<string> secilenDonusSeferi;
         int id1 = 0;
         int id2 = 0;
+        bool gidisVarMi;
+        bool donusVarMi;
         private void frmSeferler_Load(object sender, EventArgs e)
         {
+           
+
             secilenGidisSeferi = new List<string>();
             lstSeferlerDonus.Enabled = false;
             if (gelenForm.ciftMi)
@@ -164,7 +172,7 @@ namespace HızlıTrenApp.UI
             int[] biletSaat = new int[] { 0, 0, 0, 0, 0 };
 
             biletler = _biletBilgiDal.GetByDate(gelenForm.gidisTarihi.Date);
-            biletSaat = BiletSayilariniHesapla(biletler, biletSaat,gdsSeferIdler);
+            biletSaat = BiletSayilariniHesapla(biletler, biletSaat, gdsSeferIdler);
             SeferleriDoldur2(ref lstSeferlerGidis, biletSaat, gelenForm.gidisTarihi, gelenForm.nereden, gelenForm.nereye);
 
             for (int i = 0; i < biletSaat.Length; i++)
@@ -176,7 +184,7 @@ namespace HızlıTrenApp.UI
             {
                 biletler.Clear();
                 biletler = _biletBilgiDal.GetByDate(gelenForm.donusTarihi.Date);
-                biletSaat = BiletSayilariniHesapla(biletler, biletSaat,dnsSeferIdler);
+                biletSaat = BiletSayilariniHesapla(biletler, biletSaat, dnsSeferIdler);
                 SeferleriDoldur2(ref lstSeferlerDonus, biletSaat, gelenForm.donusTarihi, gelenForm.nereye, gelenForm.nereden);
             }
         }
@@ -230,19 +238,19 @@ namespace HızlıTrenApp.UI
         }
 
         //Bu metod sayesinde gidiş ve dönüş biletlerini saatlerini göre gruplandırarak sayısını hesapladık.
-        public int[] BiletSayilariniHesapla(List<BiletBilgi> biletler, int[] biletSaat,List<SeferSeferSaat> filtre)
+        public int[] BiletSayilariniHesapla(List<BiletBilgi> biletler, int[] biletSaat, List<SeferSeferSaat> filtre)
         {
             foreach (var item in biletler)
             {
                 int sayac = 0;
                 foreach (var items in filtre)
                 {
-                    if (item.SeferSeferSaatID==items.ID)
+                    if (item.SeferSeferSaatID == items.ID)
                     {
                         sayac++;
                     }
                 }
-                if (sayac>0)
+                if (sayac > 0)
                 {
                     if (item.BiletTipi == gelenForm.yolcuTipi)
                     {
@@ -290,13 +298,20 @@ namespace HızlıTrenApp.UI
         //Koltuk Seçimi formuna geçiş kodlarını metod haline getirdim.
         private void KoltukSecimiFormunaGecis()
         {
+            SeferSaatleriDal ssd = new SeferSaatleriDal();
             string tiklananSaat = lstSeferlerGidis.SelectedItems[0].SubItems[5].Text;
+            int saatID = ssd.GetIdByDate(tiklananSaat);
+            gidisVarMi = _biletBilgiDal.IsDateCreated(tiklananGidisTarihi, id1, saatID);
+            if (tiklananDonusTarihi != null && tiklananDonusTarihi.Date != DateTime.Now.Date)
+            {
+                donusVarMi = _biletBilgiDal.IsDateCreated(tiklananDonusTarihi,id1,saatID);
+            }
 
-            frmKoltukSecimi gelenForm2 = new frmKoltukSecimi(this, id1, tiklananSaat);
+            frmKoltukSecimi gelenForm2 = new frmKoltukSecimi(this, id1, tiklananSaat,gidisVarMi,donusVarMi,tiklananGidisTarihi,tiklananDonusTarihi);
             Hide();
             frmAnaSayfa anasayfa = (frmAnaSayfa)ParentForm;
             anasayfa.FormKontrolluGetir(gelenForm2);
-            
+
         }
     }
 }

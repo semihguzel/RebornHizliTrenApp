@@ -60,10 +60,8 @@
             this.pbWc = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.grpYolcuBilgileri.SuspendLayout();
             this.grpKoltuklar.SuspendLayout();
-            this.grpEconomy1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -282,7 +280,6 @@
             // 
             // grpEconomy1
             // 
-            this.grpEconomy1.Controls.Add(this.label3);
             this.grpEconomy1.Location = new System.Drawing.Point(434, 21);
             this.grpEconomy1.Name = "grpEconomy1";
             this.grpEconomy1.Size = new System.Drawing.Size(357, 144);
@@ -403,16 +400,6 @@
             this.label2.Text = "BUSINESS";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label3
-            // 
-            this.label3.BackColor = System.Drawing.Color.Linen;
-            this.label3.Location = new System.Drawing.Point(213, 105);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(138, 36);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "MASA";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // frmKoltukSecimi
             // 
             this.AcceptButton = this.btnOdemeyeGec;
@@ -430,7 +417,6 @@
             this.grpYolcuBilgileri.ResumeLayout(false);
             this.grpYolcuBilgileri.PerformLayout();
             this.grpKoltuklar.ResumeLayout(false);
-            this.grpEconomy1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -474,6 +460,5 @@
         private System.Windows.Forms.GroupBox grpEconomy2;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.Label label3;
     }
 }

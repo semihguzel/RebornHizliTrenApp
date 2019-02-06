@@ -17,12 +17,20 @@ namespace HızlıTrenApp.UI
         Form gelenForm;
         int seferId = 0;
         string saat = "";
-        public frmKoltukSecimi(Form form, int id, string tiklananSaat)
+        bool gidisVarMi;
+        bool donusVarMi;
+        DateTime gidisTarihi;
+        DateTime donusTarihi;
+        public frmKoltukSecimi(Form form, int id, string tiklananSaat, bool gidis, bool donus,DateTime gidisT, DateTime donusT)
         {
             InitializeComponent();
             gelenForm = form;
             seferId = id;
             saat = tiklananSaat;
+            gidisVarMi = gidis;
+            donusVarMi = donus;
+            gidisTarihi = gidisT;
+            donusTarihi = donusT;
         }
         List<BiletBilgi> businessKadinBiletler;
         List<BiletBilgi> businessErkekBiletler;
@@ -31,8 +39,6 @@ namespace HızlıTrenApp.UI
 
         string economyErkekKoltuk = @"..\..\Images\Resized_Seats\seat_man_resized_economy.png";
         string economyKadinKoltuk = @"..\..\Images\Resized_Seats\seat_woman_resized_economy.png";
-        string businessErkekKoltuk = @"..\..\Images\Resized_Seats\seat_man_resized_business.png";
-        string businessKadinKoltuk = @"..\..\Images\Resized_Seats\seat_woman_resized_business.png";
         string businessBosKoltuk = @"..\..\Images\Resized_Seats\seat_available_resized_business.png";
         string economyBosKoltuk = @"..\..\Images\Resized_Seats\seat_available_resized_economy.png";
         string economyLuggage = @"..\..\Images\luggage_economy.png";
@@ -40,22 +46,28 @@ namespace HızlıTrenApp.UI
         {
             SeferSaatleriDal ssd = new SeferSaatleriDal();
             int saatID = ssd.GetIdByDate(saat);
-
             BiletBilgiDal biletBilgiConcrete = new BiletBilgiDal();
 
-            businessKadinBiletler = biletBilgiConcrete.BusinessWomanTickets(seferId, saatID);
-            businessErkekBiletler = biletBilgiConcrete.BusinessManTickets(seferId, saatID);
+            if (!gidisVarMi)
+            {
+                KoltuklariOlustur();
+            }
+            else
+            {
+                KoltuklariOlustur();
 
-            economyKadinBiletler = biletBilgiConcrete.EconomyWomanTickets(seferId, saatID);
-            economyErkekBiletler = biletBilgiConcrete.EconomyManTickets(seferId, saatID);
+                businessKadinBiletler = biletBilgiConcrete.BusinessWomanTickets(seferId, saatID, gidisTarihi);
+                businessErkekBiletler = biletBilgiConcrete.BusinessManTickets(seferId, saatID,gidisTarihi);
 
-            KoltuklariOlustur();
+                economyKadinBiletler = biletBilgiConcrete.EconomyWomanTickets(seferId, saatID, gidisTarihi);
+                economyErkekBiletler = biletBilgiConcrete.EconomyManTickets(seferId, saatID, gidisTarihi);
 
-            BusinessKadinlar(grpBusiness1, grpBusiness2);
-            BusinessErkekler(grpBusiness1, grpBusiness2);
+                BusinessKadinlar(grpBusiness1, grpBusiness2);
+                BusinessErkekler(grpBusiness1, grpBusiness2);
 
-            EconomyKadinlar(grpEconomy1, grpEconomy2);
-            EconomyErkekler(grpEconomy1, grpEconomy2);
+                EconomyKadinlar(grpEconomy1, grpEconomy2);
+                EconomyErkekler(grpEconomy1, grpEconomy2);
+            }
         }
 
         private void EconomyErkekler(GroupBox grpEconomy1, GroupBox grpEconomy2)
@@ -108,14 +120,14 @@ namespace HızlıTrenApp.UI
                 {
                     if (item is PictureBox && bilet.KoltukNo == item.Name)
                     {
-                        ((PictureBox)item).ImageLocation = businessErkekKoltuk;
+                        ((PictureBox)item).ImageLocation = economyErkekKoltuk;
                     }
                 }
                 foreach (Control item in grpBusiness2.Controls)
                 {
                     if (item is PictureBox && bilet.KoltukNo == item.Name)
                     {
-                        ((PictureBox)item).ImageLocation = businessErkekKoltuk;
+                        ((PictureBox)item).ImageLocation = economyErkekKoltuk;
                     }
                 }
             }
@@ -129,14 +141,14 @@ namespace HızlıTrenApp.UI
                 {
                     if (item is PictureBox && bilet.KoltukNo == item.Name)
                     {
-                        ((PictureBox)item).ImageLocation = businessKadinKoltuk;
+                        ((PictureBox)item).ImageLocation = economyKadinKoltuk;
                     }
                 }
                 foreach (Control item in grpBusiness2.Controls)
                 {
                     if (item is PictureBox && bilet.KoltukNo == item.Name)
                     {
-                        ((PictureBox)item).ImageLocation = businessKadinKoltuk;
+                        ((PictureBox)item).ImageLocation = economyKadinKoltuk;
                     }
                 }
             }
@@ -243,6 +255,7 @@ namespace HızlıTrenApp.UI
             int economyUsttenBosluk = 10;
             int economyLabelBosluk = 15;
             int economyKoltukSayisi = 12;
+
             for (int i = 0; i < 12; i++)
             {
                 //grpEconomy1
@@ -254,12 +267,12 @@ namespace HızlıTrenApp.UI
                 KoltukAyarlari(pbE1, lblE1, luggage);
                 grpEconomy1.Controls.Add(pbE1);
                 grpEconomy1.Controls.Add(lblE1);
-                grpEconomy1.Controls.Add(luggage);
 
                 //grpEconomy2
                 pbE2 = new PictureBox();
                 lblE2 = new Label();
                 luggage2 = new PictureBox();
+
                 pbE2.Name = "E" + economyKoltukSayisi;
                 lblE2.Text = pbE2.Name;
                 economyKoltukSayisi++;
@@ -270,38 +283,62 @@ namespace HızlıTrenApp.UI
                 if (i < 3)
                 {
                     //grpEconomy1'de ust 4 koltuk
-                    pbE1.Location = new Point((2 * i * economySoldanBosluk) + economyKoltukArasi, economyUsttenBosluk);
+                    grpEconomy1.Controls.Add(luggage);
+
+                    pbE1.Location = new Point((2 * i * economySoldanBosluk - 5) + economyKoltukArasi, economyUsttenBosluk);
                     lblE1.Location = new Point(pbE1.Location.X, pbE1.Height + economyUsttenBosluk - 3);
-                    luggage.Location = new Point(pbE1.Location.X + economySoldanBosluk - 5, economyUsttenBosluk);
+                    luggage.Location = new Point(pbE1.Location.X + economySoldanBosluk - 2, economyUsttenBosluk + 5);
 
                     //grpEconomy2'de ust 4 koltuk
-                    pbE2.Location = new Point((i * economySoldanBosluk) + economyKoltukArasi, economyUsttenBosluk);
+                    grpEconomy2.Controls.Add(luggage2);
+                    pbE2.Location = new Point((2 * i * economySoldanBosluk - 5) + economyKoltukArasi, economyUsttenBosluk);
                     lblE2.Location = new Point(pbE2.Location.X, pbE2.Height + economyUsttenBosluk - 3);
+                    luggage2.Location = new Point(pbE2.Location.X + economySoldanBosluk - 2, economyUsttenBosluk + 5);
+
                 }
-                else if (i >= 3 && i < 10)
+                else if (i >= 3 && i < 9)
                 {
                     //grpEconomy1'de orta 4 koltuk
-                    pbE1.Location = new Point(((i - 4) * businessSoldanBosluk) + businessKoltukArasi, lblE1.Height + pbE1.Height + economyUsttenBosluk);
+                    pbE1.Location = new Point(((i - 3) * economySoldanBosluk - 5) + businessKoltukArasi, lblE1.Height + pbE1.Height + economyUsttenBosluk - 5);
                     lblE1.Location = new Point(pbE1.Location.X, pbE1.Location.Y + economyUsttenBosluk + economyLabelBosluk + 3);
 
                     //grpEconomy2'de orta 4 koltuk
-                    pbE2.Location = new Point(((i - 4) * businessSoldanBosluk) + businessKoltukArasi, lblE2.Height + pbE2.Height + economyUsttenBosluk);
+                    pbE2.Location = new Point(((i - 3) * economySoldanBosluk - 5) + businessKoltukArasi, lblE2.Height + pbE2.Height + economyUsttenBosluk - 5);
                     lblE2.Location = new Point(pbE2.Location.X, pbE2.Location.Y + economyUsttenBosluk + economyLabelBosluk + 3);
                 }
                 else
                 {
                     //grpEconomy1'de alt 4 koltuk
+                    grpEconomy1.Controls.Remove(pbE1);
+                    grpEconomy1.Controls.Remove(lblE1);
+                    grpEconomy1.Controls.Add(luggage);
                     grpEconomy1.Controls.Add(pbE1);
                     grpEconomy1.Controls.Add(lblE1);
-                    grpEconomy1.Controls.Add(luggage);
-                    luggage.Location = new Point(((i - 10) * businessSoldanBosluk) + businessKoltukArasi, lblE1.Height + pbE1.Height + economyUsttenBosluk + (economyUsttenBosluk * 3) + economyUsttenBosluk);
-                    pbE1.Location = new Point((2 * (i - 10) * businessSoldanBosluk) + businessKoltukArasi, lblE1.Height + pbE1.Height + economyUsttenBosluk + (economyUsttenBosluk * 3) + economyUsttenBosluk);
-                        lblE1.Location = new Point(pbE1.Location.X, pbE1.Location.Y + economyUsttenBosluk + 20);
-                        
+
+                    luggage.Location = new Point((2 * (i - 9) * economySoldanBosluk - 5) + businessKoltukArasi, lblE1.Height + pbE1.Height + economyUsttenBosluk + (economyUsttenBosluk * 3) + economyUsttenBosluk + 5);
+                    pbE1.Location = new Point(luggage.Location.X + economySoldanBosluk, lblE1.Height + pbE1.Height + economyUsttenBosluk + (economyUsttenBosluk * 3) + economyUsttenBosluk - 2);
+                    lblE1.Location = new Point(pbE1.Location.X, pbE1.Location.Y + economyUsttenBosluk + 20);
+
 
                     //grpEconomy2'de alt 4 koltuk
-                    pbE2.Location = new Point(((i - 10) * businessSoldanBosluk) + businessKoltukArasi - 5, lblE2.Height + pbE2.Height + economyUsttenBosluk + (economyUsttenBosluk * 3) + economyUsttenBosluk + 5);
+                    grpEconomy2.Controls.Remove(pbE2);
+                    grpEconomy2.Controls.Remove(lblE2);
+                    grpEconomy2.Controls.Add(luggage2);
+                    grpEconomy2.Controls.Add(pbE2);
+                    grpEconomy2.Controls.Add(lblE2);
+                    luggage2.Location = new Point((2 * (i - 9) * economySoldanBosluk - 5) + businessKoltukArasi, lblE2.Height + pbE2.Height + economyUsttenBosluk + (economyUsttenBosluk * 3) + economyUsttenBosluk + 5);
+                    pbE2.Location = new Point(luggage2.Location.X + economySoldanBosluk, lblE2.Height + pbE2.Height + economyUsttenBosluk + (economyUsttenBosluk * 3) + economyUsttenBosluk + 5);
                     lblE2.Location = new Point(pbE2.Location.X, pbE2.Location.Y + economyUsttenBosluk + 20);
+                    //if(i == 11)
+                    //{
+                    //    int temp = 0;
+                    //    foreach (Control item in grpEconomy2.Controls)
+                    //    {
+                    //        if (item is PictureBox && item.Name == "")
+                    //            temp++;
+                    //    }
+                    //    MessageBox.Show(temp.ToString());
+                    //}
                 }
             }
         }

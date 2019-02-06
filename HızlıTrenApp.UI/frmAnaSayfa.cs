@@ -84,7 +84,7 @@ namespace HızlıTrenApp.UI
             kutu.Controls.Add(gelenForm);
             gelenForm.Show();
             gelenForm.Location = Point.Empty;
-            this.Location = new Point(Location.X, Location.Y - 50);
+            //this.Location = new Point(Location.X, Location.Y - 50);
         }
 
         private void mlBilet_Click(object sender, EventArgs e)
