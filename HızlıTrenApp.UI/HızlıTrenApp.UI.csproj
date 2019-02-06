@@ -169,6 +169,7 @@
     <None Include="Resources\SGKhizlitren1.png" />
     <None Include="Resources\SGKhizlitren.png" />
     <None Include="Images\kapi.png" />
+    <Content Include="Images\luggage_economy.png" />
     <Content Include="Images\seat_available.png" />
     <Content Include="Images\seat_available_resized_business.png" />
     <Content Include="Images\seat_available_resized_economy.png" />

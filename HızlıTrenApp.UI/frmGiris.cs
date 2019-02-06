@@ -95,8 +95,9 @@ namespace HızlıTrenApp.UI
                             if (dtpDonusTarihi.Enabled != true)
                             {
                                 ToplananVerileriDoldur();
-
-                                frmSeferler frmSeferler = new frmSeferler(this);
+                                DateTime tiklananGidis = dtpGidisTarihi.Value;
+                                DateTime tiklananDonus = dtpDonusTarihi.Value;
+                                frmSeferler frmSeferler = new frmSeferler(this,tiklananGidis,tiklananDonus);
                                 Hide();
                                 frmAnaSayfa anasayfa = (frmAnaSayfa)ParentForm;
                                 anasayfa.FormKontrolluGetir(frmSeferler);
@@ -105,7 +106,9 @@ namespace HızlıTrenApp.UI
                             {
                                 ToplananVerileriDoldur();
                                 donusTarihi = dtpDonusTarihi.Value;
-                                frmSeferler frmSeferler = new frmSeferler(this);
+                                DateTime tiklananGidis = dtpGidisTarihi.Value;
+                                DateTime tiklananDonus = dtpDonusTarihi.Value;
+                                frmSeferler frmSeferler = new frmSeferler(this, tiklananGidis, tiklananDonus);
                                 Hide();
                                 GroupBox kutu = (GroupBox)this.Parent;
                                 Form anaForm = (Form)kutu.Parent.Parent;
