@@ -27,28 +27,16 @@ namespace HızlıTrenApp.DAL.Repository.Concrete
             }
         }
 
-        public bool IsDateCreated(DateTime date,int seferId,int saatId)
+        public bool IsDateCreated(DateTime date, int seferId, int saatId)
         {
-            string temp = date.ToShortDateString();
-            bool varMi = false;
-            List<DateTime> dateList = _biletBilgiRepository.GetAll().Where(x => x.SeferSeferSaatID == saatId).Select(x => x.SeferTarihi).ToList();
-            foreach (var item in dateList)
-            {
-                if (item.ToShortDateString() == temp)
-                {
-                    varMi = true;
-                    break;
-                }
-                else
-                    continue;
-            }
-            if (varMi)
+            date = date.Date;
+            BiletBilgi bilet = _biletBilgiRepository.GetAll().Where(x => x.SeferTarihi == date).FirstOrDefault();
+            if (bilet != null)
                 return true;
             else
                 return false;
-
         }
-        
+
         SeferlerSeferSaatleriDal sssd = new SeferlerSeferSaatleriDal();
         public List<BiletBilgi> TicketList()
         {
@@ -67,62 +55,30 @@ namespace HızlıTrenApp.DAL.Repository.Concrete
 
         public List<BiletBilgi> BusinessWomanTickets(int seferID, int seferSaatID, DateTime seferTarihi)
         {
+            seferTarihi = seferTarihi.Date;
             int seferlerSaatlerID = sssd.GetBySeferIdAndSaatId(seferID, seferSaatID);
-            List<BiletBilgi> biletListesi = _biletBilgiRepository.GetAll().Where(x => !x.MusterininBileti.Cinsiyet && x.KoltukNo.StartsWith("B") && x.SeferSeferSaatID == seferlerSaatlerID).ToList();
-            List<BiletBilgi> tarihtekiBiletler = new List<BiletBilgi>();
-            foreach (BiletBilgi item in biletListesi)
-            {
-                if (item.SeferTarihi.Date == seferTarihi.Date)
-                {
-                    tarihtekiBiletler.Add(item);
-                }
-            }
-            return tarihtekiBiletler;
+            return _biletBilgiRepository.GetAll().Where(x => !x.MusterininBileti.Cinsiyet && x.KoltukNo.StartsWith("B") && x.SeferSeferSaatID == seferlerSaatlerID && x.SeferTarihi == seferTarihi).ToList();
         }
 
-        public List<BiletBilgi> BusinessManTickets(int seferID, int seferSaatID,DateTime seferTarihi)
+        public List<BiletBilgi> BusinessManTickets(int seferID, int seferSaatID, DateTime seferTarihi)
         {
+            seferTarihi = seferTarihi.Date;
             int seferlerSaatlerID = sssd.GetBySeferIdAndSaatId(seferID, seferSaatID);
-            List<BiletBilgi> biletListesi = _biletBilgiRepository.GetAll().Where(x => x.MusterininBileti.Cinsiyet && x.KoltukNo.StartsWith("B") && x.SeferSeferSaatID == seferlerSaatlerID).ToList();
-            List<BiletBilgi> tarihtekiBiletler = new List<BiletBilgi>();
-            foreach (BiletBilgi item in biletListesi)
-            {
-                if(item.SeferTarihi.Date == seferTarihi.Date)
-                {
-                    tarihtekiBiletler.Add(item);
-                }
-            }
-            return tarihtekiBiletler;
+            return _biletBilgiRepository.GetAll().Where(x => x.MusterininBileti.Cinsiyet && x.KoltukNo.StartsWith("B") && x.SeferSeferSaatID == seferlerSaatlerID && x.SeferTarihi == seferTarihi).ToList();
         }
 
         public List<BiletBilgi> EconomyWomanTickets(int seferID, int seferSaatID, DateTime seferTarihi)
         {
+            seferTarihi = seferTarihi.Date;
             int seferlerSaatlerID = sssd.GetBySeferIdAndSaatId(seferID, seferSaatID);
-            List<BiletBilgi> biletListesi = _biletBilgiRepository.GetAll().Where(x => !x.MusterininBileti.Cinsiyet && x.KoltukNo.StartsWith("E") && x.SeferSeferSaatID == seferlerSaatlerID).ToList();
-            List<BiletBilgi> tarihtekiBiletler = new List<BiletBilgi>();
-            foreach (BiletBilgi item in biletListesi)
-            {
-                if (item.SeferTarihi.Date == seferTarihi.Date)
-                {
-                    tarihtekiBiletler.Add(item);
-                }
-            }
-            return tarihtekiBiletler;
+            return _biletBilgiRepository.GetAll().Where(x => !x.MusterininBileti.Cinsiyet && x.KoltukNo.StartsWith("E") && x.SeferSeferSaatID == seferlerSaatlerID && x.SeferTarihi == seferTarihi).ToList();
         }
 
         public List<BiletBilgi> EconomyManTickets(int seferID, int seferSaatID, DateTime seferTarihi)
         {
+            seferTarihi = seferTarihi.Date;
             int seferlerSaatlerID = sssd.GetBySeferIdAndSaatId(seferID, seferSaatID);
-            List<BiletBilgi> biletListesi = _biletBilgiRepository.GetAll().Where(x => x.MusterininBileti.Cinsiyet && x.KoltukNo.StartsWith("E") && x.SeferSeferSaatID == seferlerSaatlerID).ToList();
-            List<BiletBilgi> tarihtekiBiletler = new List<BiletBilgi>();
-            foreach (BiletBilgi item in biletListesi)
-            {
-                if (item.SeferTarihi.Date == seferTarihi.Date)
-                {
-                    tarihtekiBiletler.Add(item);
-                }
-            }
-            return tarihtekiBiletler;
+            return _biletBilgiRepository.GetAll().Where(x => x.MusterininBileti.Cinsiyet && x.KoltukNo.StartsWith("E") && x.SeferSeferSaatID == seferlerSaatlerID && x.SeferTarihi == seferTarihi).ToList();
         }
 
     }
