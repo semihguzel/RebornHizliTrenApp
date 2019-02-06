@@ -21,7 +21,7 @@ namespace HızlıTrenApp.UI
         bool donusVarMi;
         DateTime gidisTarihi;
         DateTime donusTarihi;
-        public frmKoltukSecimi(Form form, int id, string tiklananSaat, bool gidis, bool donus,DateTime gidisT, DateTime donusT)
+        public frmKoltukSecimi(Form form, int id, string tiklananSaat, bool gidis, bool donus, DateTime gidisT, DateTime donusT)
         {
             InitializeComponent();
             gelenForm = form;
@@ -42,12 +42,13 @@ namespace HızlıTrenApp.UI
         string businessBosKoltuk = @"..\..\Images\Resized_Seats\seat_available_resized_business.png";
         string economyBosKoltuk = @"..\..\Images\Resized_Seats\seat_available_resized_economy.png";
         string economyLuggage = @"..\..\Images\luggage_economy.png";
+        string secilenKoltuk = @"..\..\Images\Resized_Seats\seat_reserved_resized_economy.png";
         private void frmKoltukSecimi_Load(object sender, EventArgs e)
         {
-			this.ControlBox = false;
-			this.Text = "Koltuk Seçimi";
+            this.ControlBox = false;
+            this.Text = "Koltuk Seçimi";
 
-			SeferSaatleriDal ssd = new SeferSaatleriDal();
+            SeferSaatleriDal ssd = new SeferSaatleriDal();
             int saatID = ssd.GetIdByDate(saat);
             BiletBilgiDal biletBilgiConcrete = new BiletBilgiDal();
 
@@ -60,7 +61,7 @@ namespace HızlıTrenApp.UI
                 KoltuklariOlustur();
 
                 businessKadinBiletler = biletBilgiConcrete.BusinessWomanTickets(seferId, saatID, gidisTarihi);
-                businessErkekBiletler = biletBilgiConcrete.BusinessManTickets(seferId, saatID,gidisTarihi);
+                businessErkekBiletler = biletBilgiConcrete.BusinessManTickets(seferId, saatID, gidisTarihi);
 
                 economyKadinBiletler = biletBilgiConcrete.EconomyWomanTickets(seferId, saatID, gidisTarihi);
                 economyErkekBiletler = biletBilgiConcrete.EconomyManTickets(seferId, saatID, gidisTarihi);
@@ -354,11 +355,52 @@ namespace HızlıTrenApp.UI
             lbl.Width = pb.Width;
             lbl.Height = 15;
             pb.ImageLocation = economyBosKoltuk;
+            pb.Click += EconomyClick;
             if (luggage != null)
             {
                 luggage.Width = 40;
                 luggage.Height = 30;
                 luggage.ImageLocation = economyLuggage;
+            }
+        }
+        PictureBox eskiTiklanan;
+        private void EconomyClick(object sender, EventArgs e)
+        {
+            bool temp = false;
+            PictureBox tiklanan = sender as PictureBox;
+            GroupBox grp = (GroupBox)tiklanan.Parent;
+            if (!rdbErkek.Checked == !rdbKadin.Checked)
+            {
+                MessageBox.Show("Lütfen 'Yolcu Bilgileri' kutucuğundan bir cinsiyet seçiniz");
+                return;
+            }
+            if (tiklanan.Name.StartsWith("E") && tiklanan.ImageLocation != null && tiklanan.ImageLocation == economyErkekKoltuk | tiklanan.ImageLocation == economyKadinKoltuk)
+            {
+                MessageBox.Show("Lütfen boş bir koltuk seçiniz");
+            }
+            else
+            {
+                foreach (Control item in grp.Controls)
+                {
+                    if (item is PictureBox)
+                    {
+                        if (item.Location.X == tiklanan.Location.X && item.Name.StartsWith("E") && item.Name != tiklanan.Name && !tiklanan.ImageLocation.Contains("available") && ((PictureBox)item).ImageLocation.Contains("woman") != rdbKadin.Checked || ((PictureBox)item).ImageLocation.Contains("_man") == rdbErkek.Checked)
+                        {
+                            MessageBox.Show("Seçilen koltuk karşı cinsin yanında olamaz. Lütfen doğru şekilde koltuk seçiniz.");
+                            return;
+                        }
+                        else if (item.Location.X == tiklanan.Location.X && item.Name != "" && tiklanan.ImageLocation.Contains("available") && item.Name != tiklanan.Name)
+                        {
+                            if (eskiTiklanan != null)
+                            {
+                                eskiTiklanan.ImageLocation = economyBosKoltuk;
+                            }
+                            tiklanan.ImageLocation = secilenKoltuk;
+                            eskiTiklanan = tiklanan;
+                            return;
+                        }
+                    }
+                }
             }
         }
 
@@ -378,6 +420,11 @@ namespace HızlıTrenApp.UI
         {
             PictureBox tiklanan = sender as PictureBox;
             MessageBox.Show(tiklanan.Name);
+        }
+
+        private void rdbKadin_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
