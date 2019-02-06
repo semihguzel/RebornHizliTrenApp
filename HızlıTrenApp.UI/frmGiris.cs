@@ -94,7 +94,7 @@ namespace HızlıTrenApp.UI
                             ToplananVerileriDoldur();
                             DateTime tiklananGidis = dtpGidisTarihi.Value;
                             DateTime tiklananDonus = dtpDonusTarihi.Value;
-                            frmSeferler frmSeferler = new frmSeferler(this, tiklananGidis, tiklananDonus);
+                            frmSeferler frmSeferler = new frmSeferler(this, tiklananGidis, tiklananDonus,(int)nmrYolcuSayisi.Value);
                             Hide();
                             frmAnaSayfa anasayfa = (frmAnaSayfa)ParentForm;
                             anasayfa.FormKontrolluGetir(frmSeferler);
@@ -105,17 +105,10 @@ namespace HızlıTrenApp.UI
                             donusTarihi = dtpDonusTarihi.Value;
                             DateTime tiklananGidis = dtpGidisTarihi.Value;
                             DateTime tiklananDonus = dtpDonusTarihi.Value;
-                            frmSeferler frmSeferler = new frmSeferler(this, tiklananGidis, tiklananDonus);
+                            frmSeferler frmSeferler = new frmSeferler(this, tiklananGidis, tiklananDonus, (int)nmrYolcuSayisi.Value);
                             Hide();
-                            GroupBox kutu = (GroupBox)this.Parent;
-                            Form anaForm = (Form)kutu.Parent.Parent;
-                            frmSeferler.Width = kutu.Width;
-                            frmSeferler.Height = kutu.Height;
-                            frmSeferler.MdiParent = anaForm;
-                            kutu.Controls.Remove(this);
-                            kutu.Controls.Add(frmSeferler);
-                            frmSeferler.Show();
-                            frmSeferler.Location = Point.Empty;
+                            frmAnaSayfa anaForm = (frmAnaSayfa)Parent.Parent.Parent;
+                            anaForm.FormKontrolluGetir(frmSeferler);
                         }
                         else
                             MessageBox.Show("Dönüş tarihi gidiş tarihinden önce veya eşit olamaz...");
@@ -149,6 +142,14 @@ namespace HızlıTrenApp.UI
         {
             dtpDonusTarihi.Enabled = false;
             ciftMi = false;
+        }
+
+        private void nmrYolcuSayisi_ValueChanged(object sender, EventArgs e)
+        {
+            if (nmrYolcuSayisi.Value > 1)
+                cmbTip.Enabled = false;
+            else if (nmrYolcuSayisi.Value == 1)
+                cmbTip.Enabled = true;
         }
     }
 }

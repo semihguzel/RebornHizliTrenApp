@@ -18,7 +18,8 @@ namespace HızlıTrenApp.UI
         frmGiris gelenForm;
         DateTime tiklananGidisTarihi;
         DateTime tiklananDonusTarihi;
-        public frmSeferler(frmGiris frm, DateTime tiklananGidis, DateTime tiklananDonus)
+        int yolcuSayisi = 0;
+        public frmSeferler(frmGiris frm, DateTime tiklananGidis, DateTime tiklananDonus,int yolcular)
         {
             InitializeComponent();
             gelenForm = frm;
@@ -28,6 +29,7 @@ namespace HızlıTrenApp.UI
             _seferlerSeferSaatleriDal = new SeferlerSeferSaatleriDal();
             tiklananGidisTarihi = tiklananGidis;
             tiklananDonusTarihi = tiklananDonus;
+            yolcuSayisi = yolcular;
         }
         private SeferlerSeferSaatleriDal _seferlerSeferSaatleriDal;
         private SeferlerDal _seferlerDal;
@@ -48,7 +50,6 @@ namespace HızlıTrenApp.UI
         bool donusVarMi;
         private void frmSeferler_Load(object sender, EventArgs e)
         {
-
             this.ControlBox = false;
             this.Text = "Seferler";
 
@@ -311,7 +312,7 @@ namespace HızlıTrenApp.UI
                 donusVarMi = _biletBilgiDal.IsDateCreated(tiklananDonusTarihi, id1, saatID);
             }
 
-            frmKoltukSecimi gelenForm2 = new frmKoltukSecimi(this, id1, tiklananSaat, gidisVarMi, donusVarMi, tiklananGidisTarihi, tiklananDonusTarihi);
+            frmKoltukSecimi gelenForm2 = new frmKoltukSecimi(this, id1, tiklananSaat, gidisVarMi, donusVarMi, tiklananGidisTarihi, tiklananDonusTarihi,yolcuSayisi);
             Hide();
             frmAnaSayfa anasayfa = (frmAnaSayfa)ParentForm;
             anasayfa.FormKontrolluGetir(gelenForm2);

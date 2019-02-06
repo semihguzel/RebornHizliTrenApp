@@ -60,6 +60,8 @@
             this.pbWc = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.lblYolcuSayac = new System.Windows.Forms.Label();
+            this.btnYolcuKaydet = new MetroFramework.Controls.MetroButton();
             this.grpYolcuBilgileri.SuspendLayout();
             this.grpKoltuklar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -72,6 +74,8 @@
             // 
             // grpYolcuBilgileri
             // 
+            this.grpYolcuBilgileri.Controls.Add(this.btnYolcuKaydet);
+            this.grpYolcuBilgileri.Controls.Add(this.lblYolcuSayac);
             this.grpYolcuBilgileri.Controls.Add(this.btnOdemeyeGec);
             this.grpYolcuBilgileri.Controls.Add(this.metroComboBox1);
             this.grpYolcuBilgileri.Controls.Add(this.dateTimePicker1);
@@ -91,22 +95,19 @@
             this.grpYolcuBilgileri.Controls.Add(this.txtAd);
             this.grpYolcuBilgileri.Controls.Add(this.metroLabel1);
             this.grpYolcuBilgileri.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.grpYolcuBilgileri.Location = new System.Drawing.Point(57, 622);
-            this.grpYolcuBilgileri.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.grpYolcuBilgileri.Location = new System.Drawing.Point(38, 404);
             this.grpYolcuBilgileri.Name = "grpYolcuBilgileri";
-            this.grpYolcuBilgileri.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grpYolcuBilgileri.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.grpYolcuBilgileri.Size = new System.Drawing.Size(1212, 275);
+            this.grpYolcuBilgileri.Size = new System.Drawing.Size(808, 179);
             this.grpYolcuBilgileri.TabIndex = 2;
             this.grpYolcuBilgileri.TabStop = false;
             this.grpYolcuBilgileri.Text = "Yolcu Bilgileri";
             // 
             // btnOdemeyeGec
             // 
-            this.btnOdemeyeGec.Location = new System.Drawing.Point(822, 211);
-            this.btnOdemeyeGec.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnOdemeyeGec.Location = new System.Drawing.Point(682, 133);
             this.btnOdemeyeGec.Name = "btnOdemeyeGec";
-            this.btnOdemeyeGec.Size = new System.Drawing.Size(164, 48);
+            this.btnOdemeyeGec.Size = new System.Drawing.Size(109, 31);
             this.btnOdemeyeGec.TabIndex = 8;
             this.btnOdemeyeGec.Text = "Ödemeye Geç";
             // 
@@ -114,28 +115,25 @@
             // 
             this.metroComboBox1.FormattingEnabled = true;
             this.metroComboBox1.ItemHeight = 23;
-            this.metroComboBox1.Location = new System.Drawing.Point(525, 220);
-            this.metroComboBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.metroComboBox1.Location = new System.Drawing.Point(350, 143);
             this.metroComboBox1.Name = "metroComboBox1";
-            this.metroComboBox1.Size = new System.Drawing.Size(211, 29);
+            this.metroComboBox1.Size = new System.Drawing.Size(142, 29);
             this.metroComboBox1.TabIndex = 7;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(525, 26);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dateTimePicker1.Location = new System.Drawing.Point(350, 17);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(298, 30);
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
             this.dateTimePicker1.TabIndex = 4;
             // 
             // rdbKadin
             // 
             this.rdbKadin.AutoSize = true;
             this.rdbKadin.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rdbKadin.Location = new System.Drawing.Point(214, 220);
-            this.rdbKadin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.rdbKadin.Location = new System.Drawing.Point(143, 143);
             this.rdbKadin.Name = "rdbKadin";
-            this.rdbKadin.Size = new System.Drawing.Size(88, 29);
+            this.rdbKadin.Size = new System.Drawing.Size(62, 21);
             this.rdbKadin.TabIndex = 2;
             this.rdbKadin.TabStop = true;
             this.rdbKadin.Text = "Kadın";
@@ -146,10 +144,9 @@
             // 
             this.rdbErkek.AutoSize = true;
             this.rdbErkek.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rdbErkek.Location = new System.Drawing.Point(112, 223);
-            this.rdbErkek.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.rdbErkek.Location = new System.Drawing.Point(75, 145);
             this.rdbErkek.Name = "rdbErkek";
-            this.rdbErkek.Size = new System.Drawing.Size(87, 29);
+            this.rdbErkek.Size = new System.Drawing.Size(62, 21);
             this.rdbErkek.TabIndex = 3;
             this.rdbErkek.TabStop = true;
             this.rdbErkek.Text = "Erkek";
@@ -158,33 +155,29 @@
             // 
             // txtTelefon
             // 
-            this.txtTelefon.Location = new System.Drawing.Point(525, 158);
-            this.txtTelefon.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTelefon.Location = new System.Drawing.Point(350, 103);
             this.txtTelefon.Name = "txtTelefon";
-            this.txtTelefon.Size = new System.Drawing.Size(213, 35);
+            this.txtTelefon.Size = new System.Drawing.Size(142, 23);
             this.txtTelefon.TabIndex = 6;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(525, 94);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtEmail.Location = new System.Drawing.Point(350, 61);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(213, 35);
+            this.txtEmail.Size = new System.Drawing.Size(142, 23);
             this.txtEmail.TabIndex = 5;
             // 
             // txtTcNo
             // 
-            this.txtTcNo.Location = new System.Drawing.Point(102, 158);
-            this.txtTcNo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTcNo.Location = new System.Drawing.Point(68, 103);
             this.txtTcNo.Name = "txtTcNo";
-            this.txtTcNo.Size = new System.Drawing.Size(213, 35);
+            this.txtTcNo.Size = new System.Drawing.Size(142, 23);
             this.txtTcNo.TabIndex = 2;
             // 
             // metroLabel7
             // 
             this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(416, 226);
-            this.metroLabel7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel7.Location = new System.Drawing.Point(277, 147);
             this.metroLabel7.Name = "metroLabel7";
             this.metroLabel7.Size = new System.Drawing.Size(67, 19);
             this.metroLabel7.TabIndex = 0;
@@ -193,8 +186,7 @@
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(434, 158);
-            this.metroLabel6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel6.Location = new System.Drawing.Point(289, 103);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(50, 19);
             this.metroLabel6.TabIndex = 0;
@@ -203,8 +195,7 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(384, 34);
-            this.metroLabel4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel4.Location = new System.Drawing.Point(256, 22);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(87, 19);
             this.metroLabel4.TabIndex = 0;
@@ -213,8 +204,7 @@
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(447, 100);
-            this.metroLabel5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel5.Location = new System.Drawing.Point(298, 65);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(41, 19);
             this.metroLabel5.TabIndex = 0;
@@ -223,8 +213,7 @@
             // lbl
             // 
             this.lbl.AutoSize = true;
-            this.lbl.Location = new System.Drawing.Point(12, 223);
-            this.lbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl.Location = new System.Drawing.Point(8, 145);
             this.lbl.Name = "lbl";
             this.lbl.Size = new System.Drawing.Size(53, 19);
             this.lbl.TabIndex = 0;
@@ -233,8 +222,7 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(24, 165);
-            this.metroLabel3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel3.Location = new System.Drawing.Point(16, 107);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(46, 19);
             this.metroLabel3.TabIndex = 0;
@@ -242,17 +230,15 @@
             // 
             // txtSoyad
             // 
-            this.txtSoyad.Location = new System.Drawing.Point(102, 94);
-            this.txtSoyad.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtSoyad.Location = new System.Drawing.Point(68, 61);
             this.txtSoyad.Name = "txtSoyad";
-            this.txtSoyad.Size = new System.Drawing.Size(213, 35);
+            this.txtSoyad.Size = new System.Drawing.Size(142, 23);
             this.txtSoyad.TabIndex = 1;
             // 
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(24, 100);
-            this.metroLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel2.Location = new System.Drawing.Point(16, 65);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(45, 19);
             this.metroLabel2.TabIndex = 0;
@@ -260,17 +246,15 @@
             // 
             // txtAd
             // 
-            this.txtAd.Location = new System.Drawing.Point(102, 26);
-            this.txtAd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtAd.Location = new System.Drawing.Point(68, 17);
             this.txtAd.Name = "txtAd";
-            this.txtAd.Size = new System.Drawing.Size(213, 35);
+            this.txtAd.Size = new System.Drawing.Size(142, 23);
             this.txtAd.TabIndex = 0;
             // 
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(52, 34);
-            this.metroLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel1.Location = new System.Drawing.Point(35, 22);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(26, 19);
             this.metroLabel1.TabIndex = 0;
@@ -291,50 +275,44 @@
             this.grpKoltuklar.Controls.Add(this.label1);
             this.grpKoltuklar.Controls.Add(this.label2);
             this.grpKoltuklar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.grpKoltuklar.Location = new System.Drawing.Point(57, 77);
+            this.grpKoltuklar.Location = new System.Drawing.Point(38, 50);
+            this.grpKoltuklar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.grpKoltuklar.Name = "grpKoltuklar";
-            this.grpKoltuklar.Size = new System.Drawing.Size(1212, 537);
+            this.grpKoltuklar.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpKoltuklar.Size = new System.Drawing.Size(808, 349);
             this.grpKoltuklar.TabIndex = 3;
             this.grpKoltuklar.TabStop = false;
             this.grpKoltuklar.Text = "Koltuk Seçimi";
             // 
             // grpEconomy1
             // 
-            this.grpEconomy1.Location = new System.Drawing.Point(651, 32);
-            this.grpEconomy1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.grpEconomy1.Location = new System.Drawing.Point(434, 21);
             this.grpEconomy1.Name = "grpEconomy1";
-            this.grpEconomy1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.grpEconomy1.Size = new System.Drawing.Size(536, 222);
+            this.grpEconomy1.Size = new System.Drawing.Size(357, 144);
             this.grpEconomy1.TabIndex = 4;
             this.grpEconomy1.TabStop = false;
             // 
             // grpEconomy2
             // 
-            this.grpEconomy2.Location = new System.Drawing.Point(651, 298);
-            this.grpEconomy2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.grpEconomy2.Location = new System.Drawing.Point(434, 194);
             this.grpEconomy2.Name = "grpEconomy2";
-            this.grpEconomy2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.grpEconomy2.Size = new System.Drawing.Size(536, 222);
+            this.grpEconomy2.Size = new System.Drawing.Size(357, 144);
             this.grpEconomy2.TabIndex = 4;
             this.grpEconomy2.TabStop = false;
             // 
             // grpBusiness2
             // 
-            this.grpBusiness2.Location = new System.Drawing.Point(24, 298);
-            this.grpBusiness2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.grpBusiness2.Location = new System.Drawing.Point(16, 194);
             this.grpBusiness2.Name = "grpBusiness2";
-            this.grpBusiness2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.grpBusiness2.Size = new System.Drawing.Size(404, 222);
+            this.grpBusiness2.Size = new System.Drawing.Size(269, 144);
             this.grpBusiness2.TabIndex = 4;
             this.grpBusiness2.TabStop = false;
             // 
             // grpBusiness1
             // 
-            this.grpBusiness1.Location = new System.Drawing.Point(24, 32);
-            this.grpBusiness1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.grpBusiness1.Location = new System.Drawing.Point(16, 21);
             this.grpBusiness1.Name = "grpBusiness1";
-            this.grpBusiness1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.grpBusiness1.Size = new System.Drawing.Size(404, 222);
+            this.grpBusiness1.Size = new System.Drawing.Size(269, 144);
             this.grpBusiness1.TabIndex = 4;
             this.grpBusiness1.TabStop = false;
             // 
@@ -342,9 +320,10 @@
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Image = global::HızlıTrenApp.UI.Properties.Resources.kapi;
-            this.pictureBox4.Location = new System.Drawing.Point(504, 314);
+            this.pictureBox4.Location = new System.Drawing.Point(336, 204);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(72, 94);
+            this.pictureBox4.Size = new System.Drawing.Size(48, 61);
             this.pictureBox4.TabIndex = 2;
             this.pictureBox4.TabStop = false;
             // 
@@ -352,9 +331,10 @@
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox6.Image = global::HızlıTrenApp.UI.Properties.Resources.kapi;
-            this.pictureBox6.Location = new System.Drawing.Point(504, 160);
+            this.pictureBox6.Location = new System.Drawing.Point(336, 104);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(72, 94);
+            this.pictureBox6.Size = new System.Drawing.Size(48, 61);
             this.pictureBox6.TabIndex = 2;
             this.pictureBox6.TabStop = false;
             // 
@@ -362,9 +342,10 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = global::HızlıTrenApp.UI.Properties.Resources.canteen;
-            this.pictureBox2.Location = new System.Drawing.Point(440, 48);
+            this.pictureBox2.Location = new System.Drawing.Point(293, 31);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(69, 106);
+            this.pictureBox2.Size = new System.Drawing.Size(46, 69);
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
             // 
@@ -372,9 +353,10 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::HızlıTrenApp.UI.Properties.Resources.canteen;
-            this.pictureBox1.Location = new System.Drawing.Point(574, 48);
+            this.pictureBox1.Location = new System.Drawing.Point(383, 31);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(69, 106);
+            this.pictureBox1.Size = new System.Drawing.Size(46, 69);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
@@ -382,9 +364,10 @@
             // 
             this.pbWc2.BackColor = System.Drawing.Color.Transparent;
             this.pbWc2.Image = global::HızlıTrenApp.UI.Properties.Resources.wc;
-            this.pbWc2.Location = new System.Drawing.Point(574, 414);
+            this.pbWc2.Location = new System.Drawing.Point(383, 269);
+            this.pbWc2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pbWc2.Name = "pbWc2";
-            this.pbWc2.Size = new System.Drawing.Size(69, 106);
+            this.pbWc2.Size = new System.Drawing.Size(46, 69);
             this.pbWc2.TabIndex = 2;
             this.pbWc2.TabStop = false;
             // 
@@ -392,9 +375,10 @@
             // 
             this.pbWc.BackColor = System.Drawing.Color.Transparent;
             this.pbWc.Image = global::HızlıTrenApp.UI.Properties.Resources.wc;
-            this.pbWc.Location = new System.Drawing.Point(434, 414);
+            this.pbWc.Location = new System.Drawing.Point(289, 269);
+            this.pbWc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pbWc.Name = "pbWc";
-            this.pbWc.Size = new System.Drawing.Size(69, 106);
+            this.pbWc.Size = new System.Drawing.Size(46, 69);
             this.pbWc.TabIndex = 2;
             this.pbWc.TabStop = false;
             // 
@@ -402,9 +386,10 @@
             // 
             this.label1.BackColor = System.Drawing.Color.Linen;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(651, 258);
+            this.label1.Location = new System.Drawing.Point(434, 168);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(536, 35);
+            this.label1.Size = new System.Drawing.Size(357, 23);
             this.label1.TabIndex = 1;
             this.label1.Text = "ECONOMY";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -413,26 +398,41 @@
             // 
             this.label2.BackColor = System.Drawing.Color.Linen;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(24, 258);
+            this.label2.Location = new System.Drawing.Point(16, 168);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(404, 35);
+            this.label2.Size = new System.Drawing.Size(269, 23);
             this.label2.TabIndex = 1;
             this.label2.Text = "BUSINESS";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lblYolcuSayac
+            // 
+            this.lblYolcuSayac.AutoSize = true;
+            this.lblYolcuSayac.Location = new System.Drawing.Point(591, 24);
+            this.lblYolcuSayac.Name = "lblYolcuSayac";
+            this.lblYolcuSayac.Size = new System.Drawing.Size(0, 17);
+            this.lblYolcuSayac.TabIndex = 9;
+            // 
+            // btnYolcuKaydet
+            // 
+            this.btnYolcuKaydet.Location = new System.Drawing.Point(550, 133);
+            this.btnYolcuKaydet.Name = "btnYolcuKaydet";
+            this.btnYolcuKaydet.Size = new System.Drawing.Size(105, 31);
+            this.btnYolcuKaydet.TabIndex = 10;
+            this.btnYolcuKaydet.Text = "Yolcu Kaydet";
+            // 
             // frmKoltukSecimi
             // 
             this.AcceptButton = this.btnOdemeyeGec;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1320, 920);
+            this.ClientSize = new System.Drawing.Size(880, 598);
             this.Controls.Add(this.grpKoltuklar);
             this.Controls.Add(this.grpYolcuBilgileri);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmKoltukSecimi";
-            this.Padding = new System.Windows.Forms.Padding(30, 92, 30, 31);
             this.ShadowType = MetroFramework.Forms.MetroForm.MetroFormShadowType.None;
             this.Style = MetroFramework.MetroColorStyle.Red;
             this.Text = "Koltuk Seçimi";
@@ -484,5 +484,7 @@
         private System.Windows.Forms.GroupBox grpEconomy2;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Label lblYolcuSayac;
+        private MetroFramework.Controls.MetroButton btnYolcuKaydet;
     }
 }

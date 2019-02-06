@@ -21,7 +21,8 @@ namespace HızlıTrenApp.UI
         bool donusVarMi;
         DateTime gidisTarihi;
         DateTime donusTarihi;
-        public frmKoltukSecimi(Form form, int id, string tiklananSaat, bool gidis, bool donus, DateTime gidisT, DateTime donusT)
+        int yolcuSayisi = 0;
+        public frmKoltukSecimi(Form form, int id, string tiklananSaat, bool gidis, bool donus, DateTime gidisT, DateTime donusT,int yolcular)
         {
             InitializeComponent();
             gelenForm = form;
@@ -31,6 +32,7 @@ namespace HızlıTrenApp.UI
             donusVarMi = donus;
             gidisTarihi = gidisT;
             donusTarihi = donusT;
+            yolcuSayisi = yolcular;
         }
         List<BiletBilgi> businessKadinBiletler;
         List<BiletBilgi> businessErkekBiletler;
@@ -47,6 +49,10 @@ namespace HızlıTrenApp.UI
         {
             this.ControlBox = false;
             this.Text = "Koltuk Seçimi";
+            if(yolcuSayisi > 1)
+                lblYolcuSayac.Enabled = btnYolcuKaydet.Enabled =  = true;
+            else
+                lblYolcuSayac.Enabled = btnYolcuKaydet.Enabled = false;
 
             SeferSaatleriDal ssd = new SeferSaatleriDal();
             int saatID = ssd.GetIdByDate(saat);
