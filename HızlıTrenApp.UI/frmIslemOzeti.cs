@@ -16,13 +16,13 @@ namespace HızlıTrenApp.UI
 	public partial class frmIslemOzeti : MetroFramework.Forms.MetroForm
 	{
 
-		private PrintDocument printDocument1 = new PrintDocument();
+		//private PrintDocument printDocument1 = new PrintDocument();
 		List<object> ozetListesi;
 		ListViewItem lvi;
 		List<ListViewItem> liste;
 		public frmIslemOzeti(ListViewItem listView, List<ListViewItem> list)
 		{
-			printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
+			//printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
 			InitializeComponent();
 			lvi = listView;
 			liste = list;
@@ -46,14 +46,14 @@ namespace HızlıTrenApp.UI
 		}
 		Bitmap memoryImage;
 
-		private void CaptureScreen()
-		{
-			Graphics myGraphics = this.CreateGraphics();
-			Size s = this.Size;
-			memoryImage = new Bitmap(s.Width, s.Height, myGraphics);
-			Graphics memoryGraphics = Graphics.FromImage(memoryImage);
-			memoryGraphics.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, s);
-		}
+		//private void CaptureScreen()
+		//{
+		//	Graphics myGraphics = this.CreateGraphics();
+		//	Size s = this.Size;
+		//	memoryImage = new Bitmap(s.Width, s.Height, myGraphics);
+		//	Graphics memoryGraphics = Graphics.FromImage(memoryImage);
+		//	memoryGraphics.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, s);
+		//}
 
 		private void printDocument1_PrintPage(System.Object sender, System.Drawing.Printing.PrintPageEventArgs e)
 		{
@@ -62,8 +62,8 @@ namespace HızlıTrenApp.UI
 
 		private void btnYazdir_Click(object sender, EventArgs e)
 		{
-			CaptureScreen();
-			printDocument1.Print();
+			//CaptureScreen();
+			//printDocument1.Print();
 		}
 
 		private void btnIndir_Click(object sender, EventArgs e)

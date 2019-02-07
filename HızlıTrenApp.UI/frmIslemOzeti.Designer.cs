@@ -38,7 +38,6 @@
 			this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.btnIndir = new MetroFramework.Controls.MetroButton();
-			this.btnYazdir = new MetroFramework.Controls.MetroButton();
 			this.grpYolcuBilgileri.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -117,30 +116,19 @@
 			// 
 			// btnIndir
 			// 
-			this.btnIndir.Location = new System.Drawing.Point(517, 94);
+			this.btnIndir.Location = new System.Drawing.Point(670, 87);
 			this.btnIndir.Name = "btnIndir";
 			this.btnIndir.Size = new System.Drawing.Size(127, 37);
 			this.btnIndir.TabIndex = 4;
-			this.btnIndir.Text = "Yazdır";
+			this.btnIndir.Text = "Yazdır / İndir";
 			this.btnIndir.Theme = MetroFramework.MetroThemeStyle.Dark;
 			this.btnIndir.Click += new System.EventHandler(this.btnIndir_Click);
-			// 
-			// btnYazdir
-			// 
-			this.btnYazdir.Location = new System.Drawing.Point(650, 94);
-			this.btnYazdir.Name = "btnYazdir";
-			this.btnYazdir.Size = new System.Drawing.Size(127, 37);
-			this.btnYazdir.TabIndex = 4;
-			this.btnYazdir.Text = "İndir";
-			this.btnYazdir.Theme = MetroFramework.MetroThemeStyle.Dark;
-			this.btnYazdir.Click += new System.EventHandler(this.btnYazdir_Click);
 			// 
 			// frmIslemOzeti
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(820, 382);
-			this.Controls.Add(this.btnYazdir);
 			this.Controls.Add(this.btnIndir);
 			this.Controls.Add(this.grpYolcuBilgileri);
 			this.MaximizeBox = false;
@@ -160,7 +148,6 @@
 
 		private System.Windows.Forms.GroupBox grpYolcuBilgileri;
 		private MetroFramework.Controls.MetroButton btnIndir;
-		private MetroFramework.Controls.MetroButton btnYazdir;
         private System.Windows.Forms.ListView lstIslemOzeti;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;

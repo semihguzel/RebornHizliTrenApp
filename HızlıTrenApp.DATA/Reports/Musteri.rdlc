@@ -7,60 +7,44 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>02acd807-a3f6-4e20-8cc2-938256ce3698</rd:DataSourceID>
+      <rd:DataSourceID>b18c89b1-ca60-4e2d-a46d-4181f6b118cc</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="BiletBilgiDataSet">
+    <DataSet Name="MusteriDataSet">
       <Query>
         <DataSourceName>HizliTrenDbDataSet</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="BiletBilgiID">
-          <DataField>BiletBilgiID</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="AlimTarihi">
-          <DataField>AlimTarihi</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="BiletTipi">
-          <DataField>BiletTipi</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="KoltukNo">
-          <DataField>KoltukNo</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="BiletFiyati">
-          <DataField>BiletFiyati</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="SeferTarihi">
-          <DataField>SeferTarihi</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="SeferSaati">
-          <DataField>SeferSaati</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="MusteriID">
           <DataField>MusteriID</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="SeferSeferSaatID">
-          <DataField>SeferSeferSaatID</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
+        <Field Name="Ad">
+          <DataField>Ad</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Soyad">
+          <DataField>Soyad</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Cinsiyet">
+          <DataField>Cinsiyet</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="DogumTarihi">
+          <DataField>DogumTarihi</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>HizliTrenDbDataSet</rd:DataSetName>
         <rd:SchemaPath>C:\Users\Jirainumi\Source\Repos\RebornHizliTrenApp\HızlıTrenApp.DATA\DataSet\HizliTrenDbDataSet.xsd</rd:SchemaPath>
-        <rd:TableName>BiletBilgi</rd:TableName>
+        <rd:TableName>Musteri</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>BiletBilgiTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>MusteriTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -74,38 +58,37 @@
                 <ChartMember>
                   <Group Name="Chart1_CategoryGroup">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!BiletTipi.Value</GroupExpression>
+                      <GroupExpression>=Fields!Cinsiyet.Value</GroupExpression>
                     </GroupExpressions>
                   </Group>
                   <SortExpressions>
                     <SortExpression>
-                      <Value>=Fields!BiletTipi.Value</Value>
+                      <Value>=Fields!Cinsiyet.Value</Value>
                     </SortExpression>
                   </SortExpressions>
-                  <Label>=Fields!BiletTipi.Value</Label>
+                  <Label>=Fields!Cinsiyet.Value</Label>
                 </ChartMember>
               </ChartMembers>
             </ChartCategoryHierarchy>
             <ChartSeriesHierarchy>
               <ChartMembers>
                 <ChartMember>
-                  <Label>Bilet Tipi</Label>
+                  <Label>Cinsiyet</Label>
                 </ChartMember>
               </ChartMembers>
             </ChartSeriesHierarchy>
             <ChartData>
               <ChartSeriesCollection>
-                <ChartSeries Name="BiletTipi">
+                <ChartSeries Name="Cinsiyet">
                   <ChartDataPoints>
                     <ChartDataPoint>
                       <ChartDataPointValues>
-                        <Y>=Count(Fields!BiletTipi.Value)</Y>
+                        <Y>=Count(Fields!Cinsiyet.Value)</Y>
                       </ChartDataPointValues>
                       <ChartDataLabel>
                         <Style>
                           <FontFamily>Copperplate Gothic Bold</FontFamily>
                           <FontSize>8pt</FontSize>
-                          <Format>E2</Format>
                         </Style>
                         <Label>#PERCENT</Label>
                         <Visible>true</Visible>
@@ -407,7 +390,7 @@
                 <Position>TopLeft</Position>
               </ChartTitle>
             </ChartTitles>
-            <Palette>Pacific</Palette>
+            <Palette>Fire</Palette>
             <ChartBorderSkin>
               <Style>
                 <BackgroundColor>Gray</BackgroundColor>
@@ -424,9 +407,12 @@
                 <VerticalAlign>Top</VerticalAlign>
               </Style>
             </ChartNoDataMessage>
-            <DataSetName>BiletBilgiDataSet</DataSetName>
-            <Height>5.76729cm</Height>
-            <Width>16.51912cm</Width>
+            <DataSetName>MusteriDataSet</DataSetName>
+            <PageBreak>
+              <BreakLocation>Start</BreakLocation>
+            </PageBreak>
+            <Height>5.42333cm</Height>
+            <Width>16.41646cm</Width>
             <Style>
               <Border>
                 <Color>LightGrey</Color>
@@ -437,10 +423,10 @@
             </Style>
           </Chart>
         </ReportItems>
-        <Height>2.34226in</Height>
+        <Height>2.19642in</Height>
         <Style />
       </Body>
-      <Width>6.50359in</Width>
+      <Width>6.46317in</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
@@ -460,5 +446,5 @@
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>1a7a1829-e16d-446c-9494-c99ddfdf6547</rd:ReportID>
+  <rd:ReportID>40d5eb7e-9396-4ad4-95d7-930692ebd3d9</rd:ReportID>
 </Report>
