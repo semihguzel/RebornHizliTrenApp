@@ -119,10 +119,14 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnSeferleriListele.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 320</value>
+    <value>32, 492</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnSeferleriListele.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
   </data>
   <data name="btnSeferleriListele.Size" type="System.Drawing.Size, System.Drawing">
-    <value>292, 35</value>
+    <value>438, 54</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnSeferleriListele.TabIndex" type="System.Int32, mscorlib">
@@ -144,10 +148,13 @@
     <value>1</value>
   </data>
   <data name="nmrYolcuSayisi.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 276</value>
+    <value>156, 425</value>
+  </data>
+  <data name="nmrYolcuSayisi.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
   </data>
   <data name="nmrYolcuSayisi.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 21</value>
+    <value>58, 28</value>
   </data>
   <data name="nmrYolcuSayisi.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -165,10 +172,13 @@
     <value>2</value>
   </data>
   <data name="dtpDonusTarihi.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 233</value>
+    <value>34, 358</value>
+  </data>
+  <data name="dtpDonusTarihi.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
   </data>
   <data name="dtpDonusTarihi.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 21</value>
+    <value>298, 28</value>
   </data>
   <data name="dtpDonusTarihi.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -186,10 +196,13 @@
     <value>3</value>
   </data>
   <data name="dtpGidisTarihi.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 173</value>
+    <value>33, 266</value>
+  </data>
+  <data name="dtpGidisTarihi.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
   </data>
   <data name="dtpGidisTarihi.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 21</value>
+    <value>298, 28</value>
   </data>
   <data name="dtpGidisTarihi.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -209,12 +222,14 @@
   <data name="rdbGidisDonus.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="rdbGidisDonus.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="rdbGidisDonus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>107, 34</value>
+    <value>160, 52</value>
+  </data>
+  <data name="rdbGidisDonus.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
   </data>
   <data name="rdbGidisDonus.Size" type="System.Drawing.Size, System.Drawing">
     <value>86, 15</value>
@@ -244,10 +259,13 @@
     <value>NoControl</value>
   </data>
   <data name="rdbTekyon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 34</value>
+    <value>33, 52</value>
+  </data>
+  <data name="rdbTekyon.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
   </data>
   <data name="rdbTekyon.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 15</value>
+    <value>64, 15</value>
   </data>
   <data name="rdbTekyon.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -271,7 +289,10 @@
     <value>True</value>
   </data>
   <data name="metroLabel6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 278</value>
+    <value>34, 428</value>
+  </data>
+  <data name="metroLabel6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
   </data>
   <data name="metroLabel6.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 19</value>
@@ -298,7 +319,10 @@
     <value>True</value>
   </data>
   <data name="metroLabel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 211</value>
+    <value>34, 325</value>
+  </data>
+  <data name="metroLabel5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
   </data>
   <data name="metroLabel5.Size" type="System.Drawing.Size, System.Drawing">
     <value>79, 19</value>
@@ -325,7 +349,10 @@
     <value>True</value>
   </data>
   <data name="metroLabel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 151</value>
+    <value>33, 232</value>
+  </data>
+  <data name="metroLabel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
   </data>
   <data name="metroLabel4.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 19</value>
@@ -352,10 +379,13 @@
     <value>23</value>
   </data>
   <data name="cmbNereye.Location" type="System.Drawing.Point, System.Drawing">
-    <value>182, 94</value>
+    <value>273, 145</value>
+  </data>
+  <data name="cmbNereye.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
   </data>
   <data name="cmbNereye.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 29</value>
+    <value>180, 29</value>
   </data>
   <data name="cmbNereye.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -376,7 +406,10 @@
     <value>True</value>
   </data>
   <data name="metroLabel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>182, 72</value>
+    <value>273, 111</value>
+  </data>
+  <data name="metroLabel3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
   </data>
   <data name="metroLabel3.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 19</value>
@@ -403,10 +436,13 @@
     <value>23</value>
   </data>
   <data name="cmbTip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>182, 268</value>
+    <value>273, 412</value>
+  </data>
+  <data name="cmbTip.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
   </data>
   <data name="cmbTip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 29</value>
+    <value>180, 29</value>
   </data>
   <data name="cmbTip.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -427,10 +463,13 @@
     <value>23</value>
   </data>
   <data name="cmbNereden.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 94</value>
+    <value>33, 145</value>
+  </data>
+  <data name="cmbNereden.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
   </data>
   <data name="cmbNereden.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 29</value>
+    <value>180, 29</value>
   </data>
   <data name="cmbNereden.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -451,7 +490,10 @@
     <value>True</value>
   </data>
   <data name="metroLabel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 72</value>
+    <value>33, 111</value>
+  </data>
+  <data name="metroLabel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
   </data>
   <data name="metroLabel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 19</value>
@@ -478,13 +520,10 @@
     <value>Left</value>
   </data>
   <data name="metroLabel7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 298</value>
-  </data>
-  <data name="metroLabel7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
+    <value>34, 458</value>
   </data>
   <data name="metroLabel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>291, 19</value>
+    <value>436, 29</value>
   </data>
   <data name="metroLabel7.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -511,10 +550,16 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="grpBilet.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 65</value>
+    <value>20, 100</value>
+  </data>
+  <data name="grpBilet.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="grpBilet.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
   </data>
   <data name="grpBilet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>338, 368</value>
+    <value>507, 566</value>
   </data>
   <data name="grpBilet.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -538,7 +583,10 @@
     <value>True</value>
   </data>
   <data name="metroLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>475, 50</value>
+    <value>712, 77</value>
+  </data>
+  <data name="metroLabel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
   </data>
   <data name="metroLabel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>263, 25</value>
@@ -565,10 +613,13 @@
     <value>NoControl</value>
   </data>
   <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>357, 87</value>
+    <value>536, 134</value>
+  </data>
+  <data name="pictureBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
   </data>
   <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>381, 295</value>
+    <value>572, 454</value>
   </data>
   <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -589,13 +640,16 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+    <value>9, 20</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>751, 441</value>
+    <value>1126, 678</value>
   </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>30, 92, 30, 31</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Hızlı Tren Bileti</value>

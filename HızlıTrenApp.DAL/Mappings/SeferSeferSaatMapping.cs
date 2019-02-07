@@ -17,7 +17,6 @@ namespace HızlıTrenApp.DAL
             HasRequired(x => x.SaatinSeferi).WithMany(x => x.SeferinSaatleri).HasForeignKey(x => x.SeferID);
             HasRequired(x => x.SeferinSaati).WithMany(x => x.SaatinSeferleri).HasForeignKey(x => x.SeferSaatID);
 
-            ToTable("SeferlerSeferSaatleri");
         }
     }
 }
