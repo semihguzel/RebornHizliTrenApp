@@ -19,7 +19,6 @@ namespace HızlıTrenApp.DAL
             Property(x => x.SeferTarihi).HasColumnType("date");
             Property(x => x.SeferSaati).HasColumnType("nvarchar").HasMaxLength(5);
 
-            ToTable("BiletBilgileri");
             
             HasRequired(x => x.MusterininBileti).WithMany(x => x.BiletlerinMusterisi).HasForeignKey(x => x.MusteriID);
             HasRequired(x => x.SeferinBileti).WithMany(x => x.BiletlerinSeferi).HasForeignKey(x => x.SeferSeferSaatID);

@@ -29,44 +29,7 @@ namespace HızlıTrenApp.DAL.Repository.Concrete
         {
             using (Context db=new Context())
             {
-                return db.Seferler.FirstOrDefault(x => x.SeferYonu.StartsWith(nrdn) && x.SeferYonu.EndsWith(nry));
-            }
-        }
-
-        public void Add(Sefer sefer)
-        {
-            using (Context db=new Context())
-            {
-                db.Seferler.Add(sefer);
-                db.SaveChanges();
-            }
-        }
-
-        public void Delete(Sefer sefer)
-        {
-            using (Context db=new Context())
-            {
-                var entry = db.Entry(sefer);
-                entry.State = EntityState.Deleted;
-                db.SaveChanges();
-            }
-        }
-
-        public void Update(Sefer sefer)
-        {
-            using (Context db=new Context())
-            {
-                var updatedEntity = db.Entry(sefer);
-                updatedEntity.State = EntityState.Modified;
-                db.SaveChanges();
-            }
-        }
-
-        public List<Sefer> GetSeferByContains(string sefer)
-        {
-            using (Context db=new Context())
-            {
-                return db.Seferler.Where(x => x.SeferYonu.Contains(sefer)).ToList();
+                return db.Sefer.FirstOrDefault(x => x.SeferYonu.StartsWith(nrdn) && x.SeferYonu.EndsWith(nry));
             }
         }
 
@@ -74,7 +37,7 @@ namespace HızlıTrenApp.DAL.Repository.Concrete
         {
             using (Context db=new Context())
             {
-                return db.Seferler.Where(x => x.SeferYonu.StartsWith(nrdn)).ToList();
+                return db.Sefer.Where(x => x.SeferYonu.StartsWith(nrdn)).ToList();
             }
         }
 
@@ -82,7 +45,7 @@ namespace HızlıTrenApp.DAL.Repository.Concrete
         {
             using (Context db = new Context())
             {
-                return db.Seferler.Where(x => x.SeferYonu.EndsWith(nry)).ToList();
+                return db.Sefer.Where(x => x.SeferYonu.EndsWith(nry)).ToList();
             }
         }
     }
