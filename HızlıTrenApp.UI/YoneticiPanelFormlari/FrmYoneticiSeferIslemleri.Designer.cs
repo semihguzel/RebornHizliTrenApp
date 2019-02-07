@@ -183,10 +183,12 @@
             this.btnListele.Text = "Listele";
             this.btnListele.Click += new System.EventHandler(this.btnListele_Click);
             // 
-            // frmYoneticiSeferIslemleri
+            // FrmYoneticiSeferIslemleri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(690, 278);
             this.Controls.Add(this.btnListele);
             this.Controls.Add(this.btnSeferAra);
@@ -204,7 +206,8 @@
             this.Controls.Add(this.btnSil);
             this.Controls.Add(this.btnGuncelle);
             this.Controls.Add(this.btnEkle);
-            this.Name = "frmYoneticiSeferIslemleri";
+            this.Name = "FrmYoneticiSeferIslemleri";
+            this.ShadowType = MetroFramework.Forms.MetroForm.MetroFormShadowType.None;
             this.Style = MetroFramework.MetroColorStyle.Red;
             this.Text = "Sefer İşlemleri";
             this.Load += new System.EventHandler(this.frmYoneticiSeferIslemleri_Load);

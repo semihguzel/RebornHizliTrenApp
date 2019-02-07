@@ -28,38 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.metroButton4 = new MetroFramework.Controls.MetroButton();
-            this.metroButton3 = new MetroFramework.Controls.MetroButton();
-            this.metroButton2 = new MetroFramework.Controls.MetroButton();
+            this.btnMusteriIslemleri = new MetroFramework.Controls.MetroButton();
+            this.btnCalisan = new MetroFramework.Controls.MetroButton();
             this.btnSeferIslemleri = new MetroFramework.Controls.MetroButton();
             this.label1 = new System.Windows.Forms.Label();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.SuspendLayout();
             // 
-            // metroButton4
+            // btnMusteriIslemleri
             // 
-            this.metroButton4.Location = new System.Drawing.Point(647, 29);
-            this.metroButton4.Name = "metroButton4";
-            this.metroButton4.Size = new System.Drawing.Size(125, 28);
-            this.metroButton4.TabIndex = 7;
-            this.metroButton4.Text = "Müşteri işlemleri";
+            this.btnMusteriIslemleri.Location = new System.Drawing.Point(516, 29);
+            this.btnMusteriIslemleri.Name = "btnMusteriIslemleri";
+            this.btnMusteriIslemleri.Size = new System.Drawing.Size(256, 28);
+            this.btnMusteriIslemleri.TabIndex = 7;
+            this.btnMusteriIslemleri.Text = "Müşteri işlemleri";
             // 
-            // metroButton3
+            // btnCalisan
             // 
-            this.metroButton3.Location = new System.Drawing.Point(516, 29);
-            this.metroButton3.Name = "metroButton3";
-            this.metroButton3.Size = new System.Drawing.Size(125, 28);
-            this.metroButton3.TabIndex = 6;
-            this.metroButton3.Text = "Bilet İşlemleri";
-            // 
-            // metroButton2
-            // 
-            this.metroButton2.Location = new System.Drawing.Point(385, 29);
-            this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(125, 28);
-            this.metroButton2.TabIndex = 5;
-            this.metroButton2.Text = "Çalışan İşlemleri";
-            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
+            this.btnCalisan.Location = new System.Drawing.Point(385, 29);
+            this.btnCalisan.Name = "btnCalisan";
+            this.btnCalisan.Size = new System.Drawing.Size(125, 28);
+            this.btnCalisan.TabIndex = 5;
+            this.btnCalisan.Text = "Çalışan İşlemleri";
+            this.btnCalisan.Click += new System.EventHandler(this.metroButton2_Click);
             // 
             // btnSeferIslemleri
             // 
@@ -101,10 +92,9 @@
             this.ClientSize = new System.Drawing.Size(795, 479);
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.metroButton2);
+            this.Controls.Add(this.btnCalisan);
             this.Controls.Add(this.btnSeferIslemleri);
-            this.Controls.Add(this.metroButton4);
-            this.Controls.Add(this.metroButton3);
+            this.Controls.Add(this.btnMusteriIslemleri);
             this.IsMdiContainer = true;
             this.Name = "FrmYoneticiPaneliAnaForm";
             this.Style = MetroFramework.MetroColorStyle.Red;
@@ -117,9 +107,8 @@
         }
         #endregion
 
-        private MetroFramework.Controls.MetroButton metroButton4;
-        private MetroFramework.Controls.MetroButton metroButton3;
-        private MetroFramework.Controls.MetroButton metroButton2;
+        private MetroFramework.Controls.MetroButton btnMusteriIslemleri;
+        private MetroFramework.Controls.MetroButton btnCalisan;
         private MetroFramework.Controls.MetroButton btnSeferIslemleri;
         private System.Windows.Forms.Label label1;
         private MetroFramework.Controls.MetroPanel metroPanel1;

@@ -22,6 +22,7 @@ namespace HızlıTrenApp.UI.YoneticiPanelFormlari
                 {
                     ((DateTimePicker)item).Value = DateTime.Now;
                 }
+           
             }
         }
 
@@ -35,7 +36,7 @@ namespace HızlıTrenApp.UI.YoneticiPanelFormlari
                 }
                 else if (item is DateTimePicker)
                 {
-                    if (((DateTimePicker)item).Value.Year == DateTime.Now.Year) return false;
+                    if (((DateTimePicker)item).Value.Year >= DateTime.Now.Year) return false;
                 }
                 else if (item is ComboBox)
                 {

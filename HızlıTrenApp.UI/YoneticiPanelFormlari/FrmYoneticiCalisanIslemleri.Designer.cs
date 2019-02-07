@@ -52,30 +52,32 @@
             this.chkKadin = new MetroFramework.Controls.MetroCheckBox();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.pnlKayit = new MetroFramework.Controls.MetroPanel();
+            this.btnUnvanEkle = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCalisanlar)).BeginInit();
             this.pnlKayit.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnListele
             // 
-            this.btnListele.Location = new System.Drawing.Point(594, 63);
+            this.btnListele.Location = new System.Drawing.Point(608, 40);
             this.btnListele.Name = "btnListele";
-            this.btnListele.Size = new System.Drawing.Size(137, 23);
+            this.btnListele.Size = new System.Drawing.Size(123, 23);
             this.btnListele.TabIndex = 31;
             this.btnListele.Text = "Listele";
             this.btnListele.Click += new System.EventHandler(this.btnListele_Click);
             // 
             // btnCalisanAra
             // 
-            this.btnCalisanAra.Location = new System.Drawing.Point(458, 63);
+            this.btnCalisanAra.Location = new System.Drawing.Point(486, 40);
             this.btnCalisanAra.Name = "btnCalisanAra";
-            this.btnCalisanAra.Size = new System.Drawing.Size(130, 23);
+            this.btnCalisanAra.Size = new System.Drawing.Size(116, 23);
             this.btnCalisanAra.TabIndex = 30;
             this.btnCalisanAra.Text = "Ara";
+            this.btnCalisanAra.Click += new System.EventHandler(this.btnCalisanAra_Click);
             // 
             // txtCalisanAra
             // 
-            this.txtCalisanAra.Location = new System.Drawing.Point(336, 63);
+            this.txtCalisanAra.Location = new System.Drawing.Point(364, 40);
             this.txtCalisanAra.Name = "txtCalisanAra";
             this.txtCalisanAra.Size = new System.Drawing.Size(116, 23);
             this.txtCalisanAra.TabIndex = 29;
@@ -83,18 +85,18 @@
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(287, 64);
+            this.metroLabel5.Location = new System.Drawing.Point(284, 43);
             this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(43, 19);
+            this.metroLabel5.Size = new System.Drawing.Size(74, 19);
             this.metroLabel5.TabIndex = 28;
-            this.metroLabel5.Text = "Sefer:";
+            this.metroLabel5.Text = "Çalışan Ad:";
             // 
             // dgvCalisanlar
             // 
             this.dgvCalisanlar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvCalisanlar.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvCalisanlar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCalisanlar.Location = new System.Drawing.Point(292, 94);
+            this.dgvCalisanlar.Location = new System.Drawing.Point(292, 69);
             this.dgvCalisanlar.Name = "dgvCalisanlar";
             this.dgvCalisanlar.Size = new System.Drawing.Size(439, 268);
             this.dgvCalisanlar.TabIndex = 27;
@@ -103,7 +105,7 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(54, 97);
+            this.metroLabel4.Location = new System.Drawing.Point(54, 96);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(46, 19);
             this.metroLabel4.TabIndex = 26;
@@ -112,7 +114,7 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(52, 37);
+            this.metroLabel3.Location = new System.Drawing.Point(52, 36);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(48, 19);
             this.metroLabel3.TabIndex = 25;
@@ -121,7 +123,7 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(71, 7);
+            this.metroLabel2.Location = new System.Drawing.Point(71, 6);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(29, 19);
             this.metroLabel2.TabIndex = 24;
@@ -129,7 +131,7 @@
             // 
             // txtSoyad
             // 
-            this.txtSoyad.Location = new System.Drawing.Point(108, 32);
+            this.txtSoyad.Location = new System.Drawing.Point(108, 31);
             this.txtSoyad.Name = "txtSoyad";
             this.txtSoyad.Size = new System.Drawing.Size(169, 23);
             this.txtSoyad.TabIndex = 23;
@@ -137,7 +139,7 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(55, 67);
+            this.metroLabel1.Location = new System.Drawing.Point(55, 66);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(45, 19);
             this.metroLabel1.TabIndex = 22;
@@ -145,28 +147,28 @@
             // 
             // txtAdres
             // 
-            this.txtAdres.Location = new System.Drawing.Point(108, 90);
+            this.txtAdres.Location = new System.Drawing.Point(108, 89);
             this.txtAdres.Name = "txtAdres";
             this.txtAdres.Size = new System.Drawing.Size(169, 23);
             this.txtAdres.TabIndex = 21;
             // 
             // txtTcNo
             // 
-            this.txtTcNo.Location = new System.Drawing.Point(108, 61);
+            this.txtTcNo.Location = new System.Drawing.Point(108, 60);
             this.txtTcNo.Name = "txtTcNo";
             this.txtTcNo.Size = new System.Drawing.Size(169, 23);
             this.txtTcNo.TabIndex = 20;
             // 
             // txtAd
             // 
-            this.txtAd.Location = new System.Drawing.Point(108, 3);
+            this.txtAd.Location = new System.Drawing.Point(108, 2);
             this.txtAd.Name = "txtAd";
             this.txtAd.Size = new System.Drawing.Size(169, 23);
             this.txtAd.TabIndex = 19;
             // 
             // btnSil
             // 
-            this.btnSil.Location = new System.Drawing.Point(198, 214);
+            this.btnSil.Location = new System.Drawing.Point(198, 213);
             this.btnSil.Name = "btnSil";
             this.btnSil.Size = new System.Drawing.Size(79, 23);
             this.btnSil.TabIndex = 18;
@@ -175,15 +177,16 @@
             // 
             // btnGuncelle
             // 
-            this.btnGuncelle.Location = new System.Drawing.Point(108, 243);
+            this.btnGuncelle.Location = new System.Drawing.Point(108, 242);
             this.btnGuncelle.Name = "btnGuncelle";
             this.btnGuncelle.Size = new System.Drawing.Size(169, 28);
             this.btnGuncelle.TabIndex = 17;
             this.btnGuncelle.Text = "Güncelle";
+            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
             // 
             // btnEkle
             // 
-            this.btnEkle.Location = new System.Drawing.Point(108, 214);
+            this.btnEkle.Location = new System.Drawing.Point(108, 213);
             this.btnEkle.Name = "btnEkle";
             this.btnEkle.Size = new System.Drawing.Size(79, 23);
             this.btnEkle.TabIndex = 16;
@@ -193,7 +196,7 @@
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(10, 127);
+            this.metroLabel6.Location = new System.Drawing.Point(10, 126);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(90, 19);
             this.metroLabel6.TabIndex = 32;
@@ -201,7 +204,7 @@
             // 
             // dtpDogumTarihi
             // 
-            this.dtpDogumTarihi.Location = new System.Drawing.Point(108, 120);
+            this.dtpDogumTarihi.Location = new System.Drawing.Point(108, 119);
             this.dtpDogumTarihi.Name = "dtpDogumTarihi";
             this.dtpDogumTarihi.Size = new System.Drawing.Size(169, 20);
             this.dtpDogumTarihi.TabIndex = 33;
@@ -210,7 +213,7 @@
             // 
             this.cmbUnvan.FormattingEnabled = true;
             this.cmbUnvan.ItemHeight = 23;
-            this.cmbUnvan.Location = new System.Drawing.Point(108, 147);
+            this.cmbUnvan.Location = new System.Drawing.Point(108, 146);
             this.cmbUnvan.Name = "cmbUnvan";
             this.cmbUnvan.Size = new System.Drawing.Size(169, 29);
             this.cmbUnvan.TabIndex = 34;
@@ -218,7 +221,7 @@
             // metroLabel7
             // 
             this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(52, 157);
+            this.metroLabel7.Location = new System.Drawing.Point(52, 156);
             this.metroLabel7.Name = "metroLabel7";
             this.metroLabel7.Size = new System.Drawing.Size(48, 19);
             this.metroLabel7.TabIndex = 35;
@@ -227,7 +230,7 @@
             // chkErkek
             // 
             this.chkErkek.AutoSize = true;
-            this.chkErkek.Location = new System.Drawing.Point(125, 187);
+            this.chkErkek.Location = new System.Drawing.Point(125, 186);
             this.chkErkek.Name = "chkErkek";
             this.chkErkek.Size = new System.Drawing.Size(51, 15);
             this.chkErkek.TabIndex = 36;
@@ -238,7 +241,7 @@
             // chkKadin
             // 
             this.chkKadin.AutoSize = true;
-            this.chkKadin.Location = new System.Drawing.Point(207, 187);
+            this.chkKadin.Location = new System.Drawing.Point(207, 186);
             this.chkKadin.Name = "chkKadin";
             this.chkKadin.Size = new System.Drawing.Size(53, 15);
             this.chkKadin.TabIndex = 37;
@@ -249,7 +252,7 @@
             // metroLabel8
             // 
             this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(44, 183);
+            this.metroLabel8.Location = new System.Drawing.Point(44, 182);
             this.metroLabel8.Name = "metroLabel8";
             this.metroLabel8.Size = new System.Drawing.Size(56, 19);
             this.metroLabel8.TabIndex = 38;
@@ -278,19 +281,31 @@
             this.pnlKayit.HorizontalScrollbarBarColor = true;
             this.pnlKayit.HorizontalScrollbarHighlightOnWheel = false;
             this.pnlKayit.HorizontalScrollbarSize = 10;
-            this.pnlKayit.Location = new System.Drawing.Point(2, 91);
+            this.pnlKayit.Location = new System.Drawing.Point(2, 69);
             this.pnlKayit.Name = "pnlKayit";
-            this.pnlKayit.Size = new System.Drawing.Size(284, 279);
+            this.pnlKayit.Size = new System.Drawing.Size(284, 271);
             this.pnlKayit.TabIndex = 39;
             this.pnlKayit.VerticalScrollbarBarColor = true;
             this.pnlKayit.VerticalScrollbarHighlightOnWheel = false;
             this.pnlKayit.VerticalScrollbarSize = 10;
             // 
+            // btnUnvanEkle
+            // 
+            this.btnUnvanEkle.Location = new System.Drawing.Point(292, 346);
+            this.btnUnvanEkle.Name = "btnUnvanEkle";
+            this.btnUnvanEkle.Size = new System.Drawing.Size(439, 28);
+            this.btnUnvanEkle.TabIndex = 40;
+            this.btnUnvanEkle.Text = "Yeni Ünvan Ekle";
+            this.btnUnvanEkle.Click += new System.EventHandler(this.btnUnvanEkle_Click);
+            // 
             // FrmYoneticiCalisanIslemleri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(745, 393);
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(745, 397);
+            this.Controls.Add(this.btnUnvanEkle);
             this.Controls.Add(this.pnlKayit);
             this.Controls.Add(this.btnListele);
             this.Controls.Add(this.btnCalisanAra);
@@ -298,6 +313,7 @@
             this.Controls.Add(this.metroLabel5);
             this.Controls.Add(this.dgvCalisanlar);
             this.Name = "FrmYoneticiCalisanIslemleri";
+            this.ShadowType = MetroFramework.Forms.MetroForm.MetroFormShadowType.None;
             this.Style = MetroFramework.MetroColorStyle.Red;
             this.Text = "Çalışan İşlemleri";
             this.Load += new System.EventHandler(this.FrmYoneticiCalisanIslemleri_Load);
@@ -335,5 +351,6 @@
         private MetroFramework.Controls.MetroCheckBox chkKadin;
         private MetroFramework.Controls.MetroLabel metroLabel8;
         private MetroFramework.Controls.MetroPanel pnlKayit;
+        private MetroFramework.Controls.MetroButton btnUnvanEkle;
     }
 }

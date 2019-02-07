@@ -13,7 +13,7 @@ namespace HızlıTrenApp.DATA
         public string Ad { get; set; }
         public string Soyad { get; set; }
         public string Adres { get; set; }
-        public bool Cinsiyet { get; set; }  
+        public bool Cinsiyet { get; set; }
         public DateTime DogumTarihi { get; set; }
         public DateTime IseAlimTarihi { get; set; }
         public string TamAdi
@@ -23,6 +23,7 @@ namespace HızlıTrenApp.DATA
                 return Ad + " " + Soyad;
             }
         }
+
         public int UnvanID { get; set; }
         public virtual Unvan CalisaninUnvani { get; set; }
     }

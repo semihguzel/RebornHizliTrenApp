@@ -25,5 +25,23 @@ namespace HızlıTrenApp.DAL.Repository.Concrete
         {
             return _unvanRepository.GetAll().ToList();
         }
+
+        public Unvan GetByUnvanID(int id)
+        {
+            using (Context db=new Context())
+            {
+                return db.Unvan.FirstOrDefault(x => x.UnvanID == id);
+            }
+        }
+
+        public void Add(Unvan unvan)
+        {
+            using (Context db=new Context())
+            {
+                var addEntity = db.Entry(unvan);
+                addEntity.State = EntityState.Added;
+                db.SaveChanges();
+            }
+        }
     }
 }

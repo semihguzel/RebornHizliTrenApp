@@ -43,11 +43,37 @@ namespace HızlıTrenApp.DAL.Repository.Concrete
         {
             using (Context db = new Context())
             {
-                var addEntity = db.Entry(calisan);
-                addEntity.State = EntityState.Deleted;
+                var deleteEntity = db.Entry(calisan);
+                deleteEntity.State = EntityState.Deleted;
                 db.SaveChanges();
             }
         }
 
+        public void Update(Calisan calisan)
+        {
+            using (Context db = new Context())
+            {
+                var updatedEntity = db.Entry(calisan);
+                updatedEntity.State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+
+        public List<Calisan> GetCalisanByStartWithName(string name)
+        {
+            using (Context db=new Context())
+            {
+                return db.Calisan.Where(x => x.Ad.StartsWith(name)).ToList();
+            }
+        }
+
+        public Calisan GetCalisanByID(int id)
+        {
+
+            using (Context db=new Context())
+            {
+                return db.Calisan.FirstOrDefault(x => x.CalisanID == id);
+            }
+        }
     }
 }

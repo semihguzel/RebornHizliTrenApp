@@ -28,20 +28,31 @@ namespace HızlıTrenApp.UI.YoneticiPanelFormlari
         {
             if (Metodlar.Sorgula(pnlKayit))
             {
-                Calisan calisan = new Calisan
+                try
                 {
-                    Ad = txtAd.Text,
-                    Soyad = txtSoyad.Text,
-                    Adres = txtAdres.Text,
-                    UnvanID = Convert.ToInt32(cmbUnvan.ValueMember),
-                    Cinsiyet = chkErkek.Checked,
-                    DogumTarihi = dtpDogumTarihi.Value,
-                    IseAlimTarihi = DateTime.Now,
-                    TcNo = txtTcNo.Text
-                };
-                _calisanConcreteDal.Add(calisan);
-                chkErkek.Checked = true;
-                Metodlar.Temizle(pnlKayit);
+                    Calisan calisan = new Calisan
+                    {
+                        Ad = txtAd.Text,
+                        Soyad = txtSoyad.Text,
+                        Adres = txtAdres.Text,
+                        Cinsiyet = chkErkek.Checked,
+                        UnvanID = Convert.ToInt32(cmbUnvan.SelectedValue),
+                        DogumTarihi = dtpDogumTarihi.Value,
+                        IseAlimTarihi = DateTime.Now,
+                        TcNo = txtTcNo.Text
+                    };
+
+                    _calisanConcreteDal.Add(calisan);
+                    chkErkek.Checked = true;
+                    Metodlar.Temizle(pnlKayit);
+                    txtAd.Text = txtAdres.Text = txtSoyad.Text = txtTcNo.Text = string.Empty;
+                    dgvCalisanlar.DataSource = _calisanConcreteDal.CalisanList();
+                    MessageBox.Show("Ekleme işlemi gerçekleşti.");
+                }
+                catch
+                {
+                    MessageBox.Show("Hatalı veri girişi tespit edildi.");
+                }
             }
             else
                 MessageBox.Show("Lütfen girdiğiniz verileri kontrol ediniz...");
@@ -69,8 +80,7 @@ namespace HızlıTrenApp.UI.YoneticiPanelFormlari
 
         private void dgvCalisanlar_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            btnGuncelle.Enabled = btnSil.Enabled = true;
-            btnEkle.Enabled = false;
+
             try
             {
                 txtTcNo.Text = dgvCalisanlar.CurrentRow.Cells[1].Value.ToString();
@@ -82,40 +92,105 @@ namespace HızlıTrenApp.UI.YoneticiPanelFormlari
                 string unvanID = dgvCalisanlar.CurrentRow.Cells[9].Value.ToString();
                 cmbUnvan.SelectedValue = Convert.ToInt32(unvanID);
                 txtAdres.Text = dgvCalisanlar.CurrentRow.Cells[4].Value.ToString();
+                btnGuncelle.Enabled = btnSil.Enabled = true;
+                btnEkle.Enabled = false;
             }
             catch
             {
+                MessageBox.Show("Lütfen bir calisan seçiniz.");
             }
+
         }
 
         private void btnListele_Click(object sender, EventArgs e)
         {
             dgvCalisanlar.DataSource = _calisanConcreteDal.CalisanList();
+            txtCalisanAra.Text = string.Empty;
         }
 
         private void btnSil_Click(object sender, EventArgs e)
         {
-            try
+            var result = MessageBox.Show($"{txtAd.Text} adlı çalışan silmek istediğinize emin misiniz?", "Silme Uyarısı", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
             {
-                Calisan calisan = new Calisan
+                try
                 {
-                    CalisanID = Convert.ToInt32(dgvCalisanlar.CurrentRow.Cells[0].Value.ToString())
-                };
-                _calisanConcreteDal.Remove(calisan);
-                dgvCalisanlar.DataSource = _calisanConcreteDal.CalisanList();
+                    Calisan calisan = new Calisan
+                    {
+                        CalisanID = Convert.ToInt32(dgvCalisanlar.CurrentRow.Cells[0].Value.ToString())
+                    };
+                    _calisanConcreteDal.Remove(calisan);
+                    dgvCalisanlar.DataSource = _calisanConcreteDal.CalisanList();
+                    btnSil.Enabled = btnGuncelle.Enabled = false;
+                    btnEkle.Enabled = true;
+                    Metodlar.Temizle(pnlKayit);
+                    txtAd.Text = txtAdres.Text = txtSoyad.Text = txtTcNo.Text = string.Empty;
+                    MessageBox.Show("Silme işlemi gerçekleştirildi.");
 
-                btnGuncelle.Enabled = btnSil.Enabled = false;
-                btnEkle.Enabled = true;
+                }
+                catch
+                {
+                    MessageBox.Show("Lütfen bir çalışan seçtiğinizden emin olunuz.");
+                }
             }
-            catch 
+            else
             {
-                MessageBox.Show("Lütfen bir çalışan seçtiğinizden emin olunuz.");
+                MessageBox.Show("Silme işlemi iptal edildi.");
             }
-
-                
-
 
         }
-    }
 
+        private void btnGuncelle_Click(object sender, EventArgs e)
+        {
+            if (Metodlar.Sorgula(pnlKayit))
+            {
+                try
+                {
+                    Calisan calisan = new Calisan();
+                    calisan = _calisanConcreteDal.GetCalisanByID(Convert.ToInt32(dgvCalisanlar.CurrentRow.Cells[0].Value.ToString()));
+                    calisan.Ad = txtAd.Text;
+                    calisan.Soyad = txtSoyad.Text;
+                    calisan.TcNo = txtTcNo.Text;
+                    calisan.Adres = txtAdres.Text;
+                    calisan.DogumTarihi = dtpDogumTarihi.Value;
+                    calisan.UnvanID = Convert.ToInt32(cmbUnvan.SelectedValue);
+                    calisan.Cinsiyet = chkErkek.Checked;
+
+                    _calisanConcreteDal.Update(calisan);
+
+                    chkErkek.Checked = true;
+                    dgvCalisanlar.DataSource = _calisanConcreteDal.CalisanList();
+                    btnSil.Enabled = btnGuncelle.Enabled = false;
+                    btnEkle.Enabled = true;
+                    Metodlar.Temizle(pnlKayit);
+                    txtAd.Text = txtAdres.Text = txtSoyad.Text = txtTcNo.Text = string.Empty;
+                    MessageBox.Show("Güncelleme işlemi gerçekleştirildi.");
+                }
+                catch
+                {
+                    MessageBox.Show("Girdiğiniz veriler mantık sınırları dışında:D");
+                }
+            }
+            else
+                MessageBox.Show("Lütfen girdiğiniz verileri kontrol ediniz...");
+        }
+        private void btnCalisanAra_Click(object sender, EventArgs e)
+        {
+            if (txtCalisanAra.Text != string.Empty)
+            {
+                dgvCalisanlar.DataSource = null;
+                dgvCalisanlar.DataSource = _calisanConcreteDal.GetCalisanByStartWithName(txtCalisanAra.Text);
+            }
+            else
+                MessageBox.Show("Sefer aramak için bir şeyler yazınız.");
+        }
+
+        private void btnUnvanEkle_Click(object sender, EventArgs e)
+        {
+            FrmYoneticiUnvanEkle frmYoneticiUnvanEkle = new FrmYoneticiUnvanEkle();
+            frmYoneticiUnvanEkle.Show();
+        }
+    }
 }
+
+
