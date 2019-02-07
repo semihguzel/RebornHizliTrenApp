@@ -76,6 +76,17 @@ namespace HızlıTrenApp.UI.YoneticiPanelFormlari
             }
         }
 
- 
+        private void btnRaporlar_Click(object sender, EventArgs e)
+        {
+            Denetle();
+            FrmYoneticiRaporlarFormu frmYoneticiRaporlarFormu = new FrmYoneticiRaporlarFormu();
+            frmYoneticiRaporlarFormu.TopLevel = false;
+            frmYoneticiRaporlarFormu.Parent = this;
+     
+            frmYoneticiRaporlarFormu.ShadowType = MetroFormShadowType.None;
+            metroPanel1.Controls.Add(frmYoneticiRaporlarFormu);
+            frmYoneticiRaporlarFormu.Show();
+            frmYoneticiRaporlarFormu.Location = Point.Empty;
+        }
     }
 }

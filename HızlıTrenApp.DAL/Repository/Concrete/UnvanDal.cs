@@ -14,7 +14,6 @@ namespace HızlıTrenApp.DAL.Repository.Concrete
         private IRepository<Unvan> _unvanRepository;
         private DbContext _dbContext;
 
-
         public UnvanDal()
         {
             _dbContext = new Context();
@@ -40,6 +39,16 @@ namespace HızlıTrenApp.DAL.Repository.Concrete
             {
                 var addEntity = db.Entry(unvan);
                 addEntity.State = EntityState.Added;
+                db.SaveChanges();
+            }
+        }
+
+        public void Update(Unvan unvan)
+        {
+            using (Context db = new Context())
+            {
+                var updateEntity = db.Entry(unvan);
+                updateEntity.State = EntityState.Modified;
                 db.SaveChanges();
             }
         }

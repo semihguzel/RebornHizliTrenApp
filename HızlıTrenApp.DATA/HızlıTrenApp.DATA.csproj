@@ -45,6 +45,7 @@
     <Compile Include="Classes\Calisan.cs" />
     <Compile Include="Classes\Musteri.cs" />
     <Compile Include="Classes\MusteriDetay.cs" />
+    <Compile Include="Classes\Yonetici.cs" />
     <Compile Include="DataSet\HizliTrenDbDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -46,23 +46,55 @@ namespace HızlıTrenApp.UI.YoneticiPanelFormlari
                 btnGuncelle.Enabled = true;
                 btnEkle.Enabled = false;
             }
-            catch 
+            catch
             {
 
             }
-            
         }
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
-            Unvan unvan = new Unvan
+            if (txtMaas.Text.Trim() != string.Empty && txtUnvan.Text != string.Empty)
             {
-                Maas = Convert.ToDecimal(txtMaas.Text),
-                UnvanAdi = txtUnvan.Text
-            };
-            _unvanDal.Add(unvan);
-            txtMaas.Text = txtUnvan.Text = string.Empty;
-            UnvanDoldur();
+                try
+                {
+                    Unvan unvan = new Unvan
+                    {
+                        Maas = Convert.ToDecimal(txtMaas.Text),
+                        UnvanAdi = txtUnvan.Text
+                    };
+                    _unvanDal.Add(unvan);
+                    txtMaas.Text = txtUnvan.Text = string.Empty;
+                    MessageBox.Show("Yeni ünvan eklendi.");
+                    UnvanDoldur();
+                }
+                catch
+                {
+                    MessageBox.Show("Ünvan uzunluk sınırını geçtiniz!");
+                }
+            }
+            else
+            {
+
+            }
+
+        }
+
+        private void btnGuncelle_Click(object sender, EventArgs e)
+        {
+            if (txtMaas.Text.Trim() != string.Empty)
+            {
+                Unvan unvan = new Unvan();
+                unvan = _unvanDal.GetByUnvanID(Convert.ToInt32(cmbUnvanlar.SelectedValue));
+                unvan.Maas = Convert.ToDecimal(txtMaas.Text);
+                _unvanDal.Update(unvan);
+                MessageBox.Show("Güncelleme yapıldı.");
+                txtMaas.Text = txtUnvan.Text = string.Empty;
+            }
+            else
+            {
+                MessageBox.Show("Ünvan ve Maaş alanları dolu olmak zorundadır.");
+            }
         }
     }
 }

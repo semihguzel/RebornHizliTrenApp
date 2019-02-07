@@ -157,6 +157,12 @@
     <Compile Include="YoneticiPanelFormlari\FrmYoneticiPaneliAnaForm.Designer.cs">
       <DependentUpon>FrmYoneticiPaneliAnaForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="YoneticiPanelFormlari\FrmYoneticiRaporlarFormu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YoneticiPanelFormlari\FrmYoneticiRaporlarFormu.Designer.cs">
+      <DependentUpon>FrmYoneticiRaporlarFormu.cs</DependentUpon>
+    </Compile>
     <Compile Include="YoneticiPanelFormlari\FrmYoneticiSeferIslemleri.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,6 +225,9 @@
     <EmbeddedResource Include="YoneticiPanelFormlari\frmYoneticiPaneli.resx" />
     <EmbeddedResource Include="YoneticiPanelFormlari\FrmYoneticiPaneliAnaForm.resx">
       <DependentUpon>FrmYoneticiPaneliAnaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YoneticiPanelFormlari\FrmYoneticiRaporlarFormu.resx">
+      <DependentUpon>FrmYoneticiRaporlarFormu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="YoneticiPanelFormlari\FrmYoneticiSeferIslemleri.resx">
       <DependentUpon>FrmYoneticiSeferIslemleri.cs</DependentUpon>

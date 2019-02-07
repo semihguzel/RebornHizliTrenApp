@@ -1,4 +1,6 @@
-﻿using HızlıTrenApp.DATA;
+﻿using HızlıTrenApp.DAL.Mappings;
+using HızlıTrenApp.DATA;
+using HızlıTrenApp.DATA.Classes;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -27,6 +29,7 @@ namespace HızlıTrenApp.DAL
         public DbSet<SeferSaat> SeferSaat { get; set; }
         public DbSet<SeferSeferSaat> SeferSeferSaat { get; set; }
         public DbSet<Unvan> Unvan { get; set; }
+        public DbSet<Yonetici> Yonetici { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -44,6 +47,8 @@ namespace HızlıTrenApp.DAL
             modelBuilder.Configurations.Add(new SeferMapping());
             modelBuilder.Configurations.Add(new SeferSaatMapping());
             modelBuilder.Configurations.Add(new SeferSeferSaatMapping());
+
+            modelBuilder.Configurations.Add(new YoneticiMapping());
 
 
 

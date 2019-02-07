@@ -63,7 +63,7 @@ namespace HızlıTrenApp.DAL.Repository.Concrete
         {
             using (Context db=new Context())
             {
-                return db.Calisan.Where(x => x.Ad.StartsWith(name)).ToList();
+                return db.Calisan.Where(x => x.Ad.Contains(name)).ToList();
             }
         }
 
