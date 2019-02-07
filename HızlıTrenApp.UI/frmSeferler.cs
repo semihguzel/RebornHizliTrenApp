@@ -22,7 +22,7 @@ namespace HızlıTrenApp.UI
         string biletTipi = "";
         bool gidisDonusMu = false;
         bool rezerveMi = false;
-        public frmSeferler(frmGiris frm, DateTime tiklananGidis, DateTime tiklananDonus, int yolcular,string tip,bool gidisDonus,bool rezerve)
+        public frmSeferler(frmGiris frm, DateTime tiklananGidis, DateTime tiklananDonus, int yolcular, string tip, bool gidisDonus, bool rezerve)
         {
             InitializeComponent();
             gelenForm = frm;
@@ -52,8 +52,8 @@ namespace HızlıTrenApp.UI
         public List<string> secilenDonusSeferi;
         int id1 = 0;
         int id2 = 0;
-        bool gidisVarMi;
-        bool donusVarMi;
+        bool gidisVarMi = false;
+        bool donusVarMi = false;
         string tiklananSaat = "";
         private void frmSeferler_Load(object sender, EventArgs e)
         {
@@ -96,7 +96,7 @@ namespace HızlıTrenApp.UI
         {
             //Burada bir sonraki sayfaya geçmeden önce seferin gidiş ve dönüş bilgilerinin dolu olup olmadığını kontrol ettiriyorum.
             if (secilenGidisSeferi.Count > 0)
-            {
+            {   
                 if (gelenForm.ciftMi)
                 {
                     if (secilenDonusSeferi.Count > 0)
@@ -305,12 +305,19 @@ namespace HızlıTrenApp.UI
             gelenForm.Show();
             gelenForm.Location = Point.Empty;
         }
-
+        int donusSssd = 0;
+        int donusSaatId = 0;
+        string tiklananDonusSaat = "";
         //Koltuk Seçimi formuna geçiş kodlarını metod haline getirdim.
         private void KoltukSecimiFormunaGecis()
         {
             SeferSaatleriDal ssd = new SeferSaatleriDal();
+            SeferlerSeferSaatleriDal sssd = new SeferlerSeferSaatleriDal();
             string tiklananSaat = lstSeferlerGidis.SelectedItems[0].SubItems[5].Text;
+            if (gidisDonusMu)
+            {
+                tiklananDonusSaat = lstSeferlerDonus.SelectedItems[0].SubItems[5].Text;
+            }
             int saatID = ssd.GetIdByDate(tiklananSaat);
             tiklananGidisTarihi = Convert.ToDateTime(lstSeferlerGidis.SelectedItems[0].SubItems[4].Text);
             gidisVarMi = _biletBilgiDal.IsDateCreated(tiklananGidisTarihi, id1, saatID);
@@ -318,9 +325,17 @@ namespace HızlıTrenApp.UI
             {
                 tiklananDonusTarihi = Convert.ToDateTime(lstSeferlerDonus.SelectedItems[0].SubItems[4].Text);
                 donusVarMi = _biletBilgiDal.IsDateCreated(tiklananDonusTarihi, id1, saatID);
+                if (tiklananDonusSaat != "")
+                {
+                    donusSaatId = ssd.GetIdByDate(tiklananDonusSaat);
+                }
+                if (donusVarMi)
+                {
+                    donusSssd = sssd.GetBySeferIdAndSaatId(id2, donusSaatId);
+                }
             }
 
-            frmKoltukSecimi gelenForm2 = new frmKoltukSecimi(this, id1, tiklananSaat, gidisVarMi, donusVarMi, tiklananGidisTarihi, tiklananDonusTarihi, yolcuSayisi,biletTipi,rezerveMi);
+            frmKoltukSecimi gelenForm2 = new frmKoltukSecimi(this, id1, tiklananSaat, gidisVarMi, gidisDonusMu, tiklananGidisTarihi, tiklananDonusTarihi, yolcuSayisi, biletTipi, rezerveMi, donusSssd,id2,donusSaatId);
             Hide();
             frmAnaSayfa anasayfa = (frmAnaSayfa)ParentForm;
             anasayfa.FormKontrolluGetir(gelenForm2);
