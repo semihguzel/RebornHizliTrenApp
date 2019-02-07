@@ -29,6 +29,11 @@
 		private void InitializeComponent()
 		{
             this.grpYolcuBilgileri = new System.Windows.Forms.GroupBox();
+            this.grpEkHizmetler = new System.Windows.Forms.GroupBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.btnYolcuKaydet = new MetroFramework.Controls.MetroButton();
             this.lblYolcuSayac = new System.Windows.Forms.Label();
             this.btnOdemeyeGec = new MetroFramework.Controls.MetroButton();
@@ -62,12 +67,8 @@
             this.pbWc = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.grpEkHizmetler = new System.Windows.Forms.GroupBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.grpYolcuBilgileri.SuspendLayout();
+            this.grpEkHizmetler.SuspendLayout();
             this.grpKoltuklar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -75,7 +76,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbWc2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbWc)).BeginInit();
-            this.grpEkHizmetler.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpYolcuBilgileri
@@ -110,6 +110,59 @@
             this.grpYolcuBilgileri.TabStop = false;
             this.grpYolcuBilgileri.Text = "Yolcu Bilgileri";
             // 
+            // grpEkHizmetler
+            // 
+            this.grpEkHizmetler.Controls.Add(this.checkBox2);
+            this.grpEkHizmetler.Controls.Add(this.checkBox1);
+            this.grpEkHizmetler.Controls.Add(this.checkBox4);
+            this.grpEkHizmetler.Controls.Add(this.checkBox3);
+            this.grpEkHizmetler.Location = new System.Drawing.Point(520, 18);
+            this.grpEkHizmetler.Name = "grpEkHizmetler";
+            this.grpEkHizmetler.Size = new System.Drawing.Size(282, 109);
+            this.grpEkHizmetler.TabIndex = 13;
+            this.grpEkHizmetler.TabStop = false;
+            this.grpEkHizmetler.Text = "Ek Hizmetler";
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(146, 23);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(119, 21);
+            this.checkBox2.TabIndex = 11;
+            this.checkBox2.Text = "Yiyecek(10TL)";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(14, 23);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(126, 21);
+            this.checkBox1.TabIndex = 11;
+            this.checkBox1.Text = "Ek Bagaj(30TL)";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(146, 61);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(95, 21);
+            this.checkBox4.TabIndex = 11;
+            this.checkBox4.Text = "checkBox1";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(14, 61);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(102, 21);
+            this.checkBox3.TabIndex = 11;
+            this.checkBox3.Text = "İçecek(5TL)";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
             // btnYolcuKaydet
             // 
             this.btnYolcuKaydet.Location = new System.Drawing.Point(520, 133);
@@ -134,15 +187,20 @@
             this.btnOdemeyeGec.Size = new System.Drawing.Size(109, 31);
             this.btnOdemeyeGec.TabIndex = 8;
             this.btnOdemeyeGec.Text = "Ödemeye Geç";
+            this.btnOdemeyeGec.Click += new System.EventHandler(this.btnOdemeyeGec_Click);
             // 
             // cmbBiletTipi
             // 
             this.cmbBiletTipi.FormattingEnabled = true;
             this.cmbBiletTipi.ItemHeight = 23;
+            this.cmbBiletTipi.Items.AddRange(new object[] {
+            "Business",
+            "Economy"});
             this.cmbBiletTipi.Location = new System.Drawing.Point(350, 143);
             this.cmbBiletTipi.Name = "cmbBiletTipi";
             this.cmbBiletTipi.Size = new System.Drawing.Size(142, 29);
             this.cmbBiletTipi.TabIndex = 7;
+            this.cmbBiletTipi.SelectedIndexChanged += new System.EventHandler(this.cmbBiletTipi_SelectedIndexChanged);
             // 
             // dtpDogumTarihi
             // 
@@ -203,9 +261,9 @@
             this.metroLabel7.AutoSize = true;
             this.metroLabel7.Location = new System.Drawing.Point(277, 147);
             this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(67, 19);
+            this.metroLabel7.Size = new System.Drawing.Size(59, 19);
             this.metroLabel7.TabIndex = 0;
-            this.metroLabel7.Text = "Ek Hizmet";
+            this.metroLabel7.Text = "Bilet Tipi";
             // 
             // metroLabel6
             // 
@@ -430,59 +488,6 @@
             this.label2.Text = "BUSINESS";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // grpEkHizmetler
-            // 
-            this.grpEkHizmetler.Controls.Add(this.checkBox2);
-            this.grpEkHizmetler.Controls.Add(this.checkBox1);
-            this.grpEkHizmetler.Controls.Add(this.checkBox4);
-            this.grpEkHizmetler.Controls.Add(this.checkBox3);
-            this.grpEkHizmetler.Location = new System.Drawing.Point(520, 18);
-            this.grpEkHizmetler.Name = "grpEkHizmetler";
-            this.grpEkHizmetler.Size = new System.Drawing.Size(282, 109);
-            this.grpEkHizmetler.TabIndex = 13;
-            this.grpEkHizmetler.TabStop = false;
-            this.grpEkHizmetler.Text = "Ek Hizmetler";
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(146, 23);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(119, 21);
-            this.checkBox2.TabIndex = 11;
-            this.checkBox2.Text = "Yiyecek(10TL)";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(14, 23);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(126, 21);
-            this.checkBox1.TabIndex = 11;
-            this.checkBox1.Text = "Ek Bagaj(30TL)";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(146, 61);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(95, 21);
-            this.checkBox4.TabIndex = 11;
-            this.checkBox4.Text = "checkBox1";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(14, 61);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(102, 21);
-            this.checkBox3.TabIndex = 11;
-            this.checkBox3.Text = "İçecek(5TL)";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
             // frmKoltukSecimi
             // 
             this.AcceptButton = this.btnOdemeyeGec;
@@ -501,6 +506,8 @@
             this.Load += new System.EventHandler(this.frmKoltukSecimi_Load);
             this.grpYolcuBilgileri.ResumeLayout(false);
             this.grpYolcuBilgileri.PerformLayout();
+            this.grpEkHizmetler.ResumeLayout(false);
+            this.grpEkHizmetler.PerformLayout();
             this.grpKoltuklar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
@@ -508,8 +515,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbWc2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbWc)).EndInit();
-            this.grpEkHizmetler.ResumeLayout(false);
-            this.grpEkHizmetler.PerformLayout();
             this.ResumeLayout(false);
 
 		}

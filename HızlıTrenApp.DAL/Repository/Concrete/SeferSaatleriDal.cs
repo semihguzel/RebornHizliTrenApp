@@ -29,5 +29,7 @@ namespace HızlıTrenApp.DAL.Repository.Concrete
         {
             return _seferSaatRepository.GetAll().Where(x => x.SeferSaatBilgisi == saat).Select(x => x.SeferSaatID).FirstOrDefault();
         }
+
+        
     }
 }

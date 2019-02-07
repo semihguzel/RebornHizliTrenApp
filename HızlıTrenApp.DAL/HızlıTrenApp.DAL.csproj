@@ -67,11 +67,14 @@
     <Compile Include="Repository\Concrete\BiletConcrete.cs" />
     <Compile Include="Repository\Concrete\CalisanConcrete.cs" />
     <Compile Include="Repository\Concrete\HataCozucu.cs" />
+    <Compile Include="Repository\Concrete\MusteriConcrete.cs" />
+    <Compile Include="Repository\Concrete\MusteriDetayConcrete.cs" />
     <Compile Include="Repository\Concrete\RezerveConcrete.cs" />
     <Compile Include="Repository\Concrete\SatilanConcrete.cs" />
     <Compile Include="Repository\Concrete\SeferlerDal.cs" />
     <Compile Include="Repository\Concrete\SeferlerSeferSaatleriDal.cs" />
     <Compile Include="Repository\Concrete\SeferSaatleriDal.cs" />
+    <Compile Include="Repository\Concrete\UnvanDal.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

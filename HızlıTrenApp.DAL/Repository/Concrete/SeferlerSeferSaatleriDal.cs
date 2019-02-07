@@ -32,6 +32,13 @@ namespace HızlıTrenApp.DAL.Repository.Concrete
         {
             return _seferSeferSaatRepository.GetAll().Where(x => x.SeferID == seferID && x.SeferSaatID == saatID).Select(x => x.ID).FirstOrDefault();
         }
-        
+        public void Add(List<SeferSeferSaat> seferSeferSaat)
+        {
+            using (Context db = new Context())
+            {
+                db.SeferSeferSaat.AddRange(seferSeferSaat);
+                db.SaveChanges();
+            }
+        }
     }
 }
