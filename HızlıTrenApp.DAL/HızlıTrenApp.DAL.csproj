@@ -74,6 +74,7 @@
     <Compile Include="Repository\Concrete\SeferlerDal.cs" />
     <Compile Include="Repository\Concrete\SeferlerSeferSaatleriDal.cs" />
     <Compile Include="Repository\Concrete\SeferSaatleriDal.cs" />
+    <Compile Include="Repository\Concrete\UnvanDal.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -60,7 +60,6 @@
     </Reference>
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -140,6 +139,31 @@
     <Compile Include="Reporter.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Tools.cs" />
+    <Compile Include="YoneticiPanelFormlari\FrmYoneticiCalisanIslemleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YoneticiPanelFormlari\FrmYoneticiCalisanIslemleri.Designer.cs">
+      <DependentUpon>FrmYoneticiCalisanIslemleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="YoneticiPanelFormlari\FrmYoneticiGirisControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YoneticiPanelFormlari\FrmYoneticiGirisControl.Designer.cs">
+      <DependentUpon>FrmYoneticiGirisControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="YoneticiPanelFormlari\FrmYoneticiPaneliAnaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YoneticiPanelFormlari\FrmYoneticiPaneliAnaForm.Designer.cs">
+      <DependentUpon>FrmYoneticiPaneliAnaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="YoneticiPanelFormlari\FrmYoneticiSeferIslemleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YoneticiPanelFormlari\FrmYoneticiSeferIslemleri.Designer.cs">
+      <DependentUpon>FrmYoneticiSeferIslemleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="YoneticiPanelFormlari\Metodlar.cs" />
     <EmbeddedResource Include="frmAnaSayfa.resx">
       <DependentUpon>frmAnaSayfa.cs</DependentUpon>
     </EmbeddedResource>
@@ -180,6 +204,19 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="YoneticiPanelFormlari\FrmYoneticiCalisanIslemleri.resx">
+      <DependentUpon>FrmYoneticiCalisanIslemleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YoneticiPanelFormlari\FrmYoneticiGirisControl.resx">
+      <DependentUpon>FrmYoneticiGirisControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YoneticiPanelFormlari\frmYoneticiPaneli.resx" />
+    <EmbeddedResource Include="YoneticiPanelFormlari\FrmYoneticiPaneliAnaForm.resx">
+      <DependentUpon>FrmYoneticiPaneliAnaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YoneticiPanelFormlari\FrmYoneticiSeferIslemleri.resx">
+      <DependentUpon>FrmYoneticiSeferIslemleri.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
