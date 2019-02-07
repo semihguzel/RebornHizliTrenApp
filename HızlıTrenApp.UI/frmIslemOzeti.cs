@@ -8,16 +8,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
+using PdfSharp;
+using PdfSharp.Drawing;
+using PdfSharp.Pdf;
+using System.IO;
 
 namespace HızlıTrenApp.UI
 {
 	public partial class frmIslemOzeti : MetroFramework.Forms.MetroForm
 	{
-		
+
 		private PrintDocument printDocument1 = new PrintDocument();
 		public frmIslemOzeti()
-		{			
-			printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);		
+		{
+			printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
 			InitializeComponent();
 		}
 
@@ -37,15 +42,9 @@ namespace HızlıTrenApp.UI
 			memoryGraphics.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, s);
 		}
 
-		private void printDocument1_PrintPage(System.Object sender,
-			   System.Drawing.Printing.PrintPageEventArgs e)
+		private void printDocument1_PrintPage(System.Object sender,System.Drawing.Printing.PrintPageEventArgs e)
 		{
 			e.Graphics.DrawImage(memoryImage, 0, 0);
-		}
-
-		private void Form1_Load(object sender, EventArgs e)
-		{
-
 		}
 
 		private void btnYazdir_Click(object sender, EventArgs e)
