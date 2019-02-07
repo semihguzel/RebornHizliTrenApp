@@ -9,9 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
-using PdfSharp;
-using PdfSharp.Drawing;
-using PdfSharp.Pdf;
 using System.IO;
 
 namespace HızlıTrenApp.UI
@@ -20,18 +17,24 @@ namespace HızlıTrenApp.UI
 	{
 
 		private PrintDocument printDocument1 = new PrintDocument();
-		public frmIslemOzeti()
+        List<object> ozetListesi;
+        ListViewItem lvi;
+        public frmIslemOzeti(ListViewItem listView)
 		{
 			printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
 			InitializeComponent();
+            lvi = listView;
 		}
 
 		private void frmIslemOzeti_Load(object sender, EventArgs e)
 		{
-			this.ControlBox = false;
+            //dgvIslemOzeti.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            this.ControlBox = false;
 			this.Text = "İşlem Özeti";
-		}
-		Bitmap memoryImage;
+            
+            lstIslemOzeti.Items.Add(lvi);
+        }
+        Bitmap memoryImage;
 
 		private void CaptureScreen()
 		{
@@ -55,7 +58,8 @@ namespace HızlıTrenApp.UI
 
 		private void btnIndir_Click(object sender, EventArgs e)
 		{
-			PrintDocument doc = new PrintDocument();
+
+            PrintDocument doc = new PrintDocument();
 			doc.PrintPage += this.Doc_PrintPage;
 			PrintDialog dlgSettings = new PrintDialog();
 			dlgSettings.Document = doc;

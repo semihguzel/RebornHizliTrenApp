@@ -47,9 +47,15 @@
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.grpSatisRezerve = new System.Windows.Forms.GroupBox();
+            this.grpYonSecimi = new System.Windows.Forms.GroupBox();
+            this.rdpRezerve = new MetroFramework.Controls.MetroRadioButton();
+            this.rdpSatis = new MetroFramework.Controls.MetroRadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.nmrYolcuSayisi)).BeginInit();
             this.grpBilet.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.grpSatisRezerve.SuspendLayout();
+            this.grpYonSecimi.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSeferleriListele
@@ -153,13 +159,13 @@
             // 
             // grpBilet
             // 
+            this.grpBilet.Controls.Add(this.grpYonSecimi);
+            this.grpBilet.Controls.Add(this.grpSatisRezerve);
             this.grpBilet.Controls.Add(this.metroLabel7);
             this.grpBilet.Controls.Add(this.btnSeferleriListele);
             this.grpBilet.Controls.Add(this.nmrYolcuSayisi);
             this.grpBilet.Controls.Add(this.dtpDonusTarihi);
             this.grpBilet.Controls.Add(this.dtpGidisTarihi);
-            this.grpBilet.Controls.Add(this.rdbGidisDonus);
-            this.grpBilet.Controls.Add(this.rdbTekyon);
             this.grpBilet.Controls.Add(this.metroLabel6);
             this.grpBilet.Controls.Add(this.metroLabel5);
             this.grpBilet.Controls.Add(this.metroLabel4);
@@ -191,6 +197,36 @@
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
             // 
+            // grpSatisRezerve
+            // 
+            this.grpSatisRezerve.Controls.Add(this.rdpSatis);
+            this.grpSatisRezerve.Controls.Add(this.rdpRezerve);
+            resources.ApplyResources(this.grpSatisRezerve, "grpSatisRezerve");
+            this.grpSatisRezerve.Name = "grpSatisRezerve";
+            this.grpSatisRezerve.TabStop = false;
+            // 
+            // grpYonSecimi
+            // 
+            this.grpYonSecimi.Controls.Add(this.rdbTekyon);
+            this.grpYonSecimi.Controls.Add(this.rdbGidisDonus);
+            resources.ApplyResources(this.grpYonSecimi, "grpYonSecimi");
+            this.grpYonSecimi.Name = "grpYonSecimi";
+            this.grpYonSecimi.TabStop = false;
+            // 
+            // rdpRezerve
+            // 
+            resources.ApplyResources(this.rdpRezerve, "rdpRezerve");
+            this.rdpRezerve.Name = "rdpRezerve";
+            this.rdpRezerve.TabStop = true;
+            this.rdpRezerve.UseVisualStyleBackColor = true;
+            // 
+            // rdpSatis
+            // 
+            resources.ApplyResources(this.rdpSatis, "rdpSatis");
+            this.rdpSatis.Name = "rdpSatis";
+            this.rdpSatis.TabStop = true;
+            this.rdpSatis.UseVisualStyleBackColor = true;
+            // 
             // frmGiris
             // 
             this.AcceptButton = this.btnSeferleriListele;
@@ -210,6 +246,10 @@
             this.grpBilet.ResumeLayout(false);
             this.grpBilet.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.grpSatisRezerve.ResumeLayout(false);
+            this.grpSatisRezerve.PerformLayout();
+            this.grpYonSecimi.ResumeLayout(false);
+            this.grpYonSecimi.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -235,5 +275,9 @@
 		private System.Windows.Forms.GroupBox grpBilet;
 		private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel7;
+        private System.Windows.Forms.GroupBox grpYonSecimi;
+        private System.Windows.Forms.GroupBox grpSatisRezerve;
+        private MetroFramework.Controls.MetroRadioButton rdpSatis;
+        private MetroFramework.Controls.MetroRadioButton rdpRezerve;
     }
 }

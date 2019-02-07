@@ -23,7 +23,8 @@ namespace HızlıTrenApp.UI
         DateTime donusTarihi;
         int yolcuSayisi = 0;
         string biletTipi = "";
-        public frmKoltukSecimi(Form form, int id, string tiklananSaat, bool gidis, bool donus, DateTime gidisT, DateTime donusT, int yolcular, string tip)
+        bool rezerveMi = false;
+        public frmKoltukSecimi(Form form, int id, string tiklananSaat, bool gidis, bool donus, DateTime gidisT, DateTime donusT, int yolcular, string tip, bool rezerve)
         {
             InitializeComponent();
             gelenForm = form;
@@ -35,6 +36,7 @@ namespace HızlıTrenApp.UI
             donusTarihi = donusT;
             yolcuSayisi = yolcular;
             biletTipi = tip;
+            rezerveMi = rezerve;
         }
         List<BiletBilgi> businessKadinBiletler;
         List<BiletBilgi> businessErkekBiletler;
@@ -52,6 +54,9 @@ namespace HızlıTrenApp.UI
         BiletBilgiDal biletBilgiConcrete = new BiletBilgiDal();
         private void frmKoltukSecimi_Load(object sender, EventArgs e)
         {
+            if (rezerveMi)
+                btnOdemeyeGec.Text = "Rezerve Et";
+
             this.ControlBox = false;
             this.Text = "Koltuk Seçimi";
             if (yolcuSayisi > 1)
@@ -455,8 +460,9 @@ namespace HızlıTrenApp.UI
         {
             YolcuEkle();
         }
-
-        private void YolcuEkle()
+        ListViewItem lvi;
+        List<object> ozet;
+        public void YolcuEkle()
         {
             int ucret = 0;
             if (cmbBiletTipi.Text == "Economy")
@@ -487,6 +493,7 @@ namespace HızlıTrenApp.UI
             MusteriConcrete mc = new MusteriConcrete();
             MusteriDetayConcrete mdc = new MusteriDetayConcrete();
             SeferlerSeferSaatleriDal sssd = new SeferlerSeferSaatleriDal();
+            SeferlerDal sd = new SeferlerDal();
             int sssdId = sssd.GetBySeferIdAndSaatId(seferId, saatID);
 
             yolcu.Ad = txtAd.Text;
@@ -520,10 +527,58 @@ namespace HızlıTrenApp.UI
 
             bbd._biletBilgiRepository.Insert(biletDetay);
 
+            if (rezerveMi)
+            {
+                RezerveBilet rezerve = new RezerveBilet()
+                {
+                    BiletID = bilet.BiletID,
+                    MusteriID = musteriId,
+                    RezerveTarihi = DateTime.Now,
+                    IsBought = false,
+                    IsDeleted = false
+                };
+                RezerveConcrete rc = new RezerveConcrete();
+                string seferYonu = sd.GetYonById(seferId);
+                rc._rezerveRepository.Insert(rezerve);
+
+                lvi = new ListViewItem();
+                lvi.Text = yolcu.Ad;
+                lvi.SubItems.Add(yolcu.Soyad);
+                lvi.SubItems.Add(biletDetay.BiletTipi);
+                lvi.SubItems.Add(seferYonu);
+                lvi.SubItems.Add(biletDetay.SeferSaati);
+                lvi.SubItems.Add(biletDetay.KoltukNo);
+                lvi.SubItems.Add(biletDetay.BiletFiyati.ToString());
+                //ozet = new List<object>();
+                //ozet.Add(yolcu.Ad);
+                //ozet.Add(yolcu.Soyad);
+                //ozet.Add(biletDetay.BiletTipi);
+                //ozet.Add(seferYonu);
+                //ozet.Add(biletDetay.SeferSaati);
+                //ozet.Add(biletDetay.KoltukNo);
+                //ozet.Add(biletDetay.BiletFiyati);
+            }
+            else
+            {
+                SatilanBilet satilan = new SatilanBilet();
+                satilan.BiletID = biletId;
+                satilan.MusteriID = musteriId;
+                satilan.SatisTarihi = DateTime.Now;
+                SatilanConcrete sc = new SatilanConcrete();
+                sc._satilanBiletRepository.Insert(satilan);
+            }
+
         }
 
         private void btnOdemeyeGec_Click(object sender, EventArgs e)
         {
+            if (tiklanan == null)
+            {
+                MessageBox.Show("Önce koltuk seçiniz!");
+                return;
+            }
+
+
             DialogResult dr = new DialogResult();
             dr = MessageBox.Show("Kayıt işlemi yapmak istediğinizden emin misiniz?", "Uyarı", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
@@ -531,7 +586,6 @@ namespace HızlıTrenApp.UI
                 YolcuEkle();
                 Tools.Temizle(grpYolcuBilgileri);
                 Tools.Temizle(grpEkHizmetler);
-                KoltuklariDoldur();
                 KoltuklariDoldur();
             }
             else
@@ -541,7 +595,19 @@ namespace HızlıTrenApp.UI
                 tiklanan.ImageLocation = economyBosKoltuk;
                 return;
             }
+            if (rezerveMi)
+            {
+                dr = MessageBox.Show("Rezerve işlemi yapılmıştır", "Bilgi", MessageBoxButtons.OK);
+                if (dr == DialogResult.OK)
+                {
+                    frmIslemOzeti islemOzeti = new frmIslemOzeti(lvi);
+                    frmAnaSayfa anaForm = (frmAnaSayfa)this.Parent.Parent.Parent;
+                    anaForm.FormKontrolluGetir(islemOzeti);
+                }
+            }
         }
+
+
         private void cmbBiletTipi_SelectedIndexChanged(object sender, EventArgs e)
         {
             BiletSecimKontrolu();

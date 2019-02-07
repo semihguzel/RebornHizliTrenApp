@@ -141,7 +141,7 @@
     <value>grpBilet</value>
   </data>
   <data name="&gt;&gt;btnSeferleriListele.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="nmrYolcuSayisi.Location" type="System.Drawing.Point, System.Drawing">
     <value>104, 276</value>
@@ -162,7 +162,7 @@
     <value>grpBilet</value>
   </data>
   <data name="&gt;&gt;nmrYolcuSayisi.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="dtpDonusTarihi.Location" type="System.Drawing.Point, System.Drawing">
     <value>23, 233</value>
@@ -183,7 +183,7 @@
     <value>grpBilet</value>
   </data>
   <data name="&gt;&gt;dtpDonusTarihi.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="dtpGidisTarihi.Location" type="System.Drawing.Point, System.Drawing">
     <value>22, 173</value>
@@ -204,7 +204,7 @@
     <value>grpBilet</value>
   </data>
   <data name="&gt;&gt;dtpGidisTarihi.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="rdbGidisDonus.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -214,7 +214,7 @@
     <value>NoControl</value>
   </data>
   <data name="rdbGidisDonus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>107, 34</value>
+    <value>6, 20</value>
   </data>
   <data name="rdbGidisDonus.Size" type="System.Drawing.Size, System.Drawing">
     <value>86, 15</value>
@@ -232,10 +232,10 @@
     <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
   <data name="&gt;&gt;rdbGidisDonus.Parent" xml:space="preserve">
-    <value>grpBilet</value>
+    <value>grpYonSecimi</value>
   </data>
   <data name="&gt;&gt;rdbGidisDonus.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>1</value>
   </data>
   <data name="rdbTekyon.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -244,7 +244,7 @@
     <value>NoControl</value>
   </data>
   <data name="rdbTekyon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 34</value>
+    <value>6, 41</value>
   </data>
   <data name="rdbTekyon.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 15</value>
@@ -262,10 +262,10 @@
     <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
   <data name="&gt;&gt;rdbTekyon.Parent" xml:space="preserve">
-    <value>grpBilet</value>
+    <value>grpYonSecimi</value>
   </data>
   <data name="&gt;&gt;rdbTekyon.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>0</value>
   </data>
   <data name="metroLabel6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -352,7 +352,7 @@
     <value>23</value>
   </data>
   <data name="cmbNereye.Location" type="System.Drawing.Point, System.Drawing">
-    <value>182, 94</value>
+    <value>181, 110</value>
   </data>
   <data name="cmbNereye.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 29</value>
@@ -376,7 +376,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>182, 72</value>
+    <value>181, 88</value>
   </data>
   <data name="metroLabel3.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 19</value>
@@ -427,7 +427,7 @@
     <value>23</value>
   </data>
   <data name="cmbNereden.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 94</value>
+    <value>21, 110</value>
   </data>
   <data name="cmbNereden.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 29</value>
@@ -451,7 +451,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 72</value>
+    <value>21, 88</value>
   </data>
   <data name="metroLabel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 19</value>
@@ -473,6 +473,108 @@
   </data>
   <data name="&gt;&gt;metroLabel2.ZOrder" xml:space="preserve">
     <value>14</value>
+  </data>
+  <data name="grpYonSecimi.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 20</value>
+  </data>
+  <data name="grpYonSecimi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 65</value>
+  </data>
+  <data name="grpYonSecimi.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;grpYonSecimi.Name" xml:space="preserve">
+    <value>grpYonSecimi</value>
+  </data>
+  <data name="&gt;&gt;grpYonSecimi.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpYonSecimi.Parent" xml:space="preserve">
+    <value>grpBilet</value>
+  </data>
+  <data name="&gt;&gt;grpYonSecimi.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="rdpSatis.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="rdpSatis.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="rdpSatis.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 44</value>
+  </data>
+  <data name="rdpSatis.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 15</value>
+  </data>
+  <data name="rdpSatis.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="rdpSatis.Text" xml:space="preserve">
+    <value>Satış</value>
+  </data>
+  <data name="&gt;&gt;rdpSatis.Name" xml:space="preserve">
+    <value>rdpSatis</value>
+  </data>
+  <data name="&gt;&gt;rdpSatis.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;rdpSatis.Parent" xml:space="preserve">
+    <value>grpSatisRezerve</value>
+  </data>
+  <data name="&gt;&gt;rdpSatis.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="rdpRezerve.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="rdpRezerve.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="rdpRezerve.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 20</value>
+  </data>
+  <data name="rdpRezerve.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 15</value>
+  </data>
+  <data name="rdpRezerve.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="rdpRezerve.Text" xml:space="preserve">
+    <value>Rezervasyon</value>
+  </data>
+  <data name="&gt;&gt;rdpRezerve.Name" xml:space="preserve">
+    <value>rdpRezerve</value>
+  </data>
+  <data name="&gt;&gt;rdpRezerve.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;rdpRezerve.Parent" xml:space="preserve">
+    <value>grpSatisRezerve</value>
+  </data>
+  <data name="&gt;&gt;rdpRezerve.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="grpSatisRezerve.Location" type="System.Drawing.Point, System.Drawing">
+    <value>182, 20</value>
+  </data>
+  <data name="grpSatisRezerve.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 65</value>
+  </data>
+  <data name="grpSatisRezerve.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;grpSatisRezerve.Name" xml:space="preserve">
+    <value>grpSatisRezerve</value>
+  </data>
+  <data name="&gt;&gt;grpSatisRezerve.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpSatisRezerve.Parent" xml:space="preserve">
+    <value>grpBilet</value>
+  </data>
+  <data name="&gt;&gt;grpSatisRezerve.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="metroLabel7.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -505,7 +607,7 @@
     <value>grpBilet</value>
   </data>
   <data name="&gt;&gt;metroLabel7.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="grpBilet.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>

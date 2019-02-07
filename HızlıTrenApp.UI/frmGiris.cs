@@ -94,7 +94,7 @@ namespace HızlıTrenApp.UI
                             ToplananVerileriDoldur();
                             DateTime tiklananGidis = dtpGidisTarihi.Value;
                             DateTime tiklananDonus = dtpDonusTarihi.Value;
-                            frmSeferler frmSeferler = new frmSeferler(this, tiklananGidis, tiklananDonus, (int)nmrYolcuSayisi.Value, cmbTip.Text, rdbGidisDonus.Checked);
+                            frmSeferler frmSeferler = new frmSeferler(this, tiklananGidis, tiklananDonus, (int)nmrYolcuSayisi.Value, cmbTip.Text, rdbGidisDonus.Checked,rdpRezerve.Checked);
                             Hide();
                             frmAnaSayfa anasayfa = (frmAnaSayfa)ParentForm;
                             anasayfa.FormKontrolluGetir(frmSeferler);
@@ -105,7 +105,7 @@ namespace HızlıTrenApp.UI
                             donusTarihi = dtpDonusTarihi.Value;
                             DateTime tiklananGidis = dtpGidisTarihi.Value;
                             DateTime tiklananDonus = dtpDonusTarihi.Value;
-                            frmSeferler frmSeferler = new frmSeferler(this, tiklananGidis, tiklananDonus, (int)nmrYolcuSayisi.Value, cmbTip.Text, rdbGidisDonus.Checked);
+                            frmSeferler frmSeferler = new frmSeferler(this, tiklananGidis, tiklananDonus, (int)nmrYolcuSayisi.Value, cmbTip.Text, rdbGidisDonus.Checked, rdpRezerve.Checked);
                             Hide();
                             frmAnaSayfa anaForm = (frmAnaSayfa)Parent.Parent.Parent;
                             anaForm.FormKontrolluGetir(frmSeferler);
@@ -156,28 +156,17 @@ namespace HızlıTrenApp.UI
         {
             TimeSpan ts = dtpDonusTarihi.Value - dtpGidisTarihi.Value;
             int gunSayisi = (int)ts.TotalDays;
-            if (gunSayisi < 0)
+
+            if (gunSayisi >= 15)
             {
-                MessageBox.Show("Dönüş tarihi gidiş tarihinden önce olamaz!");
                 dtpDonusTarihi.Value = dtpGidisTarihi.Value = DateTime.Now;
-            }
-            else
-            {
-                if (gunSayisi >= 15)
-                {
-                    dtpDonusTarihi.Value = dtpGidisTarihi.Value = DateTime.Now;
-                    MessageBox.Show("Gidiş dönüş tarihleri arası en fazla 15 gün olabilir!");
-                }
+                MessageBox.Show("Gidiş dönüş tarihleri arası en fazla 15 gün olabilir!");
             }
         }
 
         private void dtpGidisTarihi_ValueChanged(object sender, EventArgs e)
         {
-            if (dtpGidisTarihi.Value < DateTime.Now)
-            {
-                MessageBox.Show("Gidiş tarihi bugünün tarihinden önce olamaz!");
-                dtpGidisTarihi.Value = DateTime.Now;
-            }
+            
         }
     }
 }

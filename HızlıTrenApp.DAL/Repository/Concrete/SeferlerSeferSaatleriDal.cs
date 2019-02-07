@@ -40,5 +40,7 @@ namespace HızlıTrenApp.DAL.Repository.Concrete
                 db.SaveChanges();
             }
         }
+
+
     }
 }
