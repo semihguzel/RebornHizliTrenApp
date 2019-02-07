@@ -20,7 +20,6 @@ namespace HızlıTrenApp.UI
         //    t.Show();
         //}
 
-
         // Örnek Kullanım 
         //Reporter.ReportFormCreate<BiletBilgi>(deneme, "BiletBilgiID", "AlimTarihi", "BiletTipi",
         //    "KoltukNo", "BiletFiyati", "BiletTarihi", "SeferSaati", "MusteriID", "SeferSeferSaatID");

@@ -19,6 +19,12 @@ namespace HızlıTrenApp.DAL.Repository.Concrete
 			_dbContext = new Context();
 			_biletRepository = new EFRepository<Bilet>(_dbContext);
 		}
+
+        public int GetIdByEntity(Bilet bilet)
+        {
+            return _biletRepository.GetAll().Where(x => x.BiletID == bilet.BiletID).Select(x => x.BiletID).FirstOrDefault();
+        }
+
 		public List<Bilet> BiletListesi()
 		{
 			return _biletRepository.GetAll().ToList();

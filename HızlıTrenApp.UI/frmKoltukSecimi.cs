@@ -22,7 +22,8 @@ namespace HızlıTrenApp.UI
         DateTime gidisTarihi;
         DateTime donusTarihi;
         int yolcuSayisi = 0;
-        public frmKoltukSecimi(Form form, int id, string tiklananSaat, bool gidis, bool donus, DateTime gidisT, DateTime donusT,int yolcular)
+        string biletTipi = "";
+        public frmKoltukSecimi(Form form, int id, string tiklananSaat, bool gidis, bool donus, DateTime gidisT, DateTime donusT, int yolcular, string tip)
         {
             InitializeComponent();
             gelenForm = form;
@@ -33,6 +34,7 @@ namespace HızlıTrenApp.UI
             gidisTarihi = gidisT;
             donusTarihi = donusT;
             yolcuSayisi = yolcular;
+            biletTipi = tip;
         }
         List<BiletBilgi> businessKadinBiletler;
         List<BiletBilgi> businessErkekBiletler;
@@ -46,6 +48,8 @@ namespace HızlıTrenApp.UI
         string economyLuggage = @"..\..\Images\luggage_economy.png";
         string secilenKoltuk = @"..\..\Images\Resized_Seats\seat_reserved_resized_economy.png";
         int kayitSayaci = 0;
+        int saatID = 0;
+        BiletBilgiDal biletBilgiConcrete = new BiletBilgiDal();
         private void frmKoltukSecimi_Load(object sender, EventArgs e)
         {
             this.ControlBox = false;
@@ -55,13 +59,16 @@ namespace HızlıTrenApp.UI
                 lblYolcuSayac.Enabled = btnYolcuKaydet.Enabled = cmbBiletTipi.Enabled = true;
                 btnYolcuKaydet.Enabled = false;
                 lblYolcuSayac.Text = "Yapılması gereken" + yolcuSayisi + "kadar kayıttan" + kayitSayaci + "kadar kayıt yapıldı.";
+                cmbBiletTipi.SelectedIndex = 0;
             }
             else
+            {
+                cmbBiletTipi.Text = biletTipi;
                 lblYolcuSayac.Enabled = btnYolcuKaydet.Enabled = cmbBiletTipi.Enabled = false;
+            }
 
             SeferSaatleriDal ssd = new SeferSaatleriDal();
-            int saatID = ssd.GetIdByDate(saat);
-            BiletBilgiDal biletBilgiConcrete = new BiletBilgiDal();
+            saatID = ssd.GetIdByDate(saat);
 
             if (!gidisVarMi)
             {
@@ -71,18 +78,25 @@ namespace HızlıTrenApp.UI
             {
                 KoltuklariOlustur();
 
-                businessKadinBiletler = biletBilgiConcrete.BusinessWomanTickets(seferId, saatID, gidisTarihi);
-                businessErkekBiletler = biletBilgiConcrete.BusinessManTickets(seferId, saatID, gidisTarihi);
 
-                economyKadinBiletler = biletBilgiConcrete.EconomyWomanTickets(seferId, saatID, gidisTarihi);
-                economyErkekBiletler = biletBilgiConcrete.EconomyManTickets(seferId, saatID, gidisTarihi);
 
-                BusinessKadinlar(grpBusiness1, grpBusiness2);
-                BusinessErkekler(grpBusiness1, grpBusiness2);
-
-                EconomyKadinlar(grpEconomy1, grpEconomy2);
-                EconomyErkekler(grpEconomy1, grpEconomy2);
+                KoltuklariDoldur();
             }
+        }
+
+        private void KoltuklariDoldur()
+        {
+            businessKadinBiletler = biletBilgiConcrete.BusinessWomanTickets(seferId, saatID, gidisTarihi);
+            businessErkekBiletler = biletBilgiConcrete.BusinessManTickets(seferId, saatID, gidisTarihi);
+
+            economyKadinBiletler = biletBilgiConcrete.EconomyWomanTickets(seferId, saatID, gidisTarihi);
+            economyErkekBiletler = biletBilgiConcrete.EconomyManTickets(seferId, saatID, gidisTarihi);
+
+            BusinessKadinlar(grpBusiness1, grpBusiness2);
+            BusinessErkekler(grpBusiness1, grpBusiness2);
+
+            EconomyKadinlar(grpEconomy1, grpEconomy2);
+            EconomyErkekler(grpEconomy1, grpEconomy2);
         }
 
         private void EconomyErkekler(GroupBox grpEconomy1, GroupBox grpEconomy2)
@@ -344,16 +358,7 @@ namespace HızlıTrenApp.UI
                     luggage2.Location = new Point((2 * (i - 9) * economySoldanBosluk - 5) + businessKoltukArasi, lblE2.Height + pbE2.Height + economyUsttenBosluk + (economyUsttenBosluk * 3) + economyUsttenBosluk + 5);
                     pbE2.Location = new Point(luggage2.Location.X + economySoldanBosluk, lblE2.Height + pbE2.Height + economyUsttenBosluk + (economyUsttenBosluk * 3) + economyUsttenBosluk + 5);
                     lblE2.Location = new Point(pbE2.Location.X, pbE2.Location.Y + economyUsttenBosluk + 20);
-                    //if(i == 11)
-                    //{
-                    //    int temp = 0;
-                    //    foreach (Control item in grpEconomy2.Controls)
-                    //    {
-                    //        if (item is PictureBox && item.Name == "")
-                    //            temp++;
-                    //    }
-                    //    MessageBox.Show(temp.ToString());
-                    //}
+
                 }
             }
         }
@@ -448,13 +453,16 @@ namespace HızlıTrenApp.UI
 
         private void btnYolcuKaydet_Click(object sender, EventArgs e)
         {
-            Musteri yolcu = new Musteri();
-            yolcu.Ad = txtAd.Text;
-            yolcu.Soyad = txtSoyad.Text;
-            yolcu.DogumTarihi = dtpDogumTarihi.Value.Date;
-            yolcu.Cinsiyet = rdbErkek.Checked;
+            YolcuEkle();
+        }
 
+        private void YolcuEkle()
+        {
             int ucret = 0;
+            if (cmbBiletTipi.Text == "Economy")
+                ucret = 70;
+            else
+                ucret = 100;
             if (grpEkHizmetler.Controls.Count > 0)
             {
                 foreach (Control item in grpEkHizmetler.Controls)
@@ -471,14 +479,91 @@ namespace HızlıTrenApp.UI
                 }
             }
             BiletBilgi biletDetay = new BiletBilgi();
+            BiletConcrete bc = new BiletConcrete();
+            BiletBilgiDal bbd = new BiletBilgiDal();
+            Bilet bilet = new Bilet();
+            Musteri yolcu = new Musteri();
+            MusteriDetay musteriDetay = new MusteriDetay();
+            MusteriConcrete mc = new MusteriConcrete();
+            MusteriDetayConcrete mdc = new MusteriDetayConcrete();
+            SeferlerSeferSaatleriDal sssd = new SeferlerSeferSaatleriDal();
+            int sssdId = sssd.GetBySeferIdAndSaatId(seferId, saatID);
+
+            yolcu.Ad = txtAd.Text;
+            yolcu.Soyad = txtSoyad.Text;
+            yolcu.DogumTarihi = dtpDogumTarihi.Value.Date;
+            yolcu.Cinsiyet = rdbErkek.Checked;
+            mc._musteriRepository.Insert(yolcu);
+
+            int musteriId = mc.GetIdByEntity(yolcu);
+            musteriDetay.Email = txtEmail.Text;
+            musteriDetay.Telefon = txtTelefon.Text;
+            musteriDetay.MusteriDetayID = musteriId;
+            mdc._musteriDetayRepository.Insert(musteriDetay);
+
+
             biletDetay.BiletTipi = cmbBiletTipi.Text;
             biletDetay.KoltukNo = tiklanan.Name;
             biletDetay.AlimTarihi = DateTime.Now;
 
-            //biletDetay.BiletFiyati = 
+            biletDetay.BiletFiyati = ucret;
+            biletDetay.SeferTarihi = gidisTarihi.Date;
+            biletDetay.SeferSaati = saat;
+            biletDetay.MusteriID = musteriId;
+            biletDetay.SeferSeferSaatID = sssdId;
+            biletDetay.BiletTipi = biletTipi;
 
-            //Bilet bilet = new Bilet();
-            //bilet.
+            bilet.PNRNo = Tools.PNRNoYap(biletDetay);
+            bc._biletRepository.Insert(bilet);
+            int biletId = bc.GetIdByEntity(bilet);
+            biletDetay.BiletBilgiID = biletId;
+
+            bbd._biletBilgiRepository.Insert(biletDetay);
+
+        }
+
+        private void btnOdemeyeGec_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = new DialogResult();
+            dr = MessageBox.Show("Kayıt işlemi yapmak istediğinizden emin misiniz?", "Uyarı", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                YolcuEkle();
+                Tools.Temizle(grpYolcuBilgileri);
+                Tools.Temizle(grpEkHizmetler);
+                KoltuklariDoldur();
+                KoltuklariDoldur();
+            }
+            else
+            {
+                Tools.Temizle(grpYolcuBilgileri);
+                Tools.Temizle(grpEkHizmetler);
+                tiklanan.ImageLocation = economyBosKoltuk;
+                return;
+            }
+        }
+        private void cmbBiletTipi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BiletSecimKontrolu();
+        }
+
+        private void BiletSecimKontrolu()
+        {
+            if (cmbBiletTipi.Text == "Economy")
+            {
+                grpBusiness1.Enabled = false;
+                grpBusiness2.Enabled = false;
+                grpEconomy1.Enabled = true;
+                grpEconomy2.Enabled = true;
+            }
+            else
+            {
+                grpEconomy1.Enabled = false;
+                grpEconomy2.Enabled = false;
+                grpBusiness1.Enabled = true;
+                grpBusiness2.Enabled = true;
+
+            }
         }
     }
 }

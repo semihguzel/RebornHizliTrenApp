@@ -84,11 +84,13 @@
             // 
             resources.ApplyResources(this.dtpDonusTarihi, "dtpDonusTarihi");
             this.dtpDonusTarihi.Name = "dtpDonusTarihi";
+            this.dtpDonusTarihi.ValueChanged += new System.EventHandler(this.dtpDonusTarihi_ValueChanged);
             // 
             // dtpGidisTarihi
             // 
             resources.ApplyResources(this.dtpGidisTarihi, "dtpGidisTarihi");
             this.dtpGidisTarihi.Name = "dtpGidisTarihi";
+            this.dtpGidisTarihi.ValueChanged += new System.EventHandler(this.dtpGidisTarihi_ValueChanged);
             // 
             // rdbGidisDonus
             // 
