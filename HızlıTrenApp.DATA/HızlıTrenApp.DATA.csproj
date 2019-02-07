@@ -46,6 +46,9 @@
     <Compile Include="Classes\Musteri.cs" />
     <Compile Include="Classes\MusteriDetay.cs" />
     <Compile Include="Classes\Yonetici.cs" />
+    <Compile Include="DataSet\HizliTrenDbDataSet.cs">
+      <DependentUpon>HizliTrenDbDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\HizliTrenDbDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -84,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Reports\BiletBilgi.rdlc" />
+    <EmbeddedResource Include="Reports\Musteri.rdlc" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
