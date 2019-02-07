@@ -87,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Reports\BiletBilgi.rdlc" />
+    <EmbeddedResource Include="Reports\Calisan.rdlc" />
     <EmbeddedResource Include="Reports\Musteri.rdlc" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
