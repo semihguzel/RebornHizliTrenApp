@@ -411,8 +411,8 @@
             <PageBreak>
               <BreakLocation>Start</BreakLocation>
             </PageBreak>
-            <Height>5.42333cm</Height>
-            <Width>16.41646cm</Width>
+            <Height>5.97578cm</Height>
+            <Width>16.31063cm</Width>
             <Style>
               <Border>
                 <Color>LightGrey</Color>
@@ -423,10 +423,10 @@
             </Style>
           </Chart>
         </ReportItems>
-        <Height>2.19642in</Height>
+        <Height>2.35267in</Height>
         <Style />
       </Body>
-      <Width>6.46317in</Width>
+      <Width>6.49442in</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>

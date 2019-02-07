@@ -22,7 +22,8 @@ namespace HızlıTrenApp.UI.YoneticiPanelFormlari
         private void FrmYoneticiRaporlarFormu_Load(object sender, EventArgs e)
         {
             cmbRaporlar.Items.Add("Economy/Business Bilet Alım Oranı");
-            cmbRaporlar.Items.Add("Musterilerin Kadın/Erkek Oranı");
+            cmbRaporlar.Items.Add("Müşterilerin Kadın/Erkek Oranı");
+            cmbRaporlar.Items.Add("Çalışanların Kadın/Erkek Oranı");
         }
 
         private void cmbRaporlar_SelectedIndexChanged(object sender, EventArgs e)
@@ -37,6 +38,10 @@ namespace HızlıTrenApp.UI.YoneticiPanelFormlari
                 case 1:
                     grpRapor.Controls.Clear();
                     Reporter.ReportFormCreate<Musteri>(grpRapor, "MusteriID", "Ad", "Soyad","Cinsiyet","DogumTarihi");
+                    break;
+                case 2:
+                    grpRapor.Controls.Clear();
+                    Reporter.ReportFormCreate<Calisan>(grpRapor, "CalisanID", "TcNo", "Ad", "Soyad", "Adres", "Cinsiyet", "DogumTarihi", "IseAlimTarihi", "UnvanID");
                     break;
                 default:
                     break;
