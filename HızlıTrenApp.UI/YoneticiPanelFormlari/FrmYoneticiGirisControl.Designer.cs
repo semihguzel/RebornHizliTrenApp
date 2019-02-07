@@ -47,7 +47,7 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(67, 107);
+            this.metroLabel2.Location = new System.Drawing.Point(67, 99);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(38, 19);
             this.metroLabel2.TabIndex = 1;
@@ -62,10 +62,12 @@
             // 
             // txtSifre
             // 
-            this.txtSifre.Location = new System.Drawing.Point(111, 103);
+            this.txtSifre.Location = new System.Drawing.Point(111, 95);
             this.txtSifre.Name = "txtSifre";
+            this.txtSifre.PasswordChar = '●';
             this.txtSifre.Size = new System.Drawing.Size(148, 23);
             this.txtSifre.TabIndex = 3;
+            this.txtSifre.UseSystemPasswordChar = true;
             // 
             // btnGiris
             // 
@@ -80,7 +82,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(320, 202);
+            this.ClientSize = new System.Drawing.Size(309, 202);
             this.Controls.Add(this.btnGiris);
             this.Controls.Add(this.txtSifre);
             this.Controls.Add(this.txtKullaniciAdi);

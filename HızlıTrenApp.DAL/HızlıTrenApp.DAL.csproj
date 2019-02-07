@@ -51,6 +51,7 @@
     <Compile Include="Mappings\BiletMapping.cs" />
     <Compile Include="Mappings\CalisanMapping.cs" />
     <Compile Include="Context.cs" />
+    <Compile Include="Mappings\YoneticiMapping.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Mappings\MusteriDetayMapping.cs" />
     <Compile Include="Mappings\MusteriMapping.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Repository\Concrete\SeferlerSeferSaatleriDal.cs" />
     <Compile Include="Repository\Concrete\SeferSaatleriDal.cs" />
     <Compile Include="Repository\Concrete\UnvanDal.cs" />
+    <Compile Include="Repository\Concrete\YoneticiDal.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

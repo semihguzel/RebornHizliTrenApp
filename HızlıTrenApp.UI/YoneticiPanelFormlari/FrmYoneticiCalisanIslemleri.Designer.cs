@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             this.btnListele = new MetroFramework.Controls.MetroButton();
-            this.btnCalisanAra = new MetroFramework.Controls.MetroButton();
-            this.txtCalisanAra = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.dgvCalisanlar = new System.Windows.Forms.DataGridView();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
@@ -59,37 +56,12 @@
             // 
             // btnListele
             // 
-            this.btnListele.Location = new System.Drawing.Point(608, 40);
+            this.btnListele.Location = new System.Drawing.Point(292, 30);
             this.btnListele.Name = "btnListele";
-            this.btnListele.Size = new System.Drawing.Size(123, 23);
+            this.btnListele.Size = new System.Drawing.Size(439, 33);
             this.btnListele.TabIndex = 31;
             this.btnListele.Text = "Listele";
             this.btnListele.Click += new System.EventHandler(this.btnListele_Click);
-            // 
-            // btnCalisanAra
-            // 
-            this.btnCalisanAra.Location = new System.Drawing.Point(486, 40);
-            this.btnCalisanAra.Name = "btnCalisanAra";
-            this.btnCalisanAra.Size = new System.Drawing.Size(116, 23);
-            this.btnCalisanAra.TabIndex = 30;
-            this.btnCalisanAra.Text = "Ara";
-            this.btnCalisanAra.Click += new System.EventHandler(this.btnCalisanAra_Click);
-            // 
-            // txtCalisanAra
-            // 
-            this.txtCalisanAra.Location = new System.Drawing.Point(364, 40);
-            this.txtCalisanAra.Name = "txtCalisanAra";
-            this.txtCalisanAra.Size = new System.Drawing.Size(116, 23);
-            this.txtCalisanAra.TabIndex = 29;
-            // 
-            // metroLabel5
-            // 
-            this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(284, 43);
-            this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(74, 19);
-            this.metroLabel5.TabIndex = 28;
-            this.metroLabel5.Text = "Çalışan Ad:";
             // 
             // dgvCalisanlar
             // 
@@ -308,9 +280,6 @@
             this.Controls.Add(this.btnUnvanEkle);
             this.Controls.Add(this.pnlKayit);
             this.Controls.Add(this.btnListele);
-            this.Controls.Add(this.btnCalisanAra);
-            this.Controls.Add(this.txtCalisanAra);
-            this.Controls.Add(this.metroLabel5);
             this.Controls.Add(this.dgvCalisanlar);
             this.Name = "FrmYoneticiCalisanIslemleri";
             this.ShadowType = MetroFramework.Forms.MetroForm.MetroFormShadowType.None;
@@ -321,16 +290,12 @@
             this.pnlKayit.ResumeLayout(false);
             this.pnlKayit.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private MetroFramework.Controls.MetroButton btnListele;
-        private MetroFramework.Controls.MetroButton btnCalisanAra;
-        private MetroFramework.Controls.MetroTextBox txtCalisanAra;
-        private MetroFramework.Controls.MetroLabel metroLabel5;
         private System.Windows.Forms.DataGridView dgvCalisanlar;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroLabel metroLabel3;

@@ -54,6 +54,7 @@
             this.btnGuncelle.Size = new System.Drawing.Size(96, 33);
             this.btnGuncelle.TabIndex = 1;
             this.btnGuncelle.Text = "Güncelle";
+            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
             // 
             // txtUnvan
             // 
@@ -110,7 +111,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(322, 271);
+            this.ClientSize = new System.Drawing.Size(321, 265);
             this.Controls.Add(this.cmbUnvanlar);
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroLabel2);

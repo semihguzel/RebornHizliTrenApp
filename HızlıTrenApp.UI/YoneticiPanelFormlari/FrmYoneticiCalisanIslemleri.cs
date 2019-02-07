@@ -105,7 +105,6 @@ namespace HızlıTrenApp.UI.YoneticiPanelFormlari
         private void btnListele_Click(object sender, EventArgs e)
         {
             dgvCalisanlar.DataSource = _calisanConcreteDal.CalisanList();
-            txtCalisanAra.Text = string.Empty;
         }
 
         private void btnSil_Click(object sender, EventArgs e)
@@ -174,16 +173,7 @@ namespace HızlıTrenApp.UI.YoneticiPanelFormlari
             else
                 MessageBox.Show("Lütfen girdiğiniz verileri kontrol ediniz...");
         }
-        private void btnCalisanAra_Click(object sender, EventArgs e)
-        {
-            if (txtCalisanAra.Text != string.Empty)
-            {
-                dgvCalisanlar.DataSource = null;
-                dgvCalisanlar.DataSource = _calisanConcreteDal.GetCalisanByStartWithName(txtCalisanAra.Text);
-            }
-            else
-                MessageBox.Show("Sefer aramak için bir şeyler yazınız.");
-        }
+        
 
         private void btnUnvanEkle_Click(object sender, EventArgs e)
         {

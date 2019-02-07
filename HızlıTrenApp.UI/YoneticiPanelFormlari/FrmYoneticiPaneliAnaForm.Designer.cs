@@ -28,20 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnMusteriIslemleri = new MetroFramework.Controls.MetroButton();
+            this.btnRaporlar = new MetroFramework.Controls.MetroButton();
             this.btnCalisan = new MetroFramework.Controls.MetroButton();
             this.btnSeferIslemleri = new MetroFramework.Controls.MetroButton();
             this.label1 = new System.Windows.Forms.Label();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.SuspendLayout();
             // 
-            // btnMusteriIslemleri
+            // btnRaporlar
             // 
-            this.btnMusteriIslemleri.Location = new System.Drawing.Point(516, 29);
-            this.btnMusteriIslemleri.Name = "btnMusteriIslemleri";
-            this.btnMusteriIslemleri.Size = new System.Drawing.Size(256, 28);
-            this.btnMusteriIslemleri.TabIndex = 7;
-            this.btnMusteriIslemleri.Text = "Müşteri işlemleri";
+            this.btnRaporlar.Location = new System.Drawing.Point(516, 29);
+            this.btnRaporlar.Name = "btnRaporlar";
+            this.btnRaporlar.Size = new System.Drawing.Size(256, 28);
+            this.btnRaporlar.TabIndex = 7;
+            this.btnRaporlar.Text = "Raporlar";
+            this.btnRaporlar.Click += new System.EventHandler(this.btnRaporlar_Click);
             // 
             // btnCalisan
             // 
@@ -94,7 +95,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCalisan);
             this.Controls.Add(this.btnSeferIslemleri);
-            this.Controls.Add(this.btnMusteriIslemleri);
+            this.Controls.Add(this.btnRaporlar);
             this.IsMdiContainer = true;
             this.Name = "FrmYoneticiPaneliAnaForm";
             this.Style = MetroFramework.MetroColorStyle.Red;
@@ -107,7 +108,7 @@
         }
         #endregion
 
-        private MetroFramework.Controls.MetroButton btnMusteriIslemleri;
+        private MetroFramework.Controls.MetroButton btnRaporlar;
         private MetroFramework.Controls.MetroButton btnCalisan;
         private MetroFramework.Controls.MetroButton btnSeferIslemleri;
         private System.Windows.Forms.Label label1;
