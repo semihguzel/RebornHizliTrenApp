@@ -175,10 +175,5 @@ namespace HızlıTrenApp.UI
         {
             AnaSayfaYenile();
         }
-
-        private void btnYoneticiGrs_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

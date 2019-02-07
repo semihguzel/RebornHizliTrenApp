@@ -33,43 +33,6 @@ namespace HızlıTrenApp.DAL.Repository.Concrete
             }
         }
 
-        public void Add(Sefer sefer)
-        {
-            using (Context db=new Context())
-            {
-                db.Seferler.Add(sefer);
-                db.SaveChanges();
-            }
-        }
-
-        public void Delete(Sefer sefer)
-        {
-            using (Context db=new Context())
-            {
-                var entry = db.Entry(sefer);
-                entry.State = EntityState.Deleted;
-                db.SaveChanges();
-            }
-        }
-
-        public void Update(Sefer sefer)
-        {
-            using (Context db=new Context())
-            {
-                var updatedEntity = db.Entry(sefer);
-                updatedEntity.State = EntityState.Modified;
-                db.SaveChanges();
-            }
-        }
-
-        public List<Sefer> GetSeferByContains(string sefer)
-        {
-            using (Context db=new Context())
-            {
-                return db.Seferler.Where(x => x.SeferYonu.Contains(sefer)).ToList();
-            }
-        }
-
         public List<Sefer> GetSeferlerByStartWith(string nrdn)
         {
             using (Context db=new Context())
