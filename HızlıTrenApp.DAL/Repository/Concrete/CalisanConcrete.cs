@@ -29,5 +29,25 @@ namespace HızlıTrenApp.DAL.Repository.Concrete
             //Bu frmAnasayfanin designer inda yaptigin onemli bir sey yok dimi, yok sadece listview değiştirdim çalıltırayım mı?
             //olur. yaptığım değişiklikler sadece bu iki form sana simdi bir form gostericem orda bir degisiklik yaptiysan soylersin
         }
+        public void Add(Calisan calisan)
+        {
+            using (Context db = new Context())
+            {
+                var addEntity = db.Entry(calisan);
+                addEntity.State = EntityState.Added;
+                db.SaveChanges();
+            }
+        }
+
+        public void Remove(Calisan calisan)
+        {
+            using (Context db = new Context())
+            {
+                var addEntity = db.Entry(calisan);
+                addEntity.State = EntityState.Deleted;
+                db.SaveChanges();
+            }
+        }
+
     }
 }
