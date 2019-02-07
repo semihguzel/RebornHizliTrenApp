@@ -1,5 +1,6 @@
 ﻿using HızlıTrenApp.DAL;
 using HızlıTrenApp.DATA.DataSet;
+using MetroFramework.Forms;
 using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
@@ -59,7 +60,7 @@ namespace HızlıTrenApp.UI
 
             LocalReport lp = RV.LocalReport;
             RV.ProcessingMode = ProcessingMode.Local;
-            lp.ReportPath = $"..//..//..//..//Reports/{Name}.rdlc";
+            lp.ReportPath = $"..//..//..//HızlıTrenApp.DATA/Reports/{Name}.rdlc";
             ReportDataSource dataSource = new ReportDataSource();
             dataSource.Name = $"{Name}DataSet";
             dataSource.Value = nds.Tables[$"{Name}"];
@@ -68,20 +69,28 @@ namespace HızlıTrenApp.UI
             RV.RefreshReport();
         }
 
-        public static void ReportFormCreate<T>(Form frm, params string[] properties) where T : class
+        public static void ReportFormCreate<T>(GroupBox grp, params string[] properties) where T : class
         {
-            Form f = new Form();
-            f.Text = $"{typeof(T).Name} Report Form";
-            f.ShowIcon = false;
+            //MetroForm mf = new MetroForm();
+            //mf.Text = $"{typeof(T).Name} Report Form";
+            //mf.ShowIcon = false;
             ReportViewer rv = new ReportViewer();
             rv.Dock = DockStyle.Fill;
-            f.Controls.Add(rv);
-            f.Load += ((object sender, EventArgs e) =>
-            {
-                Reporter.Report<T>(rv, properties);
-            });
+            grp.Controls.Add(rv);
+            Reporter.Report<T>(rv, properties);
+            //foreach (Control item in mf.Controls)
+            //{
+            //    if (item is GroupBox)
+            //    {
+            //        grp.Controls.Add(rv);
+            //    }
+            //}
+            //mf.Load += ((object sender, EventArgs e) =>
+            //{
+            //    Reporter.Report<T>(rv, properties);
+            //});
             //f.MdiParent = frm;
-            f.Show();
+            //mf.Show();
         }
     }
 }
