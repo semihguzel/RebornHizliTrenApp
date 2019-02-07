@@ -61,16 +61,17 @@ namespace HızlıTrenApp.UI
             this.Text = "Koltuk Seçimi";
             if (yolcuSayisi > 1)
             {
-                lblYolcuSayac.Enabled = btnYolcuKaydet.Enabled = cmbBiletTipi.Enabled = true;
-                btnYolcuKaydet.Enabled = false;
-                lblYolcuSayac.Text = "Yapılması gereken" + yolcuSayisi + "kadar kayıttan" + kayitSayaci + "kadar kayıt yapıldı.";
+                btnYolcuKaydet.Enabled = cmbBiletTipi.Enabled = true;
                 cmbBiletTipi.SelectedIndex = 0;
+				lblYolcuSayisiBilgilendirme.Text = "Seçtiğiniz " + yolcuSayisi + " adet biletten " + kayitSayaci + " kadar eklenmiştir.";
             }
             else
             {
+				lblYolcuSayisiBilgilendirme.Visible = false;
                 cmbBiletTipi.Text = biletTipi;
-                lblYolcuSayac.Enabled = btnYolcuKaydet.Enabled = cmbBiletTipi.Enabled = false;
-            }
+                btnYolcuKaydet.Enabled = false;
+				lblYolcuSayisiBilgilendirme.Visible = btnYolcuKaydet.Visible = false;
+			}
 
             SeferSaatleriDal ssd = new SeferSaatleriDal();
             saatID = ssd.GetIdByDate(saat);
@@ -461,7 +462,7 @@ namespace HızlıTrenApp.UI
             YolcuEkle();
         }
         ListViewItem lvi;
-        List<object> ozet;
+		List<ListViewItem> liste = new List<ListViewItem>();
         public void YolcuEkle()
         {
             int ucret = 0;
@@ -473,17 +474,18 @@ namespace HızlıTrenApp.UI
             {
                 foreach (Control item in grpEkHizmetler.Controls)
                 {
-                    if (((CheckBox)item).Checked)
-                    {
-                        if (item.Text.Contains("Bagaj"))
-                            ucret += 30;
-                        else if (item.Text.Contains("Yiyecek"))
-                            ucret += 10;
-                        else if (item.Text.Contains("İçecek"))
-                            ucret += 5;
-                    }
+					if (((CheckBox)item).Checked)
+					{
+						if (item.Text.Contains("Bagaj"))
+							ucret += 30;
+						else if (item.Text.Contains("Yiyecek"))
+							ucret += 10;
+						else if (item.Text.Contains("İçecek"))
+							ucret += 5;
+					}
                 }
             }
+
             BiletBilgi biletDetay = new BiletBilgi();
             BiletConcrete bc = new BiletConcrete();
             BiletBilgiDal bbd = new BiletBilgiDal();
@@ -541,22 +543,30 @@ namespace HızlıTrenApp.UI
                 string seferYonu = sd.GetYonById(seferId);
                 rc._rezerveRepository.Insert(rezerve);
 
-                lvi = new ListViewItem();
-                lvi.Text = yolcu.Ad;
-                lvi.SubItems.Add(yolcu.Soyad);
-                lvi.SubItems.Add(biletDetay.BiletTipi);
-                lvi.SubItems.Add(seferYonu);
-                lvi.SubItems.Add(biletDetay.SeferSaati);
-                lvi.SubItems.Add(biletDetay.KoltukNo);
-                lvi.SubItems.Add(biletDetay.BiletFiyati.ToString());
-                //ozet = new List<object>();
-                //ozet.Add(yolcu.Ad);
-                //ozet.Add(yolcu.Soyad);
-                //ozet.Add(biletDetay.BiletTipi);
-                //ozet.Add(seferYonu);
-                //ozet.Add(biletDetay.SeferSaati);
-                //ozet.Add(biletDetay.KoltukNo);
-                //ozet.Add(biletDetay.BiletFiyati);
+                
+				if (yolcuSayisi > 1)
+				{
+					lvi = new ListViewItem();
+					lvi.Text = yolcu.Ad;
+					lvi.SubItems.Add(yolcu.Soyad);
+					lvi.SubItems.Add(biletDetay.BiletTipi);
+					lvi.SubItems.Add(seferYonu);
+					lvi.SubItems.Add(biletDetay.SeferSaati);
+					lvi.SubItems.Add(biletDetay.KoltukNo);
+					lvi.SubItems.Add(biletDetay.BiletFiyati.ToString());
+					liste.Add(lvi);
+				}
+				else
+				{
+					lvi = new ListViewItem();
+					lvi.Text = yolcu.Ad;
+					lvi.SubItems.Add(yolcu.Soyad);
+					lvi.SubItems.Add(biletDetay.BiletTipi);
+					lvi.SubItems.Add(seferYonu);
+					lvi.SubItems.Add(biletDetay.SeferSaati);
+					lvi.SubItems.Add(biletDetay.KoltukNo);
+					lvi.SubItems.Add(biletDetay.BiletFiyati.ToString());
+				}
             }
             else
             {
@@ -566,8 +576,33 @@ namespace HızlıTrenApp.UI
                 satilan.SatisTarihi = DateTime.Now;
                 SatilanConcrete sc = new SatilanConcrete();
                 sc._satilanBiletRepository.Insert(satilan);
-            }
 
+				string seferYonu = sd.GetYonById(seferId);
+
+				if (yolcuSayisi > 1)
+				{
+					lvi = new ListViewItem();
+					lvi.Text = yolcu.Ad;
+					lvi.SubItems.Add(yolcu.Soyad);
+					lvi.SubItems.Add(biletDetay.BiletTipi);
+					lvi.SubItems.Add(seferYonu);
+					lvi.SubItems.Add(biletDetay.SeferSaati);
+					lvi.SubItems.Add(biletDetay.KoltukNo);
+					lvi.SubItems.Add(biletDetay.BiletFiyati.ToString());
+					liste.Add(lvi);
+				}
+				else
+				{
+					lvi = new ListViewItem();
+					lvi.Text = yolcu.Ad;
+					lvi.SubItems.Add(yolcu.Soyad);
+					lvi.SubItems.Add(biletDetay.BiletTipi);
+					lvi.SubItems.Add(seferYonu);
+					lvi.SubItems.Add(biletDetay.SeferSaati);
+					lvi.SubItems.Add(biletDetay.KoltukNo);
+					lvi.SubItems.Add(biletDetay.BiletFiyati.ToString());
+				}
+			}
         }
 
         private void btnOdemeyeGec_Click(object sender, EventArgs e)
@@ -578,8 +613,15 @@ namespace HızlıTrenApp.UI
                 return;
             }
 
+			if (kayitSayaci >= 0 && kayitSayaci <= yolcuSayisi)
+			{
+				Tools.Temizle(grpYolcuBilgileri);
+				Tools.Temizle(grpEkHizmetler);
+				KoltuklariDoldur();
+				kayitSayaci++;
+			}
 
-            DialogResult dr = new DialogResult();
+			DialogResult dr = new DialogResult();
             dr = MessageBox.Show("Kayıt işlemi yapmak istediğinizden emin misiniz?", "Uyarı", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
@@ -600,11 +642,48 @@ namespace HızlıTrenApp.UI
                 dr = MessageBox.Show("Rezerve işlemi yapılmıştır", "Bilgi", MessageBoxButtons.OK);
                 if (dr == DialogResult.OK)
                 {
-                    frmIslemOzeti islemOzeti = new frmIslemOzeti(lvi);
-                    frmAnaSayfa anaForm = (frmAnaSayfa)this.Parent.Parent.Parent;
-                    anaForm.FormKontrolluGetir(islemOzeti);
+					if (kayitSayaci == yolcuSayisi)
+					{
+						frmIslemOzeti islemOzeti = new frmIslemOzeti(lvi,liste);
+						frmAnaSayfa anaForm = (frmAnaSayfa)this.Parent.Parent.Parent;
+						anaForm.FormKontrolluGetir(islemOzeti);
+					}
+					else
+					{
+						Tools.Temizle(grpYolcuBilgileri);
+						Tools.Temizle(grpEkHizmetler);
+						tiklanan.ImageLocation = economyBosKoltuk;
+						KoltuklariDoldur();
+						lblYolcuSayisiBilgilendirme.Text = "Seçtiğiniz " + yolcuSayisi + " kadar biletten " + kayitSayaci + " kadar eklenmiştir.";
+						eskiTiklanan = null;
+						return;
+					}
                 }
             }
+			else
+			{
+				dr = MessageBox.Show("Kayit işlemi yapılmıştır", "Bilgi", MessageBoxButtons.OK);
+				if (dr == DialogResult.OK)
+				{
+					if (kayitSayaci == yolcuSayisi)
+					{
+						frmOdeme odeme = new frmOdeme(this, lvi,liste);
+						frmAnaSayfa anaForm = (frmAnaSayfa)this.Parent.Parent.Parent;
+						anaForm.FormKontrolluGetir(odeme);
+					}
+					else
+					{
+						Tools.Temizle(grpYolcuBilgileri);
+						Tools.Temizle(grpEkHizmetler);
+						tiklanan.ImageLocation = economyBosKoltuk;
+						KoltuklariDoldur();
+						lblYolcuSayisiBilgilendirme.Text = "Seçtiğiniz " + yolcuSayisi + " kadar biletten " + kayitSayaci + " kadar eklenmiştir.";
+						eskiTiklanan = null;
+						return;
+					}
+				}
+
+			}
         }
 
 
@@ -631,5 +710,5 @@ namespace HızlıTrenApp.UI
 
             }
         }
-    }
+	}
 }

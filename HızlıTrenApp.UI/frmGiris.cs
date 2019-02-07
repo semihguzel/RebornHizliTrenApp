@@ -35,6 +35,7 @@ namespace HızlıTrenApp.UI
 
         private void frmGiris_Load(object sender, EventArgs e)
         {
+			rdpRezerve.Checked = true;
             this.ControlBox = false;
             this.Text = "Hızlı Tren Bileti";
             cmbTip.Items.Add("Economy");

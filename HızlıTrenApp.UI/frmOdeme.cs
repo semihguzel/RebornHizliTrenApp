@@ -14,10 +14,14 @@ namespace HızlıTrenApp.UI
 	{
         frmKoltukSecimi koltukForm;
         frmRezervasyonlarim rezerveForm;
-		public frmOdeme(frmKoltukSecimi form)
+		ListViewItem lvi;
+		List<ListViewItem> listeler;
+		public frmOdeme(frmKoltukSecimi form,ListViewItem list,List<ListViewItem> liste)
 		{
 			InitializeComponent();
             koltukForm = form;
+			lvi = list;
+			listeler = liste;
 		}
         public frmOdeme(frmRezervasyonlarim form)
         {
@@ -29,9 +33,20 @@ namespace HızlıTrenApp.UI
         {
 			this.ControlBox = false;
 			this.Text = "Ödeme";
+			if (listeler != null)
+			{
+				foreach (ListViewItem item in listeler)
+				{
+					lstOdeme.Items.Add(item);
+				}
+			}
+			else
+			{
+				lstOdeme.Items.Add(lvi);
+			}
 		}
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+		private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

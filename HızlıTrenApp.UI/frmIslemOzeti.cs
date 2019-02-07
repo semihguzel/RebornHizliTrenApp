@@ -17,24 +17,34 @@ namespace HızlıTrenApp.UI
 	{
 
 		private PrintDocument printDocument1 = new PrintDocument();
-        List<object> ozetListesi;
-        ListViewItem lvi;
-        public frmIslemOzeti(ListViewItem listView)
+		List<object> ozetListesi;
+		ListViewItem lvi;
+		List<ListViewItem> liste;
+		public frmIslemOzeti(ListViewItem listView, List<ListViewItem> list)
 		{
 			printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
 			InitializeComponent();
-            lvi = listView;
+			lvi = listView;
+			liste = list;
 		}
 
 		private void frmIslemOzeti_Load(object sender, EventArgs e)
 		{
-            //dgvIslemOzeti.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            this.ControlBox = false;
+			this.ControlBox = false;
 			this.Text = "İşlem Özeti";
-            
-            lstIslemOzeti.Items.Add(lvi);
-        }
-        Bitmap memoryImage;
+			if (liste != null)
+			{
+				foreach (ListViewItem item in liste)
+				{
+					lstIslemOzeti.Items.Add(item);
+				}
+			}
+			else
+			{
+				lstIslemOzeti.Items.Add(lvi);
+			}
+		}
+		Bitmap memoryImage;
 
 		private void CaptureScreen()
 		{
@@ -45,7 +55,7 @@ namespace HızlıTrenApp.UI
 			memoryGraphics.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, s);
 		}
 
-		private void printDocument1_PrintPage(System.Object sender,System.Drawing.Printing.PrintPageEventArgs e)
+		private void printDocument1_PrintPage(System.Object sender, System.Drawing.Printing.PrintPageEventArgs e)
 		{
 			e.Graphics.DrawImage(memoryImage, 0, 0);
 		}
@@ -59,7 +69,7 @@ namespace HızlıTrenApp.UI
 		private void btnIndir_Click(object sender, EventArgs e)
 		{
 
-            PrintDocument doc = new PrintDocument();
+			PrintDocument doc = new PrintDocument();
 			doc.PrintPage += this.Doc_PrintPage;
 			PrintDialog dlgSettings = new PrintDialog();
 			dlgSettings.Document = doc;
