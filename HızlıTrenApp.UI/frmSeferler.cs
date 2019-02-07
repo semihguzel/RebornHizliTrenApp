@@ -18,7 +18,8 @@ namespace HızlıTrenApp.UI
         frmGiris gelenForm;
         DateTime tiklananGidisTarihi;
         DateTime tiklananDonusTarihi;
-        public frmSeferler(frmGiris frm, DateTime tiklananGidis, DateTime tiklananDonus)
+        int yolcuSayisi = 0;
+        public frmSeferler(frmGiris frm, DateTime tiklananGidis, DateTime tiklananDonus,int yolcular)
         {
             InitializeComponent();
             gelenForm = frm;
@@ -28,6 +29,7 @@ namespace HızlıTrenApp.UI
             _seferlerSeferSaatleriDal = new SeferlerSeferSaatleriDal();
             tiklananGidisTarihi = tiklananGidis;
             tiklananDonusTarihi = tiklananDonus;
+            yolcuSayisi = yolcular;
         }
         private SeferlerSeferSaatleriDal _seferlerSeferSaatleriDal;
         private SeferlerDal _seferlerDal;
@@ -48,11 +50,10 @@ namespace HızlıTrenApp.UI
         bool donusVarMi;
         private void frmSeferler_Load(object sender, EventArgs e)
         {
+            this.ControlBox = false;
+            this.Text = "Seferler";
 
-			this.ControlBox = false;
-			this.Text = "Seferler";
-
-			secilenGidisSeferi = new List<string>();
+            secilenGidisSeferi = new List<string>();
             lstSeferlerDonus.Enabled = false;
             if (gelenForm.ciftMi)
             {
@@ -303,13 +304,15 @@ namespace HızlıTrenApp.UI
             SeferSaatleriDal ssd = new SeferSaatleriDal();
             string tiklananSaat = lstSeferlerGidis.SelectedItems[0].SubItems[5].Text;
             int saatID = ssd.GetIdByDate(tiklananSaat);
+            tiklananGidisTarihi = Convert.ToDateTime(lstSeferlerGidis.SelectedItems[0].SubItems[4].Text);
             gidisVarMi = _biletBilgiDal.IsDateCreated(tiklananGidisTarihi, id1, saatID);
             if (tiklananDonusTarihi != null && tiklananDonusTarihi.Date != DateTime.Now.Date)
             {
-                donusVarMi = _biletBilgiDal.IsDateCreated(tiklananDonusTarihi,id1,saatID);
+                tiklananDonusTarihi = Convert.ToDateTime(lstSeferlerDonus.SelectedItems[0].SubItems[4].Text);
+                donusVarMi = _biletBilgiDal.IsDateCreated(tiklananDonusTarihi, id1, saatID);
             }
 
-            frmKoltukSecimi gelenForm2 = new frmKoltukSecimi(this, id1, tiklananSaat,gidisVarMi,donusVarMi,tiklananGidisTarihi,tiklananDonusTarihi);
+            frmKoltukSecimi gelenForm2 = new frmKoltukSecimi(this, id1, tiklananSaat, gidisVarMi, donusVarMi, tiklananGidisTarihi, tiklananDonusTarihi,yolcuSayisi);
             Hide();
             frmAnaSayfa anasayfa = (frmAnaSayfa)ParentForm;
             anasayfa.FormKontrolluGetir(gelenForm2);

@@ -146,6 +146,8 @@ namespace HızlıTrenApp.UI
         private void AnaFormGetir(MetroForm gelenForm)
         {
             grpAnaKutu.Controls.Clear();
+            //mlBilet.Hide();
+            //mlIstasyonTren.Hide();
             gelenForm.Width = grpAnaKutu.Width;
             gelenForm.Height = grpAnaKutu.Height;
             gelenForm.MdiParent = this;
@@ -168,6 +170,8 @@ namespace HızlıTrenApp.UI
                 if (item is MetroForm)
                     grpAnaKutu.Controls.Remove(item);
             }
+            grpAnaKutu.Controls.Add(mlBilet);
+            grpAnaKutu.Controls.Add(mlIstasyonTren);
             FormGetir(giris);
         }
 
