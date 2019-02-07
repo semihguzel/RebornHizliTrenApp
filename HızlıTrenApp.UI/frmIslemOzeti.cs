@@ -32,7 +32,7 @@ namespace HızlıTrenApp.UI
 		{
 			this.ControlBox = false;
 			this.Text = "İşlem Özeti";
-			if (liste != null)
+			if (liste.Count > 0)
 			{
 				foreach (ListViewItem item in liste)
 				{

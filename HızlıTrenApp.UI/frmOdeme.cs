@@ -33,7 +33,7 @@ namespace HızlıTrenApp.UI
         {
 			this.ControlBox = false;
 			this.Text = "Ödeme";
-			if (listeler != null)
+			if (listeler.Count > 0)
 			{
 				foreach (ListViewItem item in listeler)
 				{
