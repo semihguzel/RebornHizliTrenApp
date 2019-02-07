@@ -38,12 +38,14 @@ namespace HızlıTrenApp.DAL.Repository.Concrete
         public void Insert(T entity)
         {
             _dbSet.Add(entity);
+            _dbContext.SaveChanges();
         }
 
         public void Update(T entity)
         {
             _dbSet.Attach(entity);
             _dbContext.Entry(entity).State = EntityState.Modified;
+            _dbContext.SaveChanges();
         }
 
         public void Delete(T entity)
@@ -55,5 +57,6 @@ namespace HızlıTrenApp.DAL.Repository.Concrete
         {
             _dbSet.Remove(GetById(id));
         }
+
     }
 }

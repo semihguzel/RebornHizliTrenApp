@@ -8,25 +8,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
+using System.IO;
 
 namespace HızlıTrenApp.UI
 {
 	public partial class frmIslemOzeti : MetroFramework.Forms.MetroForm
 	{
-		
+
 		private PrintDocument printDocument1 = new PrintDocument();
-		public frmIslemOzeti()
-		{			
-			printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);		
+        List<object> ozetListesi;
+        ListViewItem lvi;
+        public frmIslemOzeti(ListViewItem listView)
+		{
+			printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
 			InitializeComponent();
+            lvi = listView;
 		}
 
 		private void frmIslemOzeti_Load(object sender, EventArgs e)
 		{
-			this.ControlBox = false;
+            //dgvIslemOzeti.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            this.ControlBox = false;
 			this.Text = "İşlem Özeti";
-		}
-		Bitmap memoryImage;
+            
+            lstIslemOzeti.Items.Add(lvi);
+        }
+        Bitmap memoryImage;
 
 		private void CaptureScreen()
 		{
@@ -37,15 +45,9 @@ namespace HızlıTrenApp.UI
 			memoryGraphics.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, s);
 		}
 
-		private void printDocument1_PrintPage(System.Object sender,
-			   System.Drawing.Printing.PrintPageEventArgs e)
+		private void printDocument1_PrintPage(System.Object sender,System.Drawing.Printing.PrintPageEventArgs e)
 		{
 			e.Graphics.DrawImage(memoryImage, 0, 0);
-		}
-
-		private void Form1_Load(object sender, EventArgs e)
-		{
-
 		}
 
 		private void btnYazdir_Click(object sender, EventArgs e)
@@ -56,7 +58,8 @@ namespace HızlıTrenApp.UI
 
 		private void btnIndir_Click(object sender, EventArgs e)
 		{
-			PrintDocument doc = new PrintDocument();
+
+            PrintDocument doc = new PrintDocument();
 			doc.PrintPage += this.Doc_PrintPage;
 			PrintDialog dlgSettings = new PrintDialog();
 			dlgSettings.Document = doc;

@@ -11,8 +11,8 @@ namespace HızlıTrenApp.DAL.Repository.Concrete
 {
     public class BiletBilgiDal
     {
-        private IRepository<BiletBilgi> _biletBilgiRepository;
-        private DbContext _dbContext;
+        public IRepository<BiletBilgi> _biletBilgiRepository;
+        public DbContext _dbContext;
 
         public BiletBilgiDal()
         {

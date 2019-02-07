@@ -14,6 +14,25 @@ namespace HızlıTrenApp.UI
 {
     public class Tools
     {
+
+        public static void Temizle(GroupBox grp)
+        {
+            foreach (Control item in grp.Controls)
+            {
+                if (item is TextBox)
+                    item.Text = "";
+                else if (item is ComboBox)
+                    ((ComboBox)item).SelectedIndex = 0;
+                else if (item is RadioButton)
+                    ((RadioButton)item).Checked = false;
+                else if (item is CheckBox)
+                    ((CheckBox)item).Checked = false;
+                else if (item is DateTimePicker)
+                    ((DateTimePicker)item).Value = DateTime.Now;
+            }
+        }
+
+
         public static void FormGetir(Form anaForm, MetroForm gelenForm, GroupBox anaKutu, GroupBox kutu, bool kutuVarMi, MetroLink mlBilet)
         {
             if (!kutuVarMi)

@@ -49,6 +49,11 @@ namespace HızlıTrenApp.DAL.Repository.Concrete
             }
         }
 
+        public string GetYonById(int id)
+        {
+            return _seferRepository.GetAll().Where(x => x.SeferID == id).Select(x => x.SeferYonu).FirstOrDefault();
+        }
+
         public List<Sefer> GetSeferByContains(string sefer)
         {
             using (Context db = new Context())
