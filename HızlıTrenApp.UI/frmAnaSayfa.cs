@@ -180,11 +180,11 @@ namespace HızlıTrenApp.UI
             AnaSayfaYenile();
         }
 
-        private void metroButton1_Click(object sender, EventArgs e)
-        {
-            frmYoneticiGirisControl frmYoneticiGirisControl = new frmYoneticiGirisControl(this);
-            frmYoneticiGirisControl.Show();
-            Hide();
-        }
-    }
+		private void mlYonPan_Click(object sender, EventArgs e)
+		{
+			frmYoneticiGirisControl frmYoneticiGirisControl = new frmYoneticiGirisControl(this);
+			frmYoneticiGirisControl.Show();
+			Hide();
+		}
+	}
 }
