@@ -96,7 +96,7 @@ namespace HızlıTrenApp.UI
         {
             //Burada bir sonraki sayfaya geçmeden önce seferin gidiş ve dönüş bilgilerinin dolu olup olmadığını kontrol ettiriyorum.
             if (secilenGidisSeferi.Count > 0)
-            {   
+            {
                 if (gelenForm.ciftMi)
                 {
                     if (secilenDonusSeferi.Count > 0)
@@ -329,13 +329,13 @@ namespace HızlıTrenApp.UI
                 {
                     donusSaatId = ssd.GetIdByDate(tiklananDonusSaat);
                 }
-                if (donusVarMi)
+                if (gidisDonusMu)
                 {
                     donusSssd = sssd.GetBySeferIdAndSaatId(id2, donusSaatId);
                 }
             }
 
-            frmKoltukSecimi gelenForm2 = new frmKoltukSecimi(this, id1, tiklananSaat, gidisVarMi, gidisDonusMu, tiklananGidisTarihi, tiklananDonusTarihi, yolcuSayisi, biletTipi, rezerveMi, donusSssd,id2,donusSaatId);
+            frmKoltukSecimi gelenForm2 = new frmKoltukSecimi(this, id1, tiklananSaat, gidisVarMi, gidisDonusMu, tiklananGidisTarihi, tiklananDonusTarihi, yolcuSayisi, biletTipi, rezerveMi, donusSssd, id2, donusSaatId);
             Hide();
             frmAnaSayfa anasayfa = (frmAnaSayfa)ParentForm;
             anasayfa.FormKontrolluGetir(gelenForm2);
