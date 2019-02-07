@@ -27,7 +27,7 @@ namespace HızlıTrenApp.UI
         int donusSssd = 0;
         int donusId = 0;
         int donusSaatId = 0;
-        public frmKoltukSecimi(Form form, int id, string tiklananSaat, bool gidis, bool donus, DateTime gidisT, DateTime donusT, int yolcular, string tip, bool rezerve,int donusSeferSaatId,int tiklananDonusId,int tiklananDonusSaatId)
+        public frmKoltukSecimi(Form form, int id, string tiklananSaat, bool gidis, bool donus, DateTime gidisT, DateTime donusT, int yolcular, string tip, bool rezerve, int donusSeferSaatId, int tiklananDonusId, int tiklananDonusSaatId)
         {
             InitializeComponent();
             gelenForm = form;
@@ -618,7 +618,17 @@ namespace HızlıTrenApp.UI
                     lvi.Text = yolcu.Ad;
                     lvi.SubItems.Add(yolcu.Soyad);
                     lvi.SubItems.Add(biletDetay.BiletTipi);
-                    lvi.SubItems.Add(seferYonu);
+
+                    if (!gidisEklendiMi && donusTarihi != null)
+                    {
+                        lvi.SubItems.Add(seferYonu);
+                    }
+                    else
+                    {
+                        seferYonu = sd.GetYonById(donusId);
+                        lvi.SubItems.Add(seferYonu);
+                    }
+
                     lvi.SubItems.Add(biletDetay.SeferSaati);
                     lvi.SubItems.Add(biletDetay.KoltukNo);
                     lvi.SubItems.Add(biletDetay.BiletFiyati.ToString());
@@ -655,7 +665,17 @@ namespace HızlıTrenApp.UI
                     lvi.Text = yolcu.Ad;
                     lvi.SubItems.Add(yolcu.Soyad);
                     lvi.SubItems.Add(biletDetay.BiletTipi);
-                    lvi.SubItems.Add(seferYonu);
+
+                    if (!gidisEklendiMi && donusTarihi != null)
+                    {
+                        lvi.SubItems.Add(seferYonu);
+                    }
+                    else
+                    {
+                        seferYonu = sd.GetYonById(donusId);
+                        lvi.SubItems.Add(seferYonu);
+                    }
+
                     lvi.SubItems.Add(biletDetay.SeferSaati);
                     lvi.SubItems.Add(biletDetay.KoltukNo);
                     lvi.SubItems.Add(biletDetay.BiletFiyati.ToString());
@@ -733,7 +753,7 @@ namespace HızlıTrenApp.UI
                         }
 
                         tiklanan.ImageLocation = economyBosKoltuk;
-                        KoltuklariDoldur();
+                        DonusKoltuklariDoldur();
                         lblGidisDonus.Text = "Donus seferi icin koltuk seciniz.";
                         foreach (Control item in grpYolcuBilgileri.Controls)
                         {
@@ -753,7 +773,6 @@ namespace HızlıTrenApp.UI
                             frmAnaSayfa anaForm = (frmAnaSayfa)this.Parent.Parent.Parent;
                             anaForm.FormKontrolluGetir(islemOzeti);
                         }
-                        DonusKoltuklariDoldur();
                         eskiTiklanan = null;
                         return;
                     }
@@ -763,7 +782,7 @@ namespace HızlıTrenApp.UI
                         frmAnaSayfa anaForm = (frmAnaSayfa)this.Parent.Parent.Parent;
                         anaForm.FormKontrolluGetir(islemOzeti);
                     }
-                    
+
 
                     else
                     {
@@ -787,7 +806,7 @@ namespace HızlıTrenApp.UI
                         Tools.Temizle(grpYolcuBilgileri);
                         Tools.Temizle(grpEkHizmetler);
                         tiklanan.ImageLocation = economyBosKoltuk;
-                        KoltuklariDoldur();
+                        DonusKoltuklariDoldur();
                         lblGidisDonus.Text = "Donus seferi icin koltuk seciniz.";
                         foreach (Control item in grpYolcuBilgileri.Controls)
                         {
@@ -800,7 +819,6 @@ namespace HızlıTrenApp.UI
                                 item.Enabled = false;
                             }
                         }
-                        DonusKoltuklariDoldur();
                         eskiTiklanan = null;
 
                         return;
@@ -813,7 +831,7 @@ namespace HızlıTrenApp.UI
                         anaForm.FormKontrolluGetir(odeme);
                     }
 
-                   
+
 
                     else
                     {
