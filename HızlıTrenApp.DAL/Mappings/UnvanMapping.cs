@@ -17,6 +17,7 @@ namespace HızlıTrenApp.DAL
             Property(x => x.UnvanAdi).HasMaxLength(50);
             Property(x => x.Maas).HasColumnType("money");
 
+            ToTable("Unvanlar");
         }
     }
 }

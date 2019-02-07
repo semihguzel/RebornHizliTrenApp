@@ -22,6 +22,7 @@ namespace HızlıTrenApp.DAL
 
             Ignore(x => x.TamAdi);
 
+            ToTable("Calisanlar");
 
             HasRequired(x => x.CalisaninUnvani).WithMany(x => x.UnvaninCalisanlari).HasForeignKey(x => x.UnvanID);
 

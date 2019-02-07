@@ -16,17 +16,17 @@ namespace HızlıTrenApp.DAL
             Database.Connection.ConnectionString = "server=.; database = HizliTrenDb; uid = sa; pwd = 123";
         }
         //saasdasd
-        public DbSet<Bilet> Bilet { get; set; }
-        public DbSet<BiletBilgi> BiletBilgi { get; set; }
-        public DbSet<Calisan> Calisan { get; set; }
-        public DbSet<Musteri> Musteri { get; set; }
-        public DbSet<MusteriDetay> MusteriDetay { get; set; }
-        public DbSet<RezerveBilet> RezerveBilet { get; set; }
-        public DbSet<SatilanBilet> SatilanBilet { get; set; }
-        public DbSet<Sefer> Sefer { get; set; }
-        public DbSet<SeferSaat> SeferSaat { get; set; }
-        public DbSet<SeferSeferSaat> SeferSeferSaat { get; set; }
-        public DbSet<Unvan> Unvan { get; set; }
+        public DbSet<Bilet> Biletler { get; set; }
+        public DbSet<BiletBilgi> BiletBilgileri { get; set; }
+        public DbSet<Calisan> Calisanlar { get; set; }
+        public DbSet<Musteri> Musteriler { get; set; }
+        public DbSet<MusteriDetay> MusteriDetaylari { get; set; }
+        public DbSet<RezerveBilet> RezerveBiletler { get; set; }
+        public DbSet<SatilanBilet> SatilanBiletler { get; set; }
+        public DbSet<Sefer> Seferler { get; set; }
+        public DbSet<SeferSaat> SeferSaatleri { get; set; }
+        public DbSet<SeferSeferSaat> SeferSeferSaatleri { get; set; }
+        public DbSet<Unvan> Unvanlar { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

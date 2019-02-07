@@ -21,8 +21,7 @@ namespace HızlıTrenApp.UI
         bool donusVarMi;
         DateTime gidisTarihi;
         DateTime donusTarihi;
-        int yolcuSayisi = 0;
-        public frmKoltukSecimi(Form form, int id, string tiklananSaat, bool gidis, bool donus, DateTime gidisT, DateTime donusT,int yolcular)
+        public frmKoltukSecimi(Form form, int id, string tiklananSaat, bool gidis, bool donus,DateTime gidisT, DateTime donusT)
         {
             InitializeComponent();
             gelenForm = form;
@@ -32,7 +31,6 @@ namespace HızlıTrenApp.UI
             donusVarMi = donus;
             gidisTarihi = gidisT;
             donusTarihi = donusT;
-            yolcuSayisi = yolcular;
         }
         List<BiletBilgi> businessKadinBiletler;
         List<BiletBilgi> businessErkekBiletler;
@@ -44,22 +42,12 @@ namespace HızlıTrenApp.UI
         string businessBosKoltuk = @"..\..\Images\Resized_Seats\seat_available_resized_business.png";
         string economyBosKoltuk = @"..\..\Images\Resized_Seats\seat_available_resized_economy.png";
         string economyLuggage = @"..\..\Images\luggage_economy.png";
-        string secilenKoltuk = @"..\..\Images\Resized_Seats\seat_reserved_resized_economy.png";
-        int kayitSayaci = 0;
         private void frmKoltukSecimi_Load(object sender, EventArgs e)
         {
-            this.ControlBox = false;
-            this.Text = "Koltuk Seçimi";
-            if (yolcuSayisi > 1)
-            {
-                lblYolcuSayac.Enabled = btnYolcuKaydet.Enabled = cmbBiletTipi.Enabled = true;
-                btnYolcuKaydet.Enabled = false;
-                lblYolcuSayac.Text = "Yapılması gereken" + yolcuSayisi + "kadar kayıttan" + kayitSayaci + "kadar kayıt yapıldı.";
-            }
-            else
-                lblYolcuSayac.Enabled = btnYolcuKaydet.Enabled = cmbBiletTipi.Enabled = false;
+			this.ControlBox = false;
+			this.Text = "Koltuk Seçimi";
 
-            SeferSaatleriDal ssd = new SeferSaatleriDal();
+			SeferSaatleriDal ssd = new SeferSaatleriDal();
             int saatID = ssd.GetIdByDate(saat);
             BiletBilgiDal biletBilgiConcrete = new BiletBilgiDal();
 
@@ -72,7 +60,7 @@ namespace HızlıTrenApp.UI
                 KoltuklariOlustur();
 
                 businessKadinBiletler = biletBilgiConcrete.BusinessWomanTickets(seferId, saatID, gidisTarihi);
-                businessErkekBiletler = biletBilgiConcrete.BusinessManTickets(seferId, saatID, gidisTarihi);
+                businessErkekBiletler = biletBilgiConcrete.BusinessManTickets(seferId, saatID,gidisTarihi);
 
                 economyKadinBiletler = biletBilgiConcrete.EconomyWomanTickets(seferId, saatID, gidisTarihi);
                 economyErkekBiletler = biletBilgiConcrete.EconomyManTickets(seferId, saatID, gidisTarihi);
@@ -366,53 +354,11 @@ namespace HızlıTrenApp.UI
             lbl.Width = pb.Width;
             lbl.Height = 15;
             pb.ImageLocation = economyBosKoltuk;
-            pb.Click += EconomyClick;
             if (luggage != null)
             {
                 luggage.Width = 40;
                 luggage.Height = 30;
                 luggage.ImageLocation = economyLuggage;
-            }
-        }
-        PictureBox eskiTiklanan;
-        PictureBox tiklanan;
-        private void EconomyClick(object sender, EventArgs e)
-        {
-            bool temp = false;
-            tiklanan = sender as PictureBox;
-            GroupBox grp = (GroupBox)tiklanan.Parent;
-            if (!rdbErkek.Checked == !rdbKadin.Checked)
-            {
-                MessageBox.Show("Lütfen 'Yolcu Bilgileri' kutucuğundan bir cinsiyet seçiniz");
-                return;
-            }
-            if (tiklanan.Name.StartsWith("E") && tiklanan.ImageLocation != null && tiklanan.ImageLocation == economyErkekKoltuk | tiklanan.ImageLocation == economyKadinKoltuk)
-            {
-                MessageBox.Show("Lütfen boş bir koltuk seçiniz");
-            }
-            else
-            {
-                foreach (Control item in grp.Controls)
-                {
-                    if (item is PictureBox)
-                    {
-                        if ((item.Location.X == tiklanan.Location.X && item.Name.StartsWith("E") && item.Name != tiklanan.Name && tiklanan.ImageLocation.Contains("available")) && ((((PictureBox)item).ImageLocation.Contains("woman") && !rdbKadin.Checked) || (((PictureBox)item).ImageLocation.Contains("_man") && !rdbErkek.Checked)))
-                        {
-                            MessageBox.Show("Seçilen koltuk karşı cinsin yanında olamaz. Lütfen doğru şekilde koltuk seçiniz.");
-                            return;
-                        }
-                        else if (item.Location.X == tiklanan.Location.X && item.Name != "" && tiklanan.ImageLocation.Contains("available") && item.Name != tiklanan.Name)
-                        {
-                            if (eskiTiklanan != null)
-                            {
-                                eskiTiklanan.ImageLocation = economyBosKoltuk;
-                            }
-                            tiklanan.ImageLocation = secilenKoltuk;
-                            eskiTiklanan = tiklanan;
-                            return;
-                        }
-                    }
-                }
             }
         }
 
@@ -432,53 +378,6 @@ namespace HızlıTrenApp.UI
         {
             PictureBox tiklanan = sender as PictureBox;
             MessageBox.Show(tiklanan.Name);
-        }
-
-        private void rdbKadin_CheckedChanged(object sender, EventArgs e)
-        {
-            if (tiklanan != null && tiklanan.ImageLocation == secilenKoltuk)
-                tiklanan.ImageLocation = economyBosKoltuk;
-        }
-
-        private void rdbErkek_CheckedChanged(object sender, EventArgs e)
-        {
-            if (tiklanan != null && tiklanan.ImageLocation == secilenKoltuk)
-                tiklanan.ImageLocation = economyBosKoltuk;
-        }
-
-        private void btnYolcuKaydet_Click(object sender, EventArgs e)
-        {
-            Musteri yolcu = new Musteri();
-            yolcu.Ad = txtAd.Text;
-            yolcu.Soyad = txtSoyad.Text;
-            yolcu.DogumTarihi = dtpDogumTarihi.Value.Date;
-            yolcu.Cinsiyet = rdbErkek.Checked;
-
-            int ucret = 0;
-            if (grpEkHizmetler.Controls.Count > 0)
-            {
-                foreach (Control item in grpEkHizmetler.Controls)
-                {
-                    if (((CheckBox)item).Checked)
-                    {
-                        if (item.Text.Contains("Bagaj"))
-                            ucret += 30;
-                        else if (item.Text.Contains("Yiyecek"))
-                            ucret += 10;
-                        else if (item.Text.Contains("İçecek"))
-                            ucret += 5;
-                    }
-                }
-            }
-            BiletBilgi biletDetay = new BiletBilgi();
-            biletDetay.BiletTipi = cmbBiletTipi.Text;
-            biletDetay.KoltukNo = tiklanan.Name;
-            biletDetay.AlimTarihi = DateTime.Now;
-
-            //biletDetay.BiletFiyati = 
-
-            //Bilet bilet = new Bilet();
-            //bilet.
         }
     }
 }

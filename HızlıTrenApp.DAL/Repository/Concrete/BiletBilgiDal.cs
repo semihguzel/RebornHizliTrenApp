@@ -23,7 +23,7 @@ namespace HızlıTrenApp.DAL.Repository.Concrete
         {
             using (Context db = new Context())
             {
-                return db.BiletBilgi.Where(x => x.SeferTarihi == dateTime).ToList();
+                return db.BiletBilgileri.Where(x => x.SeferTarihi == dateTime).ToList();
             }
         }
 

@@ -17,6 +17,7 @@ namespace HızlıTrenApp.DAL
             Property(x => x.YolcuKapasitesi).HasColumnType("tinyint");
             Property(x => x.TahminiVarisSuresi).HasMaxLength(15);
 
+            ToTable("Seferler");
         }
     }
 }

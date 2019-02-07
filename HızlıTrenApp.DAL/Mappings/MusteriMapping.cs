@@ -20,6 +20,7 @@ namespace HızlıTrenApp.DAL
             Ignore(x => x.TamAdi);
             Ignore(x => x.Yas);
 
+            ToTable("Musteriler");
 
             HasRequired(x => x.DetayinMusterisi).WithRequiredPrincipal(x => x.DetayinMusterisi);
         }

@@ -24,7 +24,7 @@ namespace HızlıTrenApp.DAL.Repository.Concrete
         {
             using (Context db = new Context())
             {
-                return db.SeferSeferSaat.Where(x => x.SeferID == id).ToList();
+                return db.SeferSeferSaatleri.Where(x => x.SeferID == id).ToList();
             }
         }
 

@@ -15,6 +15,7 @@ namespace HızlıTrenApp.DAL
             HasKey(x => x.SatilanID);
             Property(x => x.SatisTarihi).HasColumnType("datetime2");
 
+            ToTable("SatilanBiletler");
 
             HasRequired(x => x.SatinAlanMusteri).WithMany(x => x.SatinAlinanlarinMusterisi).HasForeignKey(x => x.MusteriID);
             HasRequired(x => x.SatinAlinanBilet).WithMany(x => x.SatilanBiletler).HasForeignKey(x => x.BiletID);
