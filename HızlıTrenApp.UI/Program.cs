@@ -19,8 +19,8 @@ namespace HızlıTrenApp.UI
             frmAnaSayfa frm = new frmAnaSayfa();
             //Application.Run(new frmKoltukSecimi(frm));
             //Application.Run(new frmAnaSayfa());
-            //Application.Run(new YoneticiPanelFormlari.FrmYoneticiPaneliAnaForm());
-			Application.Run(new frmIslemOzeti());
+            Application.Run(new YoneticiPanelFormlari.FrmYoneticiPaneliAnaForm());
+			
         }
     }
 }
