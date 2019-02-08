@@ -48,6 +48,7 @@ namespace HızlıTrenApp.UI
 		{
 			this.ControlBox = false;
 			this.Text = "Biletlerim";
+			dgvSeyehatBilgileri.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 		}
 	}
 }

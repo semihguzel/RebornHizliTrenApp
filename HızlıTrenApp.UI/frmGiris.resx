@@ -474,6 +474,33 @@
   <data name="&gt;&gt;metroLabel2.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
+  <data name="metroLabel7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroLabel7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 300</value>
+  </data>
+  <data name="metroLabel7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>319, 19</value>
+  </data>
+  <data name="metroLabel7.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="metroLabel7.Text" xml:space="preserve">
+    <value>18 yaşından küçük yolcular için indirim uygulanacaktır!</value>
+  </data>
+  <data name="&gt;&gt;metroLabel7.Name" xml:space="preserve">
+    <value>metroLabel7</value>
+  </data>
+  <data name="&gt;&gt;metroLabel7.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroLabel7.Parent" xml:space="preserve">
+    <value>grpBilet</value>
+  </data>
+  <data name="&gt;&gt;metroLabel7.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="grpYonSecimi.Location" type="System.Drawing.Point, System.Drawing">
     <value>23, 20</value>
   </data>
@@ -493,7 +520,7 @@
     <value>grpBilet</value>
   </data>
   <data name="&gt;&gt;grpYonSecimi.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="rdpSatis.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -574,39 +601,6 @@
     <value>grpBilet</value>
   </data>
   <data name="&gt;&gt;grpSatisRezerve.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="metroLabel7.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="metroLabel7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 298</value>
-  </data>
-  <data name="metroLabel7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="metroLabel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>291, 19</value>
-  </data>
-  <data name="metroLabel7.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="metroLabel7.Text" xml:space="preserve">
-    <value>18'yas alti yolcular icin ucret ayri hesap edilecektir.</value>
-  </data>
-  <data name="metroLabel7.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="&gt;&gt;metroLabel7.Name" xml:space="preserve">
-    <value>metroLabel7</value>
-  </data>
-  <data name="&gt;&gt;metroLabel7.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;metroLabel7.Parent" xml:space="preserve">
-    <value>grpBilet</value>
-  </data>
-  <data name="&gt;&gt;metroLabel7.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="grpBilet.Font" type="System.Drawing.Font, System.Drawing">

@@ -25,6 +25,7 @@ namespace HızlıTrenApp.UI
 		{
 			this.ControlBox = false;
 			this.Text = "Rezervasyonlarım";
+			dgvSeyehatBilgileri.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 		}
 		private void btnSorgula_Click(object sender, EventArgs e)
 		{
@@ -71,11 +72,10 @@ namespace HızlıTrenApp.UI
 				satilanBilet._dbContext.SaveChanges();
 				rezerveBilet._dbContext.SaveChanges();
 				MessageBox.Show("Rezerve biletiniz Satışa Çevrilmiştir.");
+				dgvSeyehatBilgileri.DataSource = null;
 				RezerveBiletListele();
 
 			}
 		}
-
-		
 	}
 }

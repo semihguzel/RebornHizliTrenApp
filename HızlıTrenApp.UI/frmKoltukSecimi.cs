@@ -561,12 +561,21 @@ namespace HızlıTrenApp.UI
             yolcu.Cinsiyet = rdbErkek.Checked;
             mc._musteriRepository.Insert(yolcu);
 
-            int musteriId = mc.GetIdByEntity(yolcu);
+			if (yolcu.Yas < 18 && biletTipi == "Economy")
+			{
+				ucret -= 20;
+			}
+			else if (yolcu.Yas < 18 && biletTipi == "Business")
+			{
+				ucret -= 30;
+			}
+
+			int musteriId = mc.GetIdByEntity(yolcu);
             musteriDetay.Email = txtEmail.Text;
             musteriDetay.Telefon = txtTelefon.Text;
             musteriDetay.MusteriDetayID = musteriId;
             mdc._musteriDetayRepository.Insert(musteriDetay);
-
+			
 
             biletDetay.BiletTipi = cmbBiletTipi.Text;
             biletDetay.KoltukNo = tiklanan.Name;
@@ -720,8 +729,8 @@ namespace HızlıTrenApp.UI
                     lvi.SubItems.Add(yolcu.Soyad);
                     lvi.SubItems.Add(biletDetay.BiletTipi);
                     lvi.SubItems.Add(seferYonu);
-                    //lvi.SubItems.Add(biletDetay.SeferSaati);
-                    lvi.SubItems.Add(biletDetay.KoltukNo);
+					lvi.SubItems.Add(biletDetay.SeferSaati);
+					lvi.SubItems.Add(biletDetay.KoltukNo);
                     lvi.SubItems.Add(biletDetay.BiletFiyati.ToString());
                     lvi.SubItems.Add(bilet.PNRNo.ToString());
                 }
@@ -731,6 +740,11 @@ namespace HızlıTrenApp.UI
         int gidisDonusSayac = 0;
         private void btnOdemeyeGec_Click(object sender, EventArgs e)
         {
+			if (Tools.BosAlanVarMi(grpYolcuBilgileri))
+			{
+				MessageBox.Show("Lütfen kutucukları doldurunuz.");
+				return;
+			}
             if (tiklanan == null)
             {
                 MessageBox.Show("Önce koltuk seçiniz!");
@@ -857,9 +871,9 @@ namespace HızlıTrenApp.UI
                         }
                         if (gidisDonusSayac == 2 && yolcuSayisi == 1)
                         {
-                            frmIslemOzeti islemOzeti = new frmIslemOzeti(lvi, liste);
+                            frmOdeme odeme = new frmOdeme(this,lvi, liste);
                             frmAnaSayfa anaForm = (frmAnaSayfa)this.Parent.Parent.Parent;
-                            anaForm.FormKontrolluGetir(islemOzeti);
+                            anaForm.FormKontrolluGetir(odeme);
                         }
                         eskiTiklanan = null;
                         return;
@@ -868,9 +882,9 @@ namespace HızlıTrenApp.UI
 
                     if (kayitSayaci == yolcuSayisi)
                     {
-                        frmIslemOzeti islemOzeti = new frmIslemOzeti(lvi, liste);
-                        frmAnaSayfa anaForm = (frmAnaSayfa)this.Parent.Parent.Parent;
-                        anaForm.FormKontrolluGetir(islemOzeti);
+						frmOdeme odeme = new frmOdeme(this, lvi, liste);
+						frmAnaSayfa anaForm = (frmAnaSayfa)this.Parent.Parent.Parent;
+                        anaForm.FormKontrolluGetir(odeme);
                     }
 
                     else

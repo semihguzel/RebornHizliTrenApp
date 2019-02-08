@@ -42,7 +42,7 @@
 			// 
 			// mlBiletlerim
 			// 
-			this.mlBiletlerim.Location = new System.Drawing.Point(823, 8);
+			this.mlBiletlerim.Location = new System.Drawing.Point(780, 8);
 			this.mlBiletlerim.Margin = new System.Windows.Forms.Padding(2);
 			this.mlBiletlerim.Name = "mlBiletlerim";
 			this.mlBiletlerim.Size = new System.Drawing.Size(93, 37);
@@ -53,7 +53,7 @@
 			// 
 			// mlRezervasyonlarim
 			// 
-			this.mlRezervasyonlarim.Location = new System.Drawing.Point(920, 8);
+			this.mlRezervasyonlarim.Location = new System.Drawing.Point(894, 8);
 			this.mlRezervasyonlarim.Margin = new System.Windows.Forms.Padding(2);
 			this.mlRezervasyonlarim.Name = "mlRezervasyonlarim";
 			this.mlRezervasyonlarim.Size = new System.Drawing.Size(115, 37);
@@ -119,7 +119,7 @@
 			// 
 			// mlYonPan
 			// 
-			this.mlYonPan.Location = new System.Drawing.Point(700, 8);
+			this.mlYonPan.Location = new System.Drawing.Point(666, 8);
 			this.mlYonPan.Margin = new System.Windows.Forms.Padding(2);
 			this.mlYonPan.Name = "mlYonPan";
 			this.mlYonPan.Size = new System.Drawing.Size(97, 37);
@@ -132,7 +132,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1055, 619);
+			this.ClientSize = new System.Drawing.Size(1020, 619);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.pbLogo);
 			this.Controls.Add(this.grpAnaKutu);
@@ -142,6 +142,8 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.IsMdiContainer = true;
 			this.Margin = new System.Windows.Forms.Padding(2);
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "frmAnaSayfa";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Hızlı Tren Bilet Satış Otomasyonu";

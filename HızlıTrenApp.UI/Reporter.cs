@@ -13,18 +13,6 @@ namespace HızlıTrenApp.UI
 {
     public static class Reporter
     {
-        //public static void Open<T>(Form frm) where T : Form, new()
-        //{
-        //    T t = new T();
-        //    t.ShowIcon = false;
-        //    t.MdiParent = frm;
-        //    t.Show();
-        //}
-
-        // Örnek Kullanım 
-        //Reporter.ReportFormCreate<BiletBilgi>(deneme, "BiletBilgiID", "AlimTarihi", "BiletTipi",
-        //    "KoltukNo", "BiletFiyati", "BiletTarihi", "SeferSaati", "MusteriID", "SeferSeferSaatID");
-
         public static void Report<T>(ReportViewer RV, params string[] properties) where T : class
         {
             Context db = new Context();
@@ -71,26 +59,10 @@ namespace HızlıTrenApp.UI
 
         public static void ReportFormCreate<T>(GroupBox grp, params string[] properties) where T : class
         {
-            //MetroForm mf = new MetroForm();
-            //mf.Text = $"{typeof(T).Name} Report Form";
-            //mf.ShowIcon = false;
             ReportViewer rv = new ReportViewer();
             rv.Dock = DockStyle.Fill;
             grp.Controls.Add(rv);
             Reporter.Report<T>(rv, properties);
-            //foreach (Control item in mf.Controls)
-            //{
-            //    if (item is GroupBox)
-            //    {
-            //        grp.Controls.Add(rv);
-            //    }
-            //}
-            //mf.Load += ((object sender, EventArgs e) =>
-            //{
-            //    Reporter.Report<T>(rv, properties);
-            //});
-            //f.MdiParent = frm;
-            //mf.Show();
         }
     }
 }

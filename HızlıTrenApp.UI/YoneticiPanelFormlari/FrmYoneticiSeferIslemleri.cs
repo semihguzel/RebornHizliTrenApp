@@ -54,7 +54,7 @@ namespace HızlıTrenApp.UI.YoneticiPanelFormlari
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
-            if (_seferlerDal.GetSeferByContains(txtKalkıs.Text + "-" + txtVarıs) != null)
+            if (_seferlerDal.GetSeferByContains(txtKalkıs.Text + "-" + txtVarıs.Text).Count == 0)
             {
                 if (txtKalkıs.Text.Trim() != string.Empty && txtVarıs.Text.Trim() != string.Empty && txtYolcuKapasitesi.Text.Trim() != string.Empty && txtVarısSuresi.Text.Trim() != string.Empty)
                 {
