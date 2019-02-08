@@ -83,6 +83,12 @@ namespace HızlıTrenApp.UI
         }
         private void btnSeferleriListele_Click(object sender, EventArgs e)
         {
+            if (rdbGidisDonus.Checked && nmrYolcuSayisi.Value > 1)
+            {
+                MessageBox.Show("Gidiş dönüş için sadece 1 yolcu kayıt edilebilir.");
+                return;
+            }
+
             //Verilerin Doğru olup olmadığının kontrol edilmesi.
             if (Tools.Sorgula(grpBilet))
             {

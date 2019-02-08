@@ -72,26 +72,16 @@ namespace HızlıTrenApp.UI
             this.Text = "Koltuk Seçimi";
             if (yolcuSayisi > 1)
             {
-                btnYolcuKaydet.Enabled = cmbBiletTipi.Enabled = true;
+                cmbBiletTipi.Enabled = true;
                 cmbBiletTipi.SelectedIndex = 0;
                 lblYolcuSayisiBilgilendirme.Text = "Seçtiğiniz " + yolcuSayisi + " adet biletten " + kayitSayaci + " kadar eklenmiştir.";
-                if (sonTiklananKoltukAdi != "" && Convert.ToInt32(sonTiklananKoltukAdi.Substring(1)) < 12)
-                {
-                    foreach (Control item in grpEconomy1.Controls)
-                    {
-                        if (item is PictureBox)
-                        {
-
-                        }
-                    }
-                }
+                
             }
             else
             {
                 lblYolcuSayisiBilgilendirme.Visible = false;
                 cmbBiletTipi.Text = biletTipi;
-                btnYolcuKaydet.Enabled = false;
-                lblYolcuSayisiBilgilendirme.Visible = btnYolcuKaydet.Visible = false;
+                lblYolcuSayisiBilgilendirme.Visible = false;
             }
 
             SeferSaatleriDal ssd = new SeferSaatleriDal();
@@ -101,7 +91,6 @@ namespace HızlıTrenApp.UI
                 KoltuklariOlustur();
                 KoltuklariDoldur();
             }
-
         }
 
         private void CokluSecim(object sender, EventArgs e)
@@ -119,11 +108,16 @@ namespace HızlıTrenApp.UI
             }
             else
             {
-                foreach (Control item in grp.Controls)
+                foreach (Control yanindaki in grp.Controls)
                 {
-                    if (item is PictureBox)
+                    if (yanindaki is PictureBox)
                     {
-                        if (item.Location.X == tiklanan.Location.X && item.Name != "" && tiklanan.ImageLocation.Contains("available") && item.Name != tiklanan.Name)
+                        if ((yanindaki.Location.X == tiklanan.Location.X && yanindaki.Name.StartsWith("E") && yanindaki.Name != tiklanan.Name && tiklanan.ImageLocation.Contains("available")) && sonTiklananKoltukAdi != tiklanan.Name && ((((PictureBox)yanindaki).ImageLocation.Contains("woman") && !rdbKadin.Checked) || (((PictureBox)yanindaki).ImageLocation.Contains("_man") && !rdbErkek.Checked)))
+                        {
+                            MessageBox.Show("Seçilen koltuk karşı cinsin yanında olamaz. Lütfen doğru şekilde koltuk seçiniz.");
+                            return;
+                        }
+                        else if (yanindaki.Location.X == tiklanan.Location.X && yanindaki.Name != "" && tiklanan.ImageLocation.Contains("available") && yanindaki.Name != tiklanan.Name)
                         {
                             if (eskiTiklanan != null)
                             {
@@ -197,20 +191,36 @@ namespace HızlıTrenApp.UI
 
         private void BusinessErkekler(GroupBox grpBusiness1, GroupBox grpBusiness2)
         {
-            foreach (BiletBilgi bilet in businessErkekBiletler)
+            if (businessErkekBiletler.Count == 0)
             {
-                foreach (Control item in grpBusiness1.Controls)
+                foreach (BiletBilgi bilet in businessErkekBiletler)
                 {
-                    if (item is PictureBox && bilet.KoltukNo == item.Name)
+                    foreach (Control item in grpBusiness1.Controls)
                     {
-                        ((PictureBox)item).ImageLocation = economyErkekKoltuk;
+                        if (item is PictureBox)
+                        {
+                            ((PictureBox)item).ImageLocation = economyBosKoltuk;
+                        }
                     }
                 }
-                foreach (Control item in grpBusiness2.Controls)
+            }
+            else
+            {
+                foreach (BiletBilgi bilet in businessErkekBiletler)
                 {
-                    if (item is PictureBox && bilet.KoltukNo == item.Name)
+                    foreach (Control item in grpBusiness1.Controls)
                     {
-                        ((PictureBox)item).ImageLocation = economyErkekKoltuk;
+                        if (item is PictureBox && bilet.KoltukNo == item.Name)
+                        {
+                            ((PictureBox)item).ImageLocation = economyErkekKoltuk;
+                        }
+                    }
+                    foreach (Control item in grpBusiness2.Controls)
+                    {
+                        if (item is PictureBox && bilet.KoltukNo == item.Name)
+                        {
+                            ((PictureBox)item).ImageLocation = economyErkekKoltuk;
+                        }
                     }
                 }
             }
@@ -218,6 +228,20 @@ namespace HızlıTrenApp.UI
 
         private void BusinessKadinlar(GroupBox grpBusiness1, GroupBox grpBusiness2)
         {
+            if (businessKadinBiletler.Count == 0)
+            {
+                foreach (BiletBilgi bilet in businessErkekBiletler)
+                {
+                    foreach (Control item in grpBusiness1.Controls)
+                    {
+                        if (item is PictureBox)
+                        {
+                            ((PictureBox)item).ImageLocation = economyBosKoltuk;
+                        }
+                    }
+                }
+            }
+
             foreach (BiletBilgi bilet in businessKadinBiletler)
             {
                 foreach (Control item in grpBusiness1.Controls)
@@ -472,18 +496,6 @@ namespace HızlıTrenApp.UI
             }
         }
 
-        private void BusinessKoltuk(PictureBox pb, Label lbl)
-        {
-            pb.Width = 40;
-            pb.Height = 30;
-            lbl.TextAlign = ContentAlignment.MiddleCenter;
-            lbl.Width = pb.Width;
-            lbl.Height = 15;
-            pb.Click += Pb_Click;
-            pb.ImageLocation = economyBosKoltuk;
-
-        }
-
         private void Pb_Click(object sender, EventArgs e)
         {
             PictureBox tiklanan = sender as PictureBox;
@@ -502,10 +514,6 @@ namespace HızlıTrenApp.UI
                 tiklanan.ImageLocation = economyBosKoltuk;
         }
 
-        private void btnYolcuKaydet_Click(object sender, EventArgs e)
-        {
-            YolcuEkle();
-        }
         ListViewItem lvi;
         List<ListViewItem> liste = new List<ListViewItem>();
         bool gidisEklendiMi = false;
@@ -531,6 +539,9 @@ namespace HızlıTrenApp.UI
                     }
                 }
             }
+
+            sonTiklananKoltukAdi = tiklanan.Name;
+            tiklanan.Click += CokluSecim;
 
             BiletBilgi biletDetay = new BiletBilgi();
             BiletConcrete bc = new BiletConcrete();
@@ -562,7 +573,7 @@ namespace HızlıTrenApp.UI
             biletDetay.AlimTarihi = DateTime.Now;
 
             biletDetay.BiletFiyati = ucret;
-            if (!gidisEklendiMi && donusTarihi != null)
+            if (!gidisEklendiMi || donusTarihi != null || kayitSayaci == yolcuSayisi)
             {
                 biletDetay.SeferTarihi = gidisTarihi.Date;
                 biletDetay.SeferSeferSaatID = sssdId;
@@ -608,6 +619,7 @@ namespace HızlıTrenApp.UI
                     lvi.SubItems.Add(biletDetay.SeferSaati);
                     lvi.SubItems.Add(biletDetay.KoltukNo);
                     lvi.SubItems.Add(biletDetay.BiletFiyati.ToString());
+                    lvi.SubItems.Add(bilet.PNRNo.ToString());
                     liste.Add(lvi);
                 }
 
@@ -632,6 +644,8 @@ namespace HızlıTrenApp.UI
                     lvi.SubItems.Add(biletDetay.SeferSaati);
                     lvi.SubItems.Add(biletDetay.KoltukNo);
                     lvi.SubItems.Add(biletDetay.BiletFiyati.ToString());
+                    lvi.SubItems.Add(bilet.PNRNo.ToString());
+
                     liste.Add(lvi);
                 }
 
@@ -646,6 +660,7 @@ namespace HızlıTrenApp.UI
                     lvi.SubItems.Add(biletDetay.SeferSaati);
                     lvi.SubItems.Add(biletDetay.KoltukNo);
                     lvi.SubItems.Add(biletDetay.BiletFiyati.ToString());
+                    lvi.SubItems.Add(bilet.PNRNo.ToString());
                 }
             }
             else
@@ -679,6 +694,7 @@ namespace HızlıTrenApp.UI
                     lvi.SubItems.Add(biletDetay.SeferSaati);
                     lvi.SubItems.Add(biletDetay.KoltukNo);
                     lvi.SubItems.Add(biletDetay.BiletFiyati.ToString());
+                    lvi.SubItems.Add(bilet.PNRNo.ToString());
                     liste.Add(lvi);
                     sonTiklananKoltukAdi = biletDetay.KoltukNo;
                 }
@@ -693,6 +709,7 @@ namespace HızlıTrenApp.UI
                     lvi.SubItems.Add(biletDetay.SeferSaati);
                     lvi.SubItems.Add(biletDetay.KoltukNo);
                     lvi.SubItems.Add(biletDetay.BiletFiyati.ToString());
+                    lvi.SubItems.Add(bilet.PNRNo.ToString());
                     liste.Add(lvi);
                 }
 
@@ -703,9 +720,10 @@ namespace HızlıTrenApp.UI
                     lvi.SubItems.Add(yolcu.Soyad);
                     lvi.SubItems.Add(biletDetay.BiletTipi);
                     lvi.SubItems.Add(seferYonu);
-                    lvi.SubItems.Add(biletDetay.SeferSaati);
+                    //lvi.SubItems.Add(biletDetay.SeferSaati);
                     lvi.SubItems.Add(biletDetay.KoltukNo);
                     lvi.SubItems.Add(biletDetay.BiletFiyati.ToString());
+                    lvi.SubItems.Add(bilet.PNRNo.ToString());
                 }
             }
         }
@@ -731,7 +749,16 @@ namespace HızlıTrenApp.UI
                 YolcuEkle();
                 Tools.Temizle(grpYolcuBilgileri);
                 Tools.Temizle(grpEkHizmetler);
-                KoltuklariDoldur();
+                if (gidisDonusSayac == 2)
+                {
+                    KoltuklariKaldir();
+                    DonusKoltuklariDoldur();
+                }
+                else
+                {
+                    KoltuklariDoldur();
+                }
+                sonTiklananKoltukAdi = tiklanan.Name;
             }
             else
             {
@@ -753,6 +780,8 @@ namespace HızlıTrenApp.UI
                         }
 
                         tiklanan.ImageLocation = economyBosKoltuk;
+                        KoltuklariKaldir();
+                        KoltuklariOlustur();
                         DonusKoltuklariDoldur();
                         lblGidisDonus.Text = "Donus seferi icin koltuk seciniz.";
                         foreach (Control item in grpYolcuBilgileri.Controls)
@@ -767,7 +796,7 @@ namespace HızlıTrenApp.UI
 
                             }
                         }
-                        if (gidisDonusSayac == 2)
+                        if (gidisDonusSayac == 2 && yolcuSayisi == 1)
                         {
                             frmIslemOzeti islemOzeti = new frmIslemOzeti(lvi, liste);
                             frmAnaSayfa anaForm = (frmAnaSayfa)this.Parent.Parent.Parent;
@@ -775,14 +804,14 @@ namespace HızlıTrenApp.UI
                         }
                         eskiTiklanan = null;
                         return;
+
                     }
-                    else if (kayitSayaci == yolcuSayisi)
+                    if (kayitSayaci == yolcuSayisi)
                     {
                         frmIslemOzeti islemOzeti = new frmIslemOzeti(lvi, liste);
                         frmAnaSayfa anaForm = (frmAnaSayfa)this.Parent.Parent.Parent;
                         anaForm.FormKontrolluGetir(islemOzeti);
                     }
-
 
                     else
                     {
@@ -803,9 +832,16 @@ namespace HızlıTrenApp.UI
                 {
                     if (donusVarMi)
                     {
+                        if (gidisDonusSayac >= 0 && gidisDonusSayac < 2)
+                        {
+                            gidisDonusSayac++;
+                        }
+
                         Tools.Temizle(grpYolcuBilgileri);
                         Tools.Temizle(grpEkHizmetler);
                         tiklanan.ImageLocation = economyBosKoltuk;
+                        KoltuklariKaldir();
+                        KoltuklariOlustur();
                         DonusKoltuklariDoldur();
                         lblGidisDonus.Text = "Donus seferi icin koltuk seciniz.";
                         foreach (Control item in grpYolcuBilgileri.Controls)
@@ -819,19 +855,23 @@ namespace HızlıTrenApp.UI
                                 item.Enabled = false;
                             }
                         }
+                        if (gidisDonusSayac == 2 && yolcuSayisi == 1)
+                        {
+                            frmIslemOzeti islemOzeti = new frmIslemOzeti(lvi, liste);
+                            frmAnaSayfa anaForm = (frmAnaSayfa)this.Parent.Parent.Parent;
+                            anaForm.FormKontrolluGetir(islemOzeti);
+                        }
                         eskiTiklanan = null;
-
                         return;
+
                     }
 
-                    else if (kayitSayaci == yolcuSayisi)
+                    if (kayitSayaci == yolcuSayisi)
                     {
-                        frmOdeme odeme = new frmOdeme(this, lvi, liste);
+                        frmIslemOzeti islemOzeti = new frmIslemOzeti(lvi, liste);
                         frmAnaSayfa anaForm = (frmAnaSayfa)this.Parent.Parent.Parent;
-                        anaForm.FormKontrolluGetir(odeme);
+                        anaForm.FormKontrolluGetir(islemOzeti);
                     }
-
-
 
                     else
                     {
@@ -846,6 +886,14 @@ namespace HızlıTrenApp.UI
                 }
 
             }
+        }
+
+        private void KoltuklariKaldir()
+        {
+            grpBusiness1.Controls.Clear();
+            grpBusiness2.Controls.Clear();
+            grpEconomy1.Controls.Clear();
+            grpEconomy2.Controls.Clear();
         }
 
         private void DonusKoltuklariDoldur()

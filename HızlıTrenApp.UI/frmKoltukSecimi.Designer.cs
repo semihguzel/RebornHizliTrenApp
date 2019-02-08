@@ -33,7 +33,6 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.btnYolcuKaydet = new MetroFramework.Controls.MetroButton();
             this.btnOdemeyeGec = new MetroFramework.Controls.MetroButton();
             this.cmbBiletTipi = new MetroFramework.Controls.MetroComboBox();
             this.dtpDogumTarihi = new System.Windows.Forms.DateTimePicker();
@@ -81,7 +80,6 @@
             // grpYolcuBilgileri
             // 
             this.grpYolcuBilgileri.Controls.Add(this.grpEkHizmetler);
-            this.grpYolcuBilgileri.Controls.Add(this.btnYolcuKaydet);
             this.grpYolcuBilgileri.Controls.Add(this.btnOdemeyeGec);
             this.grpYolcuBilgileri.Controls.Add(this.cmbBiletTipi);
             this.grpYolcuBilgileri.Controls.Add(this.dtpDogumTarihi);
@@ -150,15 +148,6 @@
             this.checkBox3.TabIndex = 11;
             this.checkBox3.Text = "İçecek(5TL)";
             this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // btnYolcuKaydet
-            // 
-            this.btnYolcuKaydet.Location = new System.Drawing.Point(520, 133);
-            this.btnYolcuKaydet.Name = "btnYolcuKaydet";
-            this.btnYolcuKaydet.Size = new System.Drawing.Size(105, 31);
-            this.btnYolcuKaydet.TabIndex = 10;
-            this.btnYolcuKaydet.Text = "Yolcu Kaydet";
-            this.btnYolcuKaydet.Click += new System.EventHandler(this.btnYolcuKaydet_Click);
             // 
             // btnOdemeyeGec
             // 
@@ -473,18 +462,16 @@
             this.lblYolcuSayisiBilgilendirme.AutoSize = true;
             this.lblYolcuSayisiBilgilendirme.Location = new System.Drawing.Point(315, 29);
             this.lblYolcuSayisiBilgilendirme.Name = "lblYolcuSayisiBilgilendirme";
-            this.lblYolcuSayisiBilgilendirme.Size = new System.Drawing.Size(83, 19);
+            this.lblYolcuSayisiBilgilendirme.Size = new System.Drawing.Size(0, 0);
             this.lblYolcuSayisiBilgilendirme.TabIndex = 4;
-            this.lblYolcuSayisiBilgilendirme.Text = "metroLabel8";
             // 
             // lblGidisDonus
             // 
             this.lblGidisDonus.AutoSize = true;
             this.lblGidisDonus.Location = new System.Drawing.Point(315, 10);
             this.lblGidisDonus.Name = "lblGidisDonus";
-            this.lblGidisDonus.Size = new System.Drawing.Size(83, 19);
+            this.lblGidisDonus.Size = new System.Drawing.Size(0, 0);
             this.lblGidisDonus.TabIndex = 4;
-            this.lblGidisDonus.Text = "metroLabel8";
             // 
             // frmKoltukSecimi
             // 
@@ -553,7 +540,6 @@
         private System.Windows.Forms.GroupBox grpEconomy2;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox6;
-        private MetroFramework.Controls.MetroButton btnYolcuKaydet;
         private System.Windows.Forms.GroupBox grpEkHizmetler;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox1;
